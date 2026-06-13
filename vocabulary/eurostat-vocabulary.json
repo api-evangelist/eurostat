@@ -1,0 +1,205 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Eurostat API Vocabulary",
+  "description": "Domain vocabulary and terminology for the Eurostat Statistics APIs, covering SDMX concepts, data dimensions, and Eurostat-specific terms.",
+  "version": "1.0.0",
+  "source": "https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction",
+  "terms": [
+    {
+      "term": "SDMX",
+      "label": "Statistical Data and Metadata eXchange",
+      "definition": "An international initiative designed to standardise the exchange of statistical data and metadata. Eurostat supports both SDMX 2.1 and 3.0.",
+      "url": "https://sdmx.org/"
+    },
+    {
+      "term": "dataflow",
+      "label": "Dataflow",
+      "definition": "A logical grouping of related data in SDMX, referencing a specific Data Structure Definition. Each Eurostat dataset is accessible via a dataflow identifier (e.g., nama_10_gdp, demo_gind).",
+      "examples": ["nama_10_gdp", "demo_gind", "env_air_gge", "tec00001"]
+    },
+    {
+      "term": "datasetCode",
+      "label": "Dataset Code",
+      "definition": "The unique identifier for a specific Eurostat statistical dataset, used in the Statistics API. Equivalent to the SDMX dataflow ID.",
+      "examples": ["nama_10_gdp", "demo_gind", "env_air_gge"]
+    },
+    {
+      "term": "key",
+      "label": "Dimension Key",
+      "definition": "A dot-separated string specifying dimension values for SDMX data queries. Use '+' to select multiple values in one dimension and leave a dimension empty to wildcard it. The keyword 'all' selects all data.",
+      "examples": ["M.DE.000000.ANR", "A+M.DE.000000.ANR", "A+M..000000.ANR", "all"]
+    },
+    {
+      "term": "flow",
+      "label": "SDMX Flow",
+      "definition": "Path parameter in SDMX 2.1 data queries that identifies the statistical domain. Can include optional agency prefix and version suffix.",
+      "pattern": "[agency,]id[,version]",
+      "examples": ["nama_10_gdp", "ESTAT,nama_10_gdp", "ESTAT,nama_10_gdp,1.0"]
+    },
+    {
+      "term": "agencyID",
+      "label": "Agency Identifier",
+      "definition": "The identifier of the organisation maintaining the SDMX artefact. Eurostat uses 'ESTAT' as its agency identifier.",
+      "eurostatValue": "ESTAT"
+    },
+    {
+      "term": "resourceID",
+      "label": "Resource Identifier",
+      "definition": "The unique identifier of an SDMX structural artefact such as a dataflow, codelist, concept scheme, or data structure definition.",
+      "examples": ["nama_10_gdp", "CL_UNIT", "CS_CORE"]
+    },
+    {
+      "term": "JSON-stat",
+      "label": "JSON-stat 2.0",
+      "definition": "A lightweight JSON format for statistical data exchange returned by the Eurostat Statistics API. Encodes multidimensional data with dimension metadata and sparse value arrays.",
+      "url": "https://json-stat.org/"
+    },
+    {
+      "term": "SDMX-ML",
+      "label": "SDMX-ML",
+      "definition": "XML-based format for SDMX data and structure exchange. Eurostat supports both SDMX-ML 2.1 and 3.0 versions.",
+      "mimeTypes": ["application/vnd.sdmx.data+xml", "application/vnd.sdmx.structure+xml"]
+    },
+    {
+      "term": "SDMX-CSV",
+      "label": "SDMX-CSV",
+      "definition": "CSV-based format for SDMX data exchange. Eurostat supports SDMX-CSV 1.0 and 2.0.",
+      "mimeTypes": ["application/vnd.sdmx.data+csv"]
+    },
+    {
+      "term": "startPeriod",
+      "label": "Start Period",
+      "definition": "Filter parameter specifying the earliest time period to include in query results. Supports annual (YYYY), quarterly (YYYY-Qn), monthly (YYYY-MM) and weekly (YYYY-Www) formats.",
+      "examples": ["2010", "2015Q1", "2020-01", "2023-W01"]
+    },
+    {
+      "term": "endPeriod",
+      "label": "End Period",
+      "definition": "Filter parameter specifying the latest time period to include in query results.",
+      "examples": ["2023", "2023Q4", "2023-12"]
+    },
+    {
+      "term": "firstNObservations",
+      "label": "First N Observations",
+      "definition": "SDMX 2.1 parameter to limit results to the N earliest observations per series.",
+      "type": "integer"
+    },
+    {
+      "term": "lastNObservations",
+      "label": "Last N Observations",
+      "definition": "SDMX 2.1 parameter to limit results to the N most recent observations per series.",
+      "type": "integer"
+    },
+    {
+      "term": "detail",
+      "label": "Detail Level",
+      "definition": "Controls the level of detail in SDMX 2.1 data responses.",
+      "values": [
+        { "value": "full", "description": "All data and metadata" },
+        { "value": "dataonly", "description": "Data without attribute values" },
+        { "value": "serieskeysonly", "description": "Series keys without data" },
+        { "value": "nodata", "description": "Metadata without data values" }
+      ]
+    },
+    {
+      "term": "references",
+      "label": "References",
+      "definition": "Controls which referenced artefacts are included in SDMX structure responses.",
+      "values": [
+        { "value": "none", "description": "No referenced artefacts" },
+        { "value": "parents", "description": "Parent artefacts only" },
+        { "value": "parentsandsiblings", "description": "Parents and their siblings" },
+        { "value": "children", "description": "Child artefacts only" },
+        { "value": "descendants", "description": "All descendant artefacts" },
+        { "value": "all", "description": "All referenced artefacts" }
+      ]
+    },
+    {
+      "term": "uuid",
+      "label": "Async Request UUID",
+      "definition": "Universally unique identifier assigned to an asynchronous data extraction request. Used to poll status and retrieve results.",
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+    },
+    {
+      "term": "asyncStatus",
+      "label": "Asynchronous Request Status",
+      "definition": "The processing state of an asynchronous data extraction request.",
+      "values": [
+        { "value": "SUBMITTED", "description": "Request submitted, awaiting processing" },
+        { "value": "PROCESSING", "description": "Request is currently being processed" },
+        { "value": "AVAILABLE", "description": "Data is ready and available for download" },
+        { "value": "EXPIRED", "description": "Data was processed but cache has expired" }
+      ]
+    },
+    {
+      "term": "codelist",
+      "label": "Codelist",
+      "definition": "An SDMX artefact that defines a set of coded values for a dimension or attribute. For example, CL_GEO contains country and region codes.",
+      "examples": ["CL_GEO", "CL_UNIT", "CL_TIME_FORMAT"]
+    },
+    {
+      "term": "datastructure",
+      "label": "Data Structure Definition (DSD)",
+      "definition": "An SDMX artefact that defines the structure of a dataset, specifying the dimensions, attributes, and measures.",
+      "examples": ["DSD_nama_10_gdp", "DSD_demo_gind"]
+    },
+    {
+      "term": "conceptscheme",
+      "label": "Concept Scheme",
+      "definition": "An SDMX artefact that defines a set of concepts used as dimensions, attributes, or measures in data structures.",
+      "examples": ["CS_COMMON", "CS_CORE"]
+    },
+    {
+      "term": "dcat",
+      "label": "DCAT",
+      "definition": "W3C Data Catalog Vocabulary. Eurostat exposes its dataset catalogue in DCAT-AP (Application Profile for data portals in Europe) RDF format.",
+      "url": "https://www.w3.org/TR/vocab-dcat/"
+    },
+    {
+      "term": "metabase",
+      "label": "Metabase",
+      "definition": "A gzipped text file catalogue containing definitions of all disseminated Eurostat data products, available at /catalogue/metabase.txt.gz.",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/catalogue/metabase.txt.gz"
+    },
+    {
+      "term": "geo",
+      "label": "Geographic Dimension",
+      "definition": "Standard Eurostat dimension representing the reporting geographic entity. Common values include EU country codes (ISO 3166-1 alpha-2), EU aggregates (EU27_2020, EA20), and NUTS regions.",
+      "examples": ["DE", "FR", "IT", "EU27_2020", "EA20", "DE1", "DE11"]
+    },
+    {
+      "term": "NUTS",
+      "label": "Nomenclature of Territorial Units for Statistics",
+      "definition": "The hierarchical classification system for EU regions used in Eurostat data. NUTS 0 = countries, NUTS 1 = major regions, NUTS 2 = basic regions, NUTS 3 = small regions.",
+      "url": "https://ec.europa.eu/eurostat/web/nuts"
+    },
+    {
+      "term": "ESA2010",
+      "label": "European System of National Accounts 2010",
+      "definition": "The EU standard for national accounts, defining concepts like GDP (B1GQ), gross value added, and household consumption used in Eurostat macroeconomic datasets.",
+      "url": "https://ec.europa.eu/eurostat/web/esa-2010"
+    },
+    {
+      "term": "sinceTimePeriod",
+      "label": "Since Time Period",
+      "definition": "Filter parameter in the Statistics API specifying the start of the time range. Returns all observations from this period onwards.",
+      "examples": ["2010", "2015Q2", "2020-01"]
+    },
+    {
+      "term": "lastTimePeriod",
+      "label": "Last N Time Periods",
+      "definition": "Filter parameter in the Statistics API requesting only the most recent N time periods.",
+      "type": "integer",
+      "examples": [1, 5, 10]
+    },
+    {
+      "term": "extractionType",
+      "label": "Extraction Type",
+      "definition": "Parameter for the Catalogue DCAT endpoint controlling which datasets are included.",
+      "values": [
+        { "value": "all", "description": "All Eurostat datasets" },
+        { "value": "recent", "description": "Recently updated datasets" }
+      ]
+    }
+  ]
+}

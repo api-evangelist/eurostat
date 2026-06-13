@@ -47,6 +47,8 @@ apis:
     properties:
       - type: Documentation
         url: https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction
+      - type: OpenAPI
+        url: openapi/eurostat-sdmx-rest-openapi.yaml
   - name: Eurostat SDMX 3.0 API
     description: SDMX 3.0-compliant web service providing access to Eurostat datasets, dataflows, data structure definitions, and codelists. Supports SDMX-ML 3.0 and 2.1, SDMX-CSV 2.0 and 1.0, TSV, and JSON-stat formats.
     image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg

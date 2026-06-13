@@ -1,0 +1,158 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "dcat": "https://www.w3.org/ns/dcat#",
+    "dct": "http://purl.org/dc/terms/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "sdmx": "https://sdmx.org/resources/sdmx/201/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "eurostat": "https://ec.europa.eu/eurostat/",
+    "name": "schema:name",
+    "description": "schema:description",
+    "url": "schema:url",
+    "identifier": "dct:identifier",
+    "title": "dct:title",
+    "publisher": "dct:publisher",
+    "license": "dct:license",
+    "language": "dct:language",
+    "modified": "dct:modified",
+    "issued": "dct:issued",
+    "contactPoint": "dcat:contactPoint",
+    "dataset": "dcat:dataset",
+    "distribution": "dcat:distribution",
+    "accessURL": "dcat:accessURL",
+    "downloadURL": "dcat:downloadURL",
+    "mediaType": "dcat:mediaType",
+    "keyword": "dcat:keyword",
+    "theme": "dcat:theme"
+  },
+  "@graph": [
+    {
+      "@id": "https://ec.europa.eu/eurostat",
+      "@type": ["schema:Organization", "foaf:Organization"],
+      "name": "Eurostat",
+      "description": "Eurostat is the statistical office of the European Union, providing free and open REST APIs for programmatic access to European statistical data.",
+      "url": "https://ec.europa.eu/eurostat",
+      "schema:logo": "https://ec.europa.eu/eurostat/o/eurostat-theme/images/eurostat-logo.svg",
+      "schema:sameAs": [
+        "https://www.wikidata.org/wiki/Q217659",
+        "https://x.com/EU_Eurostat",
+        "https://www.linkedin.com/company/eurostat/",
+        "https://github.com/eurostat"
+      ],
+      "schema:contactPoint": {
+        "@type": "schema:ContactPoint",
+        "schema:contactType": "user support",
+        "schema:url": "https://ec.europa.eu/eurostat/help/support"
+      },
+      "schema:parentOrganization": {
+        "@id": "https://ec.europa.eu/",
+        "@type": "schema:Organization",
+        "name": "European Commission"
+      }
+    },
+    {
+      "@id": "https://ec.europa.eu/eurostat/api/dissemination",
+      "@type": "schema:WebAPI",
+      "name": "Eurostat Dissemination API",
+      "description": "The root endpoint for all Eurostat dissemination APIs, providing access to statistical data, structural metadata, and catalogue information.",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination",
+      "schema:provider": { "@id": "https://ec.europa.eu/eurostat" },
+      "schema:documentation": "https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction",
+      "schema:termsOfService": "https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction",
+      "schema:license": "https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction"
+    },
+    {
+      "@id": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/",
+      "@type": "schema:WebAPI",
+      "name": "Eurostat Statistics API",
+      "description": "Primary REST API returning EU statistical data in JSON-stat 2.0 format. Supports filtering by geography, time, and any dataset dimension.",
+      "schema:provider": { "@id": "https://ec.europa.eu/eurostat" },
+      "schema:documentation": "https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-detailed-guidelines/api-statistics",
+      "schema:endpointURL": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/{datasetCode}",
+      "schema:encodingFormat": "application/json",
+      "dct:conformsTo": {
+        "@id": "https://json-stat.org/",
+        "name": "JSON-stat 2.0"
+      }
+    },
+    {
+      "@id": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/",
+      "@type": "schema:WebAPI",
+      "name": "Eurostat SDMX 2.1 API",
+      "description": "SDMX 2.1-compliant web service for accessing Eurostat data and structural metadata in SDMX-ML, SDMX-CSV, and TSV formats.",
+      "schema:provider": { "@id": "https://ec.europa.eu/eurostat" },
+      "schema:documentation": "https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction",
+      "dct:conformsTo": [
+        {
+          "@id": "https://sdmx.org/resources/sdmx/201/",
+          "name": "SDMX 2.1"
+        }
+      ],
+      "schema:encodingFormat": [
+        "application/vnd.sdmx.data+xml;version=2.1",
+        "application/vnd.sdmx.data+csv;version=1.0",
+        "text/tab-separated-values"
+      ]
+    },
+    {
+      "@id": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/3.0/",
+      "@type": "schema:WebAPI",
+      "name": "Eurostat SDMX 3.0 API",
+      "description": "SDMX 3.0-compliant web service for accessing Eurostat dataflows, data structure definitions, codelists, and data in multiple formats.",
+      "schema:provider": { "@id": "https://ec.europa.eu/eurostat" },
+      "schema:documentation": "https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-getting-started/sdmx3.0",
+      "dct:conformsTo": [
+        {
+          "@id": "https://sdmx.org/resources/sdmx/30/",
+          "name": "SDMX 3.0"
+        }
+      ],
+      "schema:encodingFormat": [
+        "application/vnd.sdmx.data+xml;version=3.0",
+        "application/vnd.sdmx.data+csv;version=2.0",
+        "application/vnd.sdmx.data+json;version=2.0"
+      ]
+    },
+    {
+      "@id": "https://ec.europa.eu/eurostat/api/dissemination/1.0/async/",
+      "@type": "schema:WebAPI",
+      "name": "Eurostat Asynchronous API",
+      "description": "Asynchronous dissemination API for large dataset extractions between 500,000 and 5,000,000 cells. Returns a UUID for polling.",
+      "schema:provider": { "@id": "https://ec.europa.eu/eurostat" },
+      "schema:documentation": "https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-detailed-guidelines/asynchronous-api"
+    },
+    {
+      "@id": "https://ec.europa.eu/eurostat/api/dissemination/catalogue/",
+      "@type": ["schema:WebAPI", "dcat:Catalog"],
+      "name": "Eurostat Catalogue API",
+      "description": "API for discovering all publicly available Eurostat datasets, browsing the navigation tree, and retrieving dataset metadata.",
+      "schema:provider": { "@id": "https://ec.europa.eu/eurostat" },
+      "schema:documentation": "https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction",
+      "dcat:endpointURL": "https://ec.europa.eu/eurostat/api/dissemination/catalogue/",
+      "schema:encodingFormat": ["application/rdf+xml", "application/xml", "text/plain"]
+    },
+    {
+      "@id": "https://ec.europa.eu/eurostat/api/dissemination/swagger-ui/sdmx-rest.yaml",
+      "@type": "schema:CreativeWork",
+      "name": "Eurostat SDMX RESTful API - OpenAPI Specification",
+      "description": "OpenAPI 3.0.0 specification covering all Eurostat SDMX 2.1, SDMX 3.0, Async, Catalogue, and Statistics API endpoints.",
+      "schema:encodingFormat": "application/yaml",
+      "dct:conformsTo": {
+        "@id": "https://spec.openapis.org/oas/v3.0.0",
+        "name": "OpenAPI 3.0.0"
+      },
+      "schema:isPartOf": { "@id": "https://ec.europa.eu/eurostat/api/dissemination" }
+    },
+    {
+      "@id": "https://ec.europa.eu/eurostat/api/dissemination/catalogue/dcat/ESTAT",
+      "@type": "dcat:Catalog",
+      "name": "Eurostat DCAT Catalogue",
+      "description": "Full Eurostat dataset catalogue in W3C DCAT-AP RDF format, listing all publicly disseminated statistical datasets.",
+      "dct:publisher": { "@id": "https://ec.europa.eu/eurostat" },
+      "dct:language": "http://publications.europa.eu/resource/authority/language/ENG",
+      "schema:license": "https://creativecommons.org/licenses/by/4.0/"
+    }
+  ]
+}

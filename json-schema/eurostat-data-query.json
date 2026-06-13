@@ -1,0 +1,172 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/eurostat/main/json-schema/eurostat-data-query.json",
+  "title": "Eurostat Data Query Parameters",
+  "description": "JSON Schema for Eurostat Statistics API data query parameters and response structure.",
+  "type": "object",
+  "properties": {
+    "datasetCode": {
+      "type": "string",
+      "description": "The Eurostat dataset code (e.g., nama_10_gdp, demo_gind, env_air_gge).",
+      "examples": ["nama_10_gdp", "demo_gind", "env_air_gge", "tec00001"]
+    },
+    "format": {
+      "type": "string",
+      "description": "Response format for the Statistics API.",
+      "enum": ["JSON", "TSV"],
+      "default": "JSON"
+    },
+    "lang": {
+      "type": "string",
+      "description": "Language code for labels in the response.",
+      "enum": ["en", "fr", "de"],
+      "default": "en"
+    },
+    "sinceTimePeriod": {
+      "type": "string",
+      "description": "Start time period filter (e.g., 2010, 2010Q1, 2010-01).",
+      "examples": ["2010", "2015Q1", "2020-01"]
+    },
+    "untilTimePeriod": {
+      "type": "string",
+      "description": "End time period filter (e.g., 2023, 2023Q4, 2023-12).",
+      "examples": ["2023", "2023Q4", "2023-12"]
+    },
+    "lastTimePeriod": {
+      "type": "integer",
+      "description": "Number of most recent time periods to return.",
+      "minimum": 1,
+      "examples": [1, 5, 10]
+    }
+  },
+  "definitions": {
+    "JsonStatResponse": {
+      "type": "object",
+      "description": "JSON-stat 2.0 response from the Eurostat Statistics API.",
+      "properties": {
+        "version": {
+          "type": "string",
+          "description": "JSON-stat version.",
+          "example": "2.0"
+        },
+        "class": {
+          "type": "string",
+          "enum": ["dataset"],
+          "description": "JSON-stat class identifier."
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "The canonical URL for this dataset."
+        },
+        "label": {
+          "type": "string",
+          "description": "Human-readable label for the dataset."
+        },
+        "source": {
+          "type": "string",
+          "description": "The data source (Eurostat)."
+        },
+        "updated": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update timestamp."
+        },
+        "id": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Ordered list of dimension identifiers."
+        },
+        "size": {
+          "type": "array",
+          "items": { "type": "integer" },
+          "description": "Number of elements in each dimension."
+        },
+        "dimension": {
+          "type": "object",
+          "description": "Dimension definitions keyed by dimension ID.",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "label": { "type": "string" },
+              "category": {
+                "type": "object",
+                "properties": {
+                  "index": {
+                    "type": "object",
+                    "additionalProperties": { "type": "integer" }
+                  },
+                  "label": {
+                    "type": "object",
+                    "additionalProperties": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "value": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": { "type": ["number", "null"] }
+            },
+            {
+              "type": "object",
+              "additionalProperties": { "type": ["number", "null"] }
+            }
+          ],
+          "description": "Data values in row-major order or sparse object notation."
+        },
+        "status": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": { "type": "string" }
+            }
+          ],
+          "description": "Status flags for data cells (e.g., 'b' for break, 'p' for provisional)."
+        },
+        "extension": {
+          "type": "object",
+          "description": "Eurostat-specific extensions to JSON-stat.",
+          "properties": {
+            "datasetId": { "type": "string" },
+            "lang": { "type": "string" },
+            "description": { "type": "string" }
+          }
+        }
+      },
+      "required": ["version", "class", "id", "size", "dimension", "value"]
+    },
+    "AsyncStatusResponse": {
+      "type": "object",
+      "description": "Status of an asynchronous data extraction request.",
+      "properties": {
+        "key": {
+          "type": "string",
+          "format": "uuid",
+          "description": "Unique identifier for the async request."
+        },
+        "status": {
+          "type": "string",
+          "enum": ["SUBMITTED", "PROCESSING", "AVAILABLE", "EXPIRED"],
+          "description": "Current processing status of the async request."
+        }
+      },
+      "required": ["key", "status"]
+    },
+    "SdmxFlow": {
+      "type": "string",
+      "description": "SDMX flow identifier in the format [agency,]id[,version].",
+      "pattern": "^([a-zA-Z][a-zA-Z\\d_-]*(\\.[a-zA-Z][a-zA-Z\\d_-]*)*,)?[a-zA-Z\\d_@$-]+(,(latest|(\\d+(\\.\\d+)*)))?$",
+      "examples": ["ESTAT,nama_10_gdp", "nama_10_gdp", "ESTAT,demo_gind,1.0"]
+    },
+    "SdmxKey": {
+      "type": "string",
+      "description": "SDMX dimension key for filtering data series.",
+      "pattern": "^([\\. A-Za-z\\d_@$-]+(\\+[A-Za-z\\d_@$-]+)*)*$",
+      "examples": ["M.DE.000000.ANR", "A+M.DE.000000.ANR", "all"]
+    }
+  }
+}

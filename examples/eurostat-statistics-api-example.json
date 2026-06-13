@@ -1,0 +1,190 @@
+{
+  "title": "Eurostat Statistics API - Example Requests and Responses",
+  "description": "Worked examples for the Eurostat Statistics REST API (JSON-stat format) and SDMX APIs.",
+  "examples": [
+    {
+      "name": "GDP at market prices - EU member states",
+      "description": "Retrieve GDP at market prices (nama_10_gdp) for all EU countries for the last 5 years.",
+      "api": "Statistics API",
+      "request": {
+        "method": "GET",
+        "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nama_10_gdp",
+        "queryParameters": {
+          "format": "JSON",
+          "lang": "en",
+          "lastTimePeriod": 5,
+          "unit": "CP_MEUR",
+          "na_item": "B1GQ"
+        }
+      },
+      "response": {
+        "version": "2.0",
+        "class": "dataset",
+        "label": "GDP and main components (output, expenditure and income)",
+        "source": "Eurostat",
+        "updated": "2024-01-15T11:00:00Z",
+        "id": ["freq", "unit", "na_item", "geo", "time"],
+        "size": [1, 1, 1, 30, 5],
+        "dimension": {
+          "freq": {
+            "label": "Time frequency",
+            "category": {
+              "index": { "A": 0 },
+              "label": { "A": "Annual" }
+            }
+          },
+          "unit": {
+            "label": "Unit of measure",
+            "category": {
+              "index": { "CP_MEUR": 0 },
+              "label": { "CP_MEUR": "Current prices, million euro" }
+            }
+          },
+          "na_item": {
+            "label": "National accounts indicator (ESA 2010)",
+            "category": {
+              "index": { "B1GQ": 0 },
+              "label": { "B1GQ": "Gross domestic product at market prices" }
+            }
+          },
+          "geo": {
+            "label": "Geopolitical entity (reporting)",
+            "category": {
+              "index": { "EU27_2020": 0, "DE": 1, "FR": 2, "IT": 3 },
+              "label": {
+                "EU27_2020": "European Union - 27 countries (from 2020)",
+                "DE": "Germany",
+                "FR": "France",
+                "IT": "Italy"
+              }
+            }
+          },
+          "time": {
+            "label": "Time",
+            "category": {
+              "index": { "2019": 0, "2020": 1, "2021": 2, "2022": 3, "2023": 4 },
+              "label": {
+                "2019": "2019",
+                "2020": "2020",
+                "2021": "2021",
+                "2022": "2022",
+                "2023": "2023"
+              }
+            }
+          }
+        },
+        "value": [14820000, 14315000, 15123000, 16113000, 16543000, 3473000, 3332000, 3601000, 3876000, 4072000, 2423000, 2303000, 2473000, 2665000, 2782000, 1789000, 1651000, 1779000, 1909000, 2013000],
+        "status": { "1": "p", "6": "p" },
+        "extension": {
+          "datasetId": "nama_10_gdp",
+          "lang": "en"
+        }
+      }
+    },
+    {
+      "name": "Population by country - SDMX 2.1",
+      "description": "Retrieve population data using the SDMX 2.1 data endpoint.",
+      "api": "SDMX 2.1 API",
+      "request": {
+        "method": "GET",
+        "url": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/demo_gind/A.JAN.T./",
+        "headers": {
+          "Accept": "application/vnd.sdmx.data+json;version=1.0"
+        },
+        "pathParameters": {
+          "flow": "demo_gind",
+          "key": "A.JAN.T."
+        },
+        "queryParameters": {
+          "startPeriod": "2015",
+          "endPeriod": "2023",
+          "detail": "dataonly"
+        }
+      },
+      "notes": "The key 'A.JAN.T.' selects Annual frequency, January reference, Total sex. The trailing dot wildcards the country dimension to return all countries."
+    },
+    {
+      "name": "SDMX 3.0 - Get dataflow metadata",
+      "description": "Retrieve structural metadata for the GDP dataflow using SDMX 3.0.",
+      "api": "SDMX 3.0 API",
+      "request": {
+        "method": "GET",
+        "url": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/3.0/structure/dataflow/ESTAT/nama_10_gdp",
+        "headers": {
+          "Accept": "application/vnd.sdmx.structure+json;version=2.0"
+        },
+        "queryParameters": {
+          "references": "descendants",
+          "detail": "full"
+        }
+      },
+      "notes": "Returns the full dataflow definition including all referenced data structures, codelists, and concept schemes."
+    },
+    {
+      "name": "Async API - Submit large extraction",
+      "description": "Submit a large dataset extraction asynchronously (datasets >500,000 cells are automatically handled asynchronously).",
+      "api": "Async API",
+      "step": 1,
+      "request": {
+        "method": "GET",
+        "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/env_air_gge",
+        "queryParameters": {
+          "format": "JSON",
+          "lang": "en"
+        }
+      },
+      "asyncResponse": {
+        "httpStatus": 202,
+        "headers": {
+          "Location": "https://ec.europa.eu/eurostat/api/dissemination/1.0/async/status/0f164c29-0e96-4757-9b81-e9fcff8b9899"
+        },
+        "body": {
+          "key": "0f164c29-0e96-4757-9b81-e9fcff8b9899",
+          "status": "SUBMITTED"
+        }
+      }
+    },
+    {
+      "name": "Async API - Poll status",
+      "description": "Check the status of an asynchronous extraction using the UUID received in the Location header.",
+      "api": "Async API",
+      "step": 2,
+      "request": {
+        "method": "GET",
+        "url": "https://ec.europa.eu/eurostat/api/dissemination/1.0/async/status/0f164c29-0e96-4757-9b81-e9fcff8b9899"
+      },
+      "possibleStatuses": ["SUBMITTED", "PROCESSING", "AVAILABLE", "EXPIRED"]
+    },
+    {
+      "name": "Async API - Download data",
+      "description": "Download the processed data once status is AVAILABLE.",
+      "api": "Async API",
+      "step": 3,
+      "request": {
+        "method": "GET",
+        "url": "https://ec.europa.eu/eurostat/api/dissemination/1.0/async/data/0f164c29-0e96-4757-9b81-e9fcff8b9899"
+      }
+    },
+    {
+      "name": "Catalogue - Table of Contents",
+      "description": "Retrieve the full Eurostat dataset catalogue in XML format.",
+      "api": "Catalogue API",
+      "request": {
+        "method": "GET",
+        "url": "https://ec.europa.eu/eurostat/api/dissemination/catalogue/toc/xml"
+      }
+    },
+    {
+      "name": "Catalogue - DCAT RDF catalogue",
+      "description": "Retrieve the Eurostat dataset catalogue in W3C DCAT RDF format.",
+      "api": "Catalogue API",
+      "request": {
+        "method": "GET",
+        "url": "https://ec.europa.eu/eurostat/api/dissemination/catalogue/dcat/ESTAT",
+        "headers": {
+          "Accept": "application/rdf+xml"
+        }
+      }
+    }
+  ]
+}
