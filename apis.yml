@@ -1,0 +1,119 @@
+aid: eurostat
+name: Eurostat
+description: Eurostat is the statistical office of the European Union, providing free and open REST APIs for programmatic access to European statistical data covering demographics, economy, trade, agriculture, transport, environment, and dozens of other indicators across EU member states and regions.
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/eurostat/refs/heads/main/apis.yml
+created: '2026-06-13'
+modified: '2026-06-13'
+specificationVersion: '0.19'
+tags:
+  - Statistics
+  - European Union
+  - Open Data
+  - Demographics
+  - Economy
+  - Trade
+  - Agriculture
+  - Transport
+  - Environment
+  - SDMX
+apis:
+  - name: Eurostat Statistics API
+    description: The primary REST API for accessing Eurostat datasets in JSON-stat 2.0 format. Supports filtering by geography, time period, and any dataset dimension. Returns synchronous or asynchronous responses depending on query size.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction
+    baseURL: https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/
+    tags:
+      - Statistics
+      - JSON-stat
+      - European Union
+    properties:
+      - type: Documentation
+        url: https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction
+      - type: GettingStarted
+        url: https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-getting-started/api
+      - type: DetailedGuidelines
+        url: https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-detailed-guidelines/api-statistics
+  - name: Eurostat SDMX 2.1 API
+    description: SDMX 2.1-compliant web service providing access to Eurostat datasets and structural metadata in SDMX-ML (XML), SDMX-CSV, and TSV formats.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction
+    baseURL: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/
+    tags:
+      - SDMX
+      - XML
+      - Statistics
+      - European Union
+    properties:
+      - type: Documentation
+        url: https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction
+  - name: Eurostat SDMX 3.0 API
+    description: SDMX 3.0-compliant web service providing access to Eurostat datasets, dataflows, data structure definitions, and codelists. Supports SDMX-ML 3.0 and 2.1, SDMX-CSV 2.0 and 1.0, TSV, and JSON-stat formats.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-getting-started/sdmx3.0
+    baseURL: https://ec.europa.eu/eurostat/api/dissemination/sdmx/3.0/
+    tags:
+      - SDMX
+      - XML
+      - CSV
+      - Statistics
+      - European Union
+    properties:
+      - type: Documentation
+        url: https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-getting-started/sdmx3.0
+      - type: DetailedGuidelines
+        url: https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-detailed-guidelines/sdmx3-0/data-query
+  - name: Eurostat Asynchronous API
+    description: Asynchronous dissemination API for large dataset extractions between 500,000 and 5,000,000 cells. Clients submit a request, receive a unique key, poll for status, and download results when available.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-detailed-guidelines/asynchronous-api
+    baseURL: https://ec.europa.eu/eurostat/api/dissemination/1.0/async/
+    tags:
+      - Asynchronous
+      - Large Datasets
+      - Statistics
+      - European Union
+    properties:
+      - type: Documentation
+        url: https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-detailed-guidelines/asynchronous-api
+  - name: Eurostat Catalogue API
+    description: API for discovering all publicly available Eurostat datasets, browsing the navigation tree, and retrieving dataset metadata before querying.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction
+    baseURL: https://ec.europa.eu/eurostat/api/dissemination/catalogue/
+    tags:
+      - Catalogue
+      - Metadata
+      - Discovery
+      - European Union
+    properties:
+      - type: Documentation
+        url: https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction
+common:
+  - type: Website
+    url: https://ec.europa.eu/eurostat
+  - type: Documentation
+    url: https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction
+  - type: GitHubOrg
+    url: https://github.com/eurostat
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/eurostat/
+  - type: Blog
+    url: https://ec.europa.eu/eurostat/news/news-articles
+  - type: Pricing
+    url: https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction
+  - type: StatusPage
+    url: https://ec.europa.eu/eurostat/help/maintenance-information
+  - type: X
+    url: https://x.com/EU_Eurostat
+  - type: Plans
+    url: plans/eurostat-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/eurostat-rate-limits.yml
+  - type: FinOps
+    url: finops/eurostat-finops.yml
+  - type: FAQ
+    url: https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-faq
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

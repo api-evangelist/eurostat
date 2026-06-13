@@ -1,0 +1,25 @@
+name: Eurostat API FinOps
+description: Eurostat APIs are fully free of charge and require no payment, subscription, or financial commitment. All costs are borne by the European Commission as part of Eurostat's public-service mandate. FinOps considerations are limited to infrastructure costs on the consumer side.
+cost_model:
+  type: free
+  price_per_request: 0
+  price_per_gb: 0
+  authentication_required: false
+  api_key_required: false
+  registration_required: false
+consumer_cost_considerations:
+  - description: Egress/bandwidth costs from your own cloud infrastructure when consuming Eurostat API responses at scale
+    mitigation: Cache responses locally; data updates only twice daily so caching is highly effective
+  - description: Compute costs for parsing SDMX-ML (XML) responses, which are verbose
+    mitigation: Use JSON-stat or SDMX-CSV formats for lighter payloads; use Statistics API for JSON-stat output
+  - description: Engineering time to handle asynchronous API polling for large dataset extractions
+    mitigation: Implement exponential backoff on status polling; consider bulk TSV downloads for full datasets
+optimization_tips:
+  - Use sinceTimePeriod and untilTimePeriod parameters to fetch only needed time ranges
+  - Use geoLevel parameter (country, nuts1, nuts2, nuts3) instead of explicit geo lists to avoid long URLs
+  - Cache dataset structure metadata (DSDs, codelists) separately from data — structure changes infrequently
+  - For recurring large extractions, prefer bulk TSV download files over API queries
+  - Use the Catalogue API to discover datasets before querying, avoiding unnecessary large requests
+provider_funding:
+  source: European Commission public budget
+  mandate: Eurostat is the statistical office of the European Union, providing free and open access to European statistics as a public service

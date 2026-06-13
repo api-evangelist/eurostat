@@ -1,0 +1,30 @@
+name: Eurostat API Rate Limits
+description: Eurostat does not publish explicit per-second or per-minute rate limits. Instead, access is governed by extraction cost thresholds based on the number of data cells requested. Fair-use guidelines apply to the asynchronous API.
+limits:
+  - name: Synchronous Response Threshold
+    description: Queries returning fewer than 500,000 cells receive a synchronous (immediate) response.
+    threshold: 500000
+    unit: cells
+    behavior: synchronous response returned directly
+  - name: Asynchronous Processing Threshold
+    description: Queries between 500,000 and 5,000,000 cells are processed asynchronously. The API returns a unique key; the client must poll the status endpoint and download results when available.
+    threshold_min: 500000
+    threshold_max: 5000000
+    unit: cells
+    behavior: async key returned; poll for availability
+  - name: Maximum Extraction Limit
+    description: Queries exceeding 5,000,000 cells are rejected with HTTP 413 (EXTRACTION_TOO_BIG). Split the query or use bulk downloads.
+    threshold: 5000000
+    unit: cells
+    behavior: rejected with HTTP 413 error
+  - name: URL Length Constraint
+    description: Network appliances impose HTTP request size limits. Complex queries with many geo= parameters may exceed acceptable URL lengths. Use geoLevel parameter or server-side filters to reduce URL size.
+    behavior: request may fail if URL is excessively long
+fair_use:
+  - Submit asynchronous requests sequentially rather than in parallel
+  - Monitor the number of concurrent extraction requests
+  - Use bulk downloads for very large datasets when possible
+notes:
+  - No API key or authentication is required
+  - No published per-second, per-minute, or per-day request quotas as of June 2026
+  - Data is updated twice daily at 11:00 and 23:00 CET

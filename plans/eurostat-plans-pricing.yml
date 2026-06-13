@@ -1,0 +1,25 @@
+name: Eurostat API Plans and Pricing
+description: Eurostat provides free, open access to European statistical data through its dissemination APIs. There are no subscription tiers or paid plans — all APIs are publicly accessible without authentication or cost.
+plans:
+  - name: Public Open Access
+    description: Free access to all Eurostat statistical data via the dissemination APIs. No registration, API key, or authentication required.
+    url: https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction
+    price: 0
+    currency: EUR
+    billing: none
+    features:
+      - Access to all public Eurostat datasets
+      - Statistics API (JSON-stat format)
+      - SDMX 2.1 API (XML/CSV formats)
+      - SDMX 3.0 API (XML/CSV/JSON-stat formats)
+      - Asynchronous API for large dataset extraction
+      - Catalogue API for dataset discovery
+      - Comext/PRODCOM datasets via separate endpoint
+      - CORS support on Statistics API
+      - Multilingual support (EN, FR, DE)
+      - Data updated twice daily (11:00 and 23:00 CET)
+    limits:
+      - Synchronous queries capped at 500,000 cells
+      - Asynchronous queries capped at 5,000,000 cells
+      - Requests exceeding 5,000,000 cells are rejected (HTTP 413)
+      - URL length constraints may apply to complex filter queries
