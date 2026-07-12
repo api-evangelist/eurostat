@@ -92,6 +92,8 @@ apis:
       - type: Documentation
         url: https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction
 common:
+  - type: DomainSecurity
+    url: security/eurostat-domain-security.yml
   - type: Website
     url: https://ec.europa.eu/eurostat
   - type: Documentation
