@@ -5,14 +5,17 @@
       "source": "https://ec.europa.eu/eurostat/news/news-articles?p_p_id=estatsearchportlet_WAR_estatsearchportlet_INSTANCE_3YC0xEaHtuhC&p_p_lifecycle=2&p_p_state=normal&p_p_mode=view&p_p_resource_id=atom",
       "feed_url": "https://ec.europa.eu/eurostat/news/news-articles?p_p_id=estatsearchportlet_WAR_estatsearchportlet_INSTANCE_3YC0xEaHtuhC&p_p_lifecycle=2&p_p_state=normal&p_p_mode=view&p_p_resource_id=atom",
       "title": "",
-      "saved": 11,
+      "saved": 0,
       "method": "feed"
     },
     {
       "source": "https://www.linkedin.com/company/eurostat/",
-      "error": "HTTPError"
+      "feed_url": "https://www.linkedin.com/company/eurostat/",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
-  "fetched": "2026-06-27T12:03:07Z",
-  "post_count": 22
+  "fetched": "2026-07-11T11:50:51Z",
+  "post_count": 35
 }
