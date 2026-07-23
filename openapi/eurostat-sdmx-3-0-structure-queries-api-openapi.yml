@@ -1,0 +1,791 @@
+openapi: 3.0.0
+info:
+  version: '1.0'
+  title: Eurostat SDMX RESTful Async SDMX 3.0 Structure queries API
+  description: 'Listing of supported SDMX requests based on
+
+    * [official sdmx-rest 2.1 specifications](https://github.com/sdmx-twg/sdmx-rest/tree/v1.5.0/v2_1/ws/rest/docs)
+
+    * [official sdmx-rest 3.0 specifications](https://github.com/sdmx-twg/sdmx-rest/tree/v2.0.0/doc)
+
+
+    For additional information, please consult the [online-help](https://ec.europa.eu/eurostat/web/user-guides/data-browser).
+
+    '
+  contact:
+    name: Contact Eurostat user support
+    url: https://ec.europa.eu/eurostat/help/support
+servers:
+- description: Eurostat
+  url: https://ec.europa.eu/eurostat/api/dissemination
+- description: Eurostat - Comext datasets
+  url: https://ec.europa.eu/eurostat/api/comext/dissemination
+tags:
+- name: SDMX 3.0 Structure queries
+paths:
+  /sdmx/3.0/structure/dataflow/{agencyID}/{resourceID}:
+    get:
+      summary: Get dataflows
+      tags:
+      - SDMX 3.0 Structure queries
+      description: 'Structure queries allow **retrieving structural metadata**.
+
+
+        Dataflow structure queries in SDMX allow you to retrieve structural metadata available from the ''dataflow'' of a particular dataset.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/agencyID'
+      - $ref: '#/components/parameters/resourceID'
+      - $ref: '#/components/parameters/references_n_c_d'
+      - $ref: '#/components/parameters/structDetail3.0_dataflow'
+      - $ref: '#/components/parameters/format_struct3.0'
+      - $ref: '#/components/parameters/formatversion_struct3.0'
+      - $ref: '#/components/parameters/compress'
+      - $ref: '#/components/parameters/accept-encoding'
+      - $ref: '#/components/parameters/accept-language'
+      responses:
+        '200':
+          $ref: '#/components/responses/200-struct-sdmx3.0'
+        '304':
+          $ref: '#/components/responses/304'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '406':
+          $ref: '#/components/responses/406'
+        '413':
+          $ref: '#/components/responses/413'
+        '414':
+          $ref: '#/components/responses/414'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+  /sdmx/3.0/structure/dataflow/{agencyID}/{resourceID}/{version}:
+    get:
+      summary: Get dataflows
+      tags:
+      - SDMX 3.0 Structure queries
+      description: 'Structure queries allow **retrieving structural metadata**.
+
+
+        Dataflow structure queries in SDMX allow you to retrieve structural metadata available from the ''dataflow'' of a particular dataset.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/agencyID'
+      - $ref: '#/components/parameters/resourceID'
+      - $ref: '#/components/parameters/version-struct3.0'
+      - $ref: '#/components/parameters/references_n_c_d'
+      - $ref: '#/components/parameters/structDetail3.0_dataflow'
+      - $ref: '#/components/parameters/format_struct3.0'
+      - $ref: '#/components/parameters/formatversion_struct3.0'
+      - $ref: '#/components/parameters/compress'
+      - $ref: '#/components/parameters/accept-encoding'
+      - $ref: '#/components/parameters/accept-language'
+      responses:
+        '200':
+          $ref: '#/components/responses/200-struct-sdmx3.0'
+        '304':
+          $ref: '#/components/responses/304'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '406':
+          $ref: '#/components/responses/406'
+        '413':
+          $ref: '#/components/responses/413'
+        '414':
+          $ref: '#/components/responses/414'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+  /sdmx/3.0/structure/dataconstraint/{agencyID}/{resourceID}:
+    get:
+      summary: Get dataconstraints
+      tags:
+      - SDMX 3.0 Structure queries
+      description: 'Structure queries allow **retrieving structural metadata**.
+
+
+        Dataconstraint structure queries in SDMX allow you to retrieve structural metadata available from the ''dataconstraint'' of a particular dataset.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/agencyID'
+      - $ref: '#/components/parameters/resourceID'
+      - $ref: '#/components/parameters/references_n'
+      - $ref: '#/components/parameters/structDetail3.0'
+      - $ref: '#/components/parameters/format_struct3.0'
+      - $ref: '#/components/parameters/formatversion_struct3.0'
+      - $ref: '#/components/parameters/compress'
+      - $ref: '#/components/parameters/accept-encoding'
+      - $ref: '#/components/parameters/accept-language'
+      responses:
+        '200':
+          $ref: '#/components/responses/200-struct-sdmx3.0'
+        '304':
+          $ref: '#/components/responses/304'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '406':
+          $ref: '#/components/responses/406'
+        '413':
+          $ref: '#/components/responses/413'
+        '414':
+          $ref: '#/components/responses/414'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+  /sdmx/3.0/structure/dataconstraint/{agencyID}/{resourceID}/{version}:
+    get:
+      summary: Get dataconstraints
+      tags:
+      - SDMX 3.0 Structure queries
+      description: 'Structure queries allow **retrieving structural metadata**.
+
+
+        Dataconstraint structure queries in SDMX allow you to retrieve structural metadata available from the ''dataconstraint'' of a particular dataset.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/agencyID'
+      - $ref: '#/components/parameters/resourceID'
+      - $ref: '#/components/parameters/version-struct3.0'
+      - $ref: '#/components/parameters/references_n'
+      - $ref: '#/components/parameters/structDetail3.0'
+      - $ref: '#/components/parameters/format_struct3.0'
+      - $ref: '#/components/parameters/formatversion_struct3.0'
+      - $ref: '#/components/parameters/compress'
+      - $ref: '#/components/parameters/accept-encoding'
+      - $ref: '#/components/parameters/accept-language'
+      responses:
+        '200':
+          $ref: '#/components/responses/200-struct-sdmx3.0'
+        '304':
+          $ref: '#/components/responses/304'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '406':
+          $ref: '#/components/responses/406'
+        '413':
+          $ref: '#/components/responses/413'
+        '414':
+          $ref: '#/components/responses/414'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+  /sdmx/3.0/structure/datastructure/{agencyID}/{resourceID}:
+    get:
+      summary: Get datastructure
+      tags:
+      - SDMX 3.0 Structure queries
+      description: 'Structure queries allow **retrieving structural metadata**.
+
+
+        Datastructure queries in SDMX allow you to retrieve structural metadata available from the ''datastructure'' of a particular dataset.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/agencyID'
+      - $ref: '#/components/parameters/resourceID'
+      - $ref: '#/components/parameters/references'
+      - $ref: '#/components/parameters/structDetail3.0'
+      - $ref: '#/components/parameters/format_struct3.0'
+      - $ref: '#/components/parameters/formatversion_struct3.0'
+      - $ref: '#/components/parameters/compress'
+      - $ref: '#/components/parameters/accept-encoding'
+      - $ref: '#/components/parameters/accept-language'
+      responses:
+        '200':
+          $ref: '#/components/responses/200-struct-sdmx3.0'
+        '304':
+          $ref: '#/components/responses/304'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '406':
+          $ref: '#/components/responses/406'
+        '413':
+          $ref: '#/components/responses/413'
+        '414':
+          $ref: '#/components/responses/414'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+  /sdmx/3.0/structure/datastructure/{agencyID}/{resourceID}/{version}:
+    get:
+      summary: Get datastructure
+      tags:
+      - SDMX 3.0 Structure queries
+      description: 'Structure queries allow **retrieving structural metadata**.
+
+
+        Datastructure queries in SDMX allow you to retrieve structural metadata available from the ''datastructure'' of a particular dataset.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/agencyID'
+      - $ref: '#/components/parameters/resourceID'
+      - $ref: '#/components/parameters/version-struct3.0'
+      - $ref: '#/components/parameters/references'
+      - $ref: '#/components/parameters/structDetail3.0'
+      - $ref: '#/components/parameters/format_struct3.0'
+      - $ref: '#/components/parameters/formatversion_struct3.0'
+      - $ref: '#/components/parameters/compress'
+      - $ref: '#/components/parameters/accept-encoding'
+      - $ref: '#/components/parameters/accept-language'
+      responses:
+        '200':
+          $ref: '#/components/responses/200-struct-sdmx3.0'
+        '304':
+          $ref: '#/components/responses/304'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '406':
+          $ref: '#/components/responses/406'
+        '413':
+          $ref: '#/components/responses/413'
+        '414':
+          $ref: '#/components/responses/414'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+  /sdmx/3.0/structure/conceptscheme/{agencyID}/{resourceID}:
+    get:
+      summary: Get conceptscheme
+      tags:
+      - SDMX 3.0 Structure queries
+      description: 'Structure queries allow **retrieving structural metadata**.
+
+
+        Conceptscheme queries in SDMX allow you to retrieve structural metadata available from a particular ''conceptscheme''.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/agencyID'
+      - $ref: '#/components/parameters/resourceID'
+      - $ref: '#/components/parameters/references_n_p_ps'
+      - $ref: '#/components/parameters/structDetail3.0'
+      - $ref: '#/components/parameters/format_struct3.0'
+      - $ref: '#/components/parameters/formatversion_struct3.0'
+      - $ref: '#/components/parameters/compress'
+      - $ref: '#/components/parameters/accept-encoding'
+      - $ref: '#/components/parameters/accept-language'
+      responses:
+        '200':
+          $ref: '#/components/responses/200-struct-sdmx3.0'
+        '304':
+          $ref: '#/components/responses/304'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '406':
+          $ref: '#/components/responses/406'
+        '413':
+          $ref: '#/components/responses/413'
+        '414':
+          $ref: '#/components/responses/414'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+  /sdmx/3.0/structure/conceptscheme/{agencyID}/{resourceID}/{version}:
+    get:
+      summary: Get conceptscheme
+      tags:
+      - SDMX 3.0 Structure queries
+      description: 'Structure queries allow **retrieving structural metadata**.
+
+
+        Conceptscheme queries in SDMX allow you to retrieve structural metadata available from a particular ''conceptscheme''.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/agencyID'
+      - $ref: '#/components/parameters/resourceID'
+      - $ref: '#/components/parameters/version-struct3.0'
+      - $ref: '#/components/parameters/references_n_p_ps'
+      - $ref: '#/components/parameters/structDetail3.0'
+      - $ref: '#/components/parameters/format_struct3.0'
+      - $ref: '#/components/parameters/formatversion_struct3.0'
+      - $ref: '#/components/parameters/compress'
+      - $ref: '#/components/parameters/accept-encoding'
+      - $ref: '#/components/parameters/accept-language'
+      responses:
+        '200':
+          $ref: '#/components/responses/200-struct-sdmx3.0'
+        '304':
+          $ref: '#/components/responses/304'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '406':
+          $ref: '#/components/responses/406'
+        '413':
+          $ref: '#/components/responses/413'
+        '414':
+          $ref: '#/components/responses/414'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+  /sdmx/3.0/structure/codelist/{agencyID}/{resourceID}:
+    get:
+      summary: Get codelist
+      tags:
+      - SDMX 3.0 Structure queries
+      description: 'Structure queries allow **retrieving structural metadata**.
+
+
+        Codelist structure queries in SDMX allow you to retrieve structural metadata available from a particular ''codelist''.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/agencyID'
+      - $ref: '#/components/parameters/resourceID'
+      - $ref: '#/components/parameters/references_n_p_ps'
+      - $ref: '#/components/parameters/structDetail3.0'
+      - $ref: '#/components/parameters/format_struct3.0'
+      - $ref: '#/components/parameters/formatversion_struct3.0'
+      - $ref: '#/components/parameters/compress'
+      - $ref: '#/components/parameters/accept-encoding'
+      - $ref: '#/components/parameters/accept-language'
+      responses:
+        '200':
+          $ref: '#/components/responses/200-struct-sdmx3.0'
+        '304':
+          $ref: '#/components/responses/304'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '406':
+          $ref: '#/components/responses/406'
+        '413':
+          $ref: '#/components/responses/413'
+        '414':
+          $ref: '#/components/responses/414'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+  /sdmx/3.0/structure/codelist/{agencyID}/{resourceID}/{version}:
+    get:
+      summary: Get codelist
+      tags:
+      - SDMX 3.0 Structure queries
+      description: 'Structure queries allow **retrieving structural metadata**.
+
+
+        Codelist structure queries in SDMX allow you to retrieve structural metadata available from a particular ''codelist''.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/agencyID'
+      - $ref: '#/components/parameters/resourceID'
+      - $ref: '#/components/parameters/version-struct3.0'
+      - $ref: '#/components/parameters/references_n_p_ps'
+      - $ref: '#/components/parameters/structDetail3.0'
+      - $ref: '#/components/parameters/format_struct3.0'
+      - $ref: '#/components/parameters/formatversion_struct3.0'
+      - $ref: '#/components/parameters/compress'
+      - $ref: '#/components/parameters/accept-encoding'
+      - $ref: '#/components/parameters/accept-language'
+      responses:
+        '200':
+          $ref: '#/components/responses/200-struct-sdmx3.0'
+        '304':
+          $ref: '#/components/responses/304'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '406':
+          $ref: '#/components/responses/406'
+        '413':
+          $ref: '#/components/responses/413'
+        '414':
+          $ref: '#/components/responses/414'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+components:
+  responses:
+    '503':
+      description: Service unavailable
+    '501':
+      description: Not implemented
+    '414':
+      description: URI too long
+    '403':
+      description: Forbidden
+    '500':
+      description: Internal server error
+    '400':
+      description: Bad syntax
+    '404':
+      description: Not found
+    '401':
+      description: Unauthorized
+    '304':
+      description: No changes
+    '413':
+      description: Request entity too large
+    '406':
+      description: Not acceptable
+    200-struct-sdmx3.0:
+      description: OK
+      content:
+        application/vnd.sdmx.structure+xml;version=3.0:
+          schema:
+            type: string
+  parameters:
+    formatversion_struct3.0:
+      in: query
+      name: formatVersion
+      description: 'The version of the format used to return the structural metadata (extension parameter). When a "formatVersion" is specified, the specific "format" needs also to be specified.
+
+
+        |Format name                          |"format" parameter   | "formatVersion" parameter   |
+
+        |-------------------------------------|---------------------|-----------------------------|
+
+        |Structure 3.0 (default)              | structure           | 3.0                         |
+
+        '
+      required: false
+      schema:
+        type: string
+        enum:
+        - '3.0'
+      style: form
+      explode: false
+    resourceID:
+      in: path
+      name: resourceID
+      description: The id of the artefact used to generate the schema to be returned.
+      required: true
+      schema:
+        type: string
+        pattern: ^[A-Za-z\d_@$-]+$
+    structDetail3.0:
+      in: query
+      name: detail
+      description: 'The amount of information to be returned.
+
+
+        Possible values are:
+
+
+        * `allstubs`: All artefacts should be returned as stubs, containing only identification information, as well as the artefacts'' name
+
+        * `referencestubs`: Referenced artefacts should be returned as stubs, containing only identification information, as well as the artefacts'' name
+
+        * `allcompletestubs`: All artefacts should be returned as complete stubs, containing identification information, the artefacts'' name, description, annotations and isFinal information
+
+        * `referencecompletestubs`: Referenced artefacts should be returned as complete stubs, containing identification information, the artefacts'' name, description, annotations and isFinal information
+
+        * `full`: All available information for all artefacts should be returned
+
+        '
+      required: false
+      schema:
+        type: string
+        enum:
+        - allstubs
+        - referencestubs
+        - allcompletestubs
+        - referencecompletestubs
+        - full
+        default: full
+    accept-language:
+      in: header
+      name: Accept-Language
+      description: 'Specifies the client''s preferred language.
+
+        '
+      schema:
+        type: string
+    version-struct3.0:
+      in: path
+      name: version
+      description: 'If provided, the specified version of the artefact will be returned.
+
+
+        The `+` can be used to return the latest production version of the matching resource.
+
+
+        No value set, is identical to ''+'' which returns the latest version.
+
+        '
+      required: true
+      schema:
+        type: string
+        pattern: ^(+|[\d]+(\.[\d]{1,2})*)$
+    compress:
+      in: query
+      name: compress
+      description: 'Whether the response is compressed (default, gzip format) or not.
+
+        '
+      required: false
+      schema:
+        type: string
+        enum:
+        - true
+        - false
+      style: form
+      explode: false
+    references_n_p_ps:
+      in: query
+      name: references
+      description: 'Instructs the web service to return (or not) the artefacts referenced by the artefact to be returned.
+
+
+        Possible values are:
+
+
+        * `none`: No reference will be returned
+
+        * `parents`: Returns the artefacts that use the artefact matching the query
+
+        * `parentsandsiblings`: Returns the artefacts that use the artefact matching the query, as well as the artefacts referenced by these artefacts
+
+        '
+      required: false
+      schema:
+        type: string
+        enum:
+        - none
+        - parents
+        - parentsandsiblings
+        default: none
+    references_n:
+      in: query
+      name: references
+      description: 'Instructs the web service to not return the artefact referenced by the artefact to be returned.
+
+
+        Possible value is:
+
+
+        * `none`: No reference will be returned
+
+        '
+      required: false
+      schema:
+        type: string
+        enum:
+        - none
+        default: none
+    accept-encoding:
+      in: header
+      name: Accept-Encoding
+      description: 'Specifies whether the response should be compressed and how.
+
+
+        `identity` (the default) indicates that no compression will be performed.
+
+        '
+      schema:
+        type: string
+        enum:
+        - gzip
+        default: identity
+    references_n_c_d:
+      in: query
+      name: references
+      description: 'Instructs the web service to return (or not) the artefacts referenced by the artefact to be returned.
+
+
+        Possible values are:
+
+
+        * `none`: No reference will be returned
+
+        * `children`: Returns the artefacts referenced by the artefact to be returned
+
+        * `descendants`: References of references, up to any level, will be returned
+
+        '
+      required: false
+      schema:
+        type: string
+        enum:
+        - none
+        - children
+        - descendants
+        default: none
+    references:
+      in: query
+      name: references
+      description: 'Instructs the web service to return (or not) the artefacts referenced by the artefact to be returned.
+
+
+        Possible values are:
+
+
+        * `none`: No reference will be returned
+
+        * `parents`: Returns the artefacts that use the artefact matching the query
+
+        * `parentsandsiblings`: Returns the artefacts that use the artefact matching the query, as well as the artefacts referenced by these artefacts
+
+        * `children`: Returns the artefacts referenced by the artefact to be returned
+
+        * `descendants`: References of references, up to any level, will be returned
+
+        * `all`: The combination of parentsandsiblings and descendants
+
+        '
+      required: false
+      schema:
+        type: string
+        enum:
+        - none
+        - parents
+        - parentsandsiblings
+        - children
+        - descendants
+        - all
+        default: none
+    structDetail3.0_dataflow:
+      in: query
+      name: detail
+      description: 'The amount of information to be returned.
+
+
+        Possible values are:
+
+
+        * `allstubs`: All artefacts should be returned as stubs, containing only identification information, as well as the artefacts'' name
+
+        * `referencestubs`: Referenced artefacts should be returned as stubs, containing only identification information, as well as the artefacts'' name
+
+        * `referencepartial`: Referenced item schemes should only include items used by the artefact to be returned. For example, a concept scheme would only contain the concepts used in a DSD, and its isPartial flag would be set to `true`. Only available if the "references" parameter is set to children or descendants.
+
+        * `allcompletestubs`: All artefacts should be returned as complete stubs, containing identification information, the artefacts'' name, description, annotations and isFinal information
+
+        * `referencecompletestubs`: Referenced artefacts should be returned as complete stubs, containing identification information, the artefacts'' name, description, annotations and isFinal information
+
+        * `full`: All available information for all artefacts should be returned
+
+        '
+      required: false
+      schema:
+        type: string
+        enum:
+        - allstubs
+        - referencestubs
+        - referencepartial
+        - allcompletestubs
+        - referencecompletestubs
+        - full
+        default: full
+    format_struct3.0:
+      in: query
+      name: format
+      description: 'The format used to return the structural metadata (extension parameter). When a "format" is specified, the specific "formatVersion" needs also to be specified.
+
+
+        |Format name                          |"format" parameter   | "formatVersion" parameter   |
+
+        |-------------------------------------|---------------------|-----------------------------|
+
+        |Structure 3.0 (default)              | structure           | 3.0                         |
+
+        '
+      required: false
+      schema:
+        type: string
+        enum:
+        - structure
+      style: form
+      explode: false
+    agencyID:
+      in: path
+      name: agencyID
+      description: The agency maintaining the artefact used to generate the schema to be returned.
+      required: true
+      schema:
+        type: string
+        pattern: ^[A-Za-z][A-Za-z\d_-]*(\.[A-Za-z][A-Za-z\d_-]*)*$

@@ -1,0 +1,378 @@
+openapi: 3.0.0
+info:
+  version: '1.0'
+  title: Eurostat SDMX RESTful Async SDMX 3.0 Data queries API
+  description: 'Listing of supported SDMX requests based on
+
+    * [official sdmx-rest 2.1 specifications](https://github.com/sdmx-twg/sdmx-rest/tree/v1.5.0/v2_1/ws/rest/docs)
+
+    * [official sdmx-rest 3.0 specifications](https://github.com/sdmx-twg/sdmx-rest/tree/v2.0.0/doc)
+
+
+    For additional information, please consult the [online-help](https://ec.europa.eu/eurostat/web/user-guides/data-browser).
+
+    '
+  contact:
+    name: Contact Eurostat user support
+    url: https://ec.europa.eu/eurostat/help/support
+servers:
+- description: Eurostat
+  url: https://ec.europa.eu/eurostat/api/dissemination
+- description: Eurostat - Comext datasets
+  url: https://ec.europa.eu/eurostat/api/comext/dissemination
+tags:
+- name: SDMX 3.0 Data queries
+paths:
+  /sdmx/3.0/data/dataflow/{agencyID}/{resourceID}/{version}:
+    get:
+      summary: Get data
+      tags:
+      - SDMX 3.0 Data queries
+      parameters:
+      - $ref: '#/components/parameters/agencyID'
+      - $ref: '#/components/parameters/resourceID'
+      - $ref: '#/components/parameters/version3.0'
+      - $ref: '#/components/parameters/c'
+      - $ref: '#/components/parameters/attributes'
+      - $ref: '#/components/parameters/measures'
+      - $ref: '#/components/parameters/format_data3.0'
+      - $ref: '#/components/parameters/formatversion_data3.0'
+      - $ref: '#/components/parameters/lang_data3.0'
+      - $ref: '#/components/parameters/labels'
+      - $ref: '#/components/parameters/compress'
+      - $ref: '#/components/parameters/accept-encoding'
+      - $ref: '#/components/parameters/accept-language'
+      responses:
+        '200':
+          $ref: '#/components/responses/200-sdmx3.0'
+        '304':
+          $ref: '#/components/responses/304'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '406':
+          $ref: '#/components/responses/406'
+        '413':
+          $ref: '#/components/responses/413'
+        '414':
+          $ref: '#/components/responses/414'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+  /sdmx/3.0/data/dataflow/{agencyID}/{resourceID}/{version}/{key}:
+    get:
+      summary: Get data
+      tags:
+      - SDMX 3.0 Data queries
+      parameters:
+      - $ref: '#/components/parameters/agencyID'
+      - $ref: '#/components/parameters/resourceID'
+      - $ref: '#/components/parameters/version3.0'
+      - $ref: '#/components/parameters/key3.0'
+      - $ref: '#/components/parameters/c'
+      - $ref: '#/components/parameters/attributes'
+      - $ref: '#/components/parameters/measures'
+      - $ref: '#/components/parameters/format_data3.0'
+      - $ref: '#/components/parameters/formatversion_data3.0'
+      - $ref: '#/components/parameters/lang_data3.0'
+      - $ref: '#/components/parameters/labels'
+      - $ref: '#/components/parameters/compress'
+      - $ref: '#/components/parameters/accept-encoding'
+      - $ref: '#/components/parameters/accept-language'
+      responses:
+        '200':
+          $ref: '#/components/responses/200-sdmx3.0'
+        '304':
+          $ref: '#/components/responses/304'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '406':
+          $ref: '#/components/responses/406'
+        '413':
+          $ref: '#/components/responses/413'
+        '414':
+          $ref: '#/components/responses/414'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+components:
+  responses:
+    '503':
+      description: Service unavailable
+    '501':
+      description: Not implemented
+    '414':
+      description: URI too long
+    '403':
+      description: Forbidden
+    '500':
+      description: Internal server error
+    '400':
+      description: Bad syntax
+    '404':
+      description: Not found
+    '401':
+      description: Unauthorized
+    '304':
+      description: No changes
+    '413':
+      description: Request entity too large
+    '406':
+      description: Not acceptable
+    200-sdmx3.0:
+      description: OK
+      content:
+        application/vnd.sdmx.data+xml;version=3.0.0:
+          schema:
+            type: string
+        application/vnd.sdmx.genericdata+xml;version=2.1:
+          schema:
+            type: string
+        application/vnd.sdmx.structurespecificdata+xml;version=2.1:
+          schema:
+            type: string
+        application/vnd.sdmx.generictimeseriesdata+xml;version=2.1:
+          schema:
+            type: string
+        application/vnd.sdmx.data+csv;version=2.0.0:
+          schema:
+            type: string
+        application/vnd.sdmx.data+csv;version=1.0.0:
+          schema:
+            type: string
+  parameters:
+    formatversion_data3.0:
+      in: query
+      name: formatVersion
+      description: 'The version of the format used to return data (extension parameter). When a "formatVersion" is specified, the specific "format" needs also to be specified.
+
+
+        |Format name                          |"format" parameter     | "formatVersion" parameter   |
+
+        |-------------------------------------|-----------------------|-----------------------------|
+
+        |Structure-specific data 3.0 (default)| structurespecificdata | 3.0                         |
+
+        |SDMX-CSV 2.0                         | csvdata               | 2.0                         |
+
+        '
+      required: false
+      schema:
+        type: string
+        enum:
+        - '2.0'
+        - '3.0'
+      style: form
+      explode: false
+    resourceID:
+      in: path
+      name: resourceID
+      description: The id of the artefact used to generate the schema to be returned.
+      required: true
+      schema:
+        type: string
+        pattern: ^[A-Za-z\d_@$-]+$
+    key3.0:
+      in: path
+      name: key
+      description: 'The combination of dimension values identifying series or slices of the cube (for example `D.USD.EUR.SP00.A`).
+
+
+        Wildcards are supported using `*` (`D.*.EUR.SP00.A`).
+
+        '
+      required: true
+      schema:
+        type: string
+        pattern: ^(\*|\S+|\.)*$
+    attributes:
+      in: query
+      name: attributes
+      description: "The attributes to be returned.\n\nFor example, it is possible to instruct the web service to return data only (i.e. no attributes).\nNote: some restrictions apply depending of the value of the \"measures\" query parameter:\n\n|attributes \\ measures    |no value / \"all\" | \"none\"       |\n|-------------------------|-----------------|--------------|\n|\"none\"                   | supported       | supported    |\n|\"obs\"                    | not supported   | not supported|\n|\"series\"                 | not supported   | supported    |\n|no value / \"dsd\" / \"all\" |\tsupported       | not supported|\n"
+      required: false
+      schema:
+        type: string
+        enum:
+        - dsd
+        - series
+        - obs
+        - all
+        - none
+      style: form
+      explode: false
+    lang_data3.0:
+      in: query
+      name: lang
+      description: 'The language of the requested data (extension parameter). Only available for the SDMX CSV format.
+
+        '
+      required: false
+      schema:
+        type: string
+        enum:
+        - en
+        - fr
+        - de
+    c:
+      in: query
+      name: c
+      description: 'Filter data by component value (e.g. c[FREQ]=A).
+
+
+        Multiple values are supported.
+
+
+        In addition, operators may be used:
+
+
+        Operator | Meaning | Note
+
+        -- | -- | --
+
+        eq | Equals | Default if no operator is specified and there is only one value (e.g. `c[FREQ]=M` is equivalent to `c[FREQ]=eq:M`)
+
+        lt | Less than |
+
+        le | Less than or equal to |
+
+        gt | Greater than |
+
+        ge | Greater than or equal to |
+
+
+        Operators appear as prefix to the component value(s) and are separated from it by a `:` (e.g. `c[TIME_PERIOD]=ge:2020-01+le:2020-12`).
+
+        The plus (+) can be used whenever an AND operator is required (i.e. c[TIME_PERIOD]=ge:2020-01+le:2020-12).
+
+
+        The comma (,) effectively acts as an OR operator.
+
+
+        The component "c" parameter can be used to additionally define filters on Dimensions on top of key parameter. The c parameter does not filter on attributes, neither measures values.
+
+        '
+      required: false
+      schema:
+        type: object
+      style: deepObject
+      explode: true
+    accept-language:
+      in: header
+      name: Accept-Language
+      description: 'Specifies the client''s preferred language.
+
+        '
+      schema:
+        type: string
+    measures:
+      in: query
+      name: measures
+      description: "The measures to be returned.\n\nNote: some restrictions apply depending of the value of the \"attributes\" query parameter:\n\n|attributes \\ measures    |no value / \"all\" | \"none\"       |\n|-------------------------|-----------------|--------------|\n|\"none\"                   | supported       | supported    |\n|\"obs\"                    | not supported   | not supported|\n|\"series\"                 | not supported   | supported    |\n|no value / \"dsd\" / \"all\" |\tsupported       | not supported|\n"
+      required: false
+      schema:
+        type: string
+        enum:
+        - all
+        - none
+      style: form
+      explode: false
+    version3.0:
+      in: path
+      name: version
+      description: 'The version of the artefact to be returned.
+
+
+        The `+` can be used to return the latest production version of the matching resource.
+
+        '
+      required: true
+      schema:
+        type: string
+        pattern: ^(\+|[\d]+(\.[\d]+)*(\+[\d]+(\.[\d]+)*)*)$
+    compress:
+      in: query
+      name: compress
+      description: 'Whether the response is compressed (default, gzip format) or not.
+
+        '
+      required: false
+      schema:
+        type: string
+        enum:
+        - true
+        - false
+      style: form
+      explode: false
+    format_data3.0:
+      in: query
+      name: format
+      description: 'The format used to return data (extension parameter). When a "format" is specified, the specific "formatVersion" needs also to be specified.
+
+
+        |Format name                          |"format" parameter     | "formatVersion" parameter   |
+
+        |-------------------------------------|-----------------------|-----------------------------|
+
+        |Structure-specific data 3.0 (default)| structurespecificdata | 3.0                         |
+
+        |SDMX-CSV 2.0                         | csvdata               | 2.0                         |
+
+        '
+      required: false
+      schema:
+        type: string
+        enum:
+        - structurespecificdata
+        - csvdata
+      style: form
+      explode: false
+    labels:
+      in: query
+      name: labels
+      description: "The information to be returned for dimension and attribute values (extension parameter). Only available for the SDMX CSV format.\nPossible values are:\n * id (default): one column is used for each dimension / attribute and contains the code of the position / attribute.\n * name: one column is used for each dimension / attribute and contains the localized name of the position / attribute.\n * both: two columns are used for each dimension / attribute and contains the code and localized name of the position / attribute.\n"
+      required: false
+      schema:
+        type: string
+        enum:
+        - id
+        - name
+        - both
+    accept-encoding:
+      in: header
+      name: Accept-Encoding
+      description: 'Specifies whether the response should be compressed and how.
+
+
+        `identity` (the default) indicates that no compression will be performed.
+
+        '
+      schema:
+        type: string
+        enum:
+        - gzip
+        default: identity
+    agencyID:
+      in: path
+      name: agencyID
+      description: The agency maintaining the artefact used to generate the schema to be returned.
+      required: true
+      schema:
+        type: string
+        pattern: ^[A-Za-z][A-Za-z\d_-]*(\.[A-Za-z][A-Za-z\d_-]*)*$

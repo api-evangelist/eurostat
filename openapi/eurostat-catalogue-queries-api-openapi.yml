@@ -1,0 +1,182 @@
+openapi: 3.0.0
+info:
+  version: '1.0'
+  title: Eurostat SDMX RESTful Async Catalogue queries API
+  description: 'Listing of supported SDMX requests based on
+
+    * [official sdmx-rest 2.1 specifications](https://github.com/sdmx-twg/sdmx-rest/tree/v1.5.0/v2_1/ws/rest/docs)
+
+    * [official sdmx-rest 3.0 specifications](https://github.com/sdmx-twg/sdmx-rest/tree/v2.0.0/doc)
+
+
+    For additional information, please consult the [online-help](https://ec.europa.eu/eurostat/web/user-guides/data-browser).
+
+    '
+  contact:
+    name: Contact Eurostat user support
+    url: https://ec.europa.eu/eurostat/help/support
+servers:
+- description: Eurostat
+  url: https://ec.europa.eu/eurostat/api/dissemination
+- description: Eurostat - Comext datasets
+  url: https://ec.europa.eu/eurostat/api/comext/dissemination
+tags:
+- name: Catalogue queries
+paths:
+  /catalogue/dcat/{agencyID}:
+    get:
+      summary: Generate a catalogue of all datasets in RDF format
+      tags:
+      - Catalogue queries
+      parameters:
+      - $ref: '#/components/parameters/agencyID'
+      responses:
+        '200':
+          $ref: '#/components/responses/200-dcat'
+  /catalogue/dcat/{agencyID}/{extractionType}:
+    get:
+      summary: Generate a catalogue of datasets in RDF format
+      tags:
+      - Catalogue queries
+      parameters:
+      - $ref: '#/components/parameters/agencyID'
+      - $ref: '#/components/parameters/extractionType'
+      responses:
+        '200':
+          $ref: '#/components/responses/200-dcat'
+  /catalogue/metabase.txt.gz:
+    get:
+      summary: Generate the Metabase which is a catalogue containing the definition of disseminated data products
+      tags:
+      - Catalogue queries
+      responses:
+        '200':
+          $ref: '#/components/responses/200-metabase'
+  /catalogue/rss/{language}/statistics-update.rss:
+    get:
+      summary: Generate a web feed which allows users to access updates to online content in a standardized, computer-readable format
+      tags:
+      - Catalogue queries
+      parameters:
+      - $ref: '#/components/parameters/language'
+      responses:
+        '200':
+          $ref: '#/components/responses/200-rss'
+  /catalogue/toc/TableOfContent.xsd:
+    get:
+      summary: Return the XML Schema Definition of the Table of Content (TOC)
+      tags:
+      - Catalogue queries
+      responses:
+        '200':
+          $ref: '#/components/responses/200-tocxsd'
+  /catalogue/toc/txt:
+    get:
+      summary: Return the Table of Content (TOC) for the specified language in text format
+      tags:
+      - Catalogue queries
+      parameters:
+      - $ref: '#/components/parameters/lang'
+      responses:
+        '200':
+          $ref: '#/components/responses/200-toctxt'
+  /catalogue/toc/xml:
+    get:
+      summary: Return the Table of Content (TOC) for all supported languages in XML format
+      tags:
+      - Catalogue queries
+      responses:
+        '200':
+          $ref: '#/components/responses/200-tocxml'
+components:
+  responses:
+    200-metabase:
+      description: OK
+      content:
+        application/octet-stream:
+          schema:
+            type: string
+            format: binary
+    200-rss:
+      description: OK
+      content:
+        application/xml:
+          schema:
+            type: string
+    200-tocxml:
+      description: OK
+      content:
+        application/xml:
+          schema:
+            type: string
+    200-tocxsd:
+      description: OK
+      content:
+        application/xml:
+          schema:
+            type: string
+    200-dcat:
+      description: OK
+      content:
+        application/octet-stream:
+          schema:
+            type: string
+            format: binary
+    200-toctxt:
+      description: OK
+      content:
+        text/plain:
+          schema:
+            type: string
+  parameters:
+    language:
+      in: path
+      name: language
+      description: 'The language of the requested data.
+
+        '
+      required: true
+      schema:
+        type: string
+        enum:
+        - en
+        - fr
+        - de
+    agencyID:
+      in: path
+      name: agencyID
+      description: The agency maintaining the artefact used to generate the schema to be returned.
+      required: true
+      schema:
+        type: string
+        pattern: ^[A-Za-z][A-Za-z\d_-]*(\.[A-Za-z][A-Za-z\d_-]*)*$
+    extractionType:
+      in: path
+      name: extractionType
+      description: 'The type of extraction, only `FULL` and `UPDATES` are supported.
+
+        * `FULL`: get a catalogue for all datasets?
+
+        * `UPDATES`: get a catalogue of datasets updated since the latest embargo.
+
+        '
+      required: false
+      schema:
+        type: string
+        enum:
+        - FULL
+        - UPDATES
+    lang:
+      in: query
+      name: lang
+      description: 'The language of the requested data.
+
+        '
+      required: false
+      schema:
+        type: string
+        enum:
+        - en
+        - fr
+        - de
+        default: en

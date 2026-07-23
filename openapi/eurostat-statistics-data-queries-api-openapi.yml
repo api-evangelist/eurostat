@@ -1,0 +1,147 @@
+openapi: 3.0.0
+info:
+  version: '1.0'
+  title: Eurostat SDMX RESTful Async Statistics data queries API
+  description: 'Listing of supported SDMX requests based on
+
+    * [official sdmx-rest 2.1 specifications](https://github.com/sdmx-twg/sdmx-rest/tree/v1.5.0/v2_1/ws/rest/docs)
+
+    * [official sdmx-rest 3.0 specifications](https://github.com/sdmx-twg/sdmx-rest/tree/v2.0.0/doc)
+
+
+    For additional information, please consult the [online-help](https://ec.europa.eu/eurostat/web/user-guides/data-browser).
+
+    '
+  contact:
+    name: Contact Eurostat user support
+    url: https://ec.europa.eu/eurostat/help/support
+servers:
+- description: Eurostat
+  url: https://ec.europa.eu/eurostat/api/dissemination
+- description: Eurostat - Comext datasets
+  url: https://ec.europa.eu/eurostat/api/comext/dissemination
+tags:
+- name: Statistics data queries
+paths:
+  /statistics/1.0/data/{datasetCode}:
+    get:
+      summary: API Statistics is a web service for data query where parameters don’t have to respect a specific order opposed to API SDMX 2.1
+      tags:
+      - Statistics data queries
+      parameters:
+      - $ref: '#/components/parameters/datasetCode'
+      - $ref: '#/components/parameters/statisticsFormat'
+      - $ref: '#/components/parameters/statisticsFilters'
+      - $ref: '#/components/parameters/statisticsUntilTimePeriod'
+      - $ref: '#/components/parameters/statisticsSinceTimePeriod'
+      - $ref: '#/components/parameters/statisticsLastTimePeriod'
+      - $ref: '#/components/parameters/lang'
+      responses:
+        '200':
+          $ref: '#/components/responses/200-statistics'
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '413':
+          $ref: '#/components/responses/413'
+        '500':
+          $ref: '#/components/responses/500'
+components:
+  responses:
+    200-statistics:
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: string
+    '413':
+      description: Request entity too large
+    '500':
+      description: Internal server error
+    '400':
+      description: Bad syntax
+    '404':
+      description: Not found
+  parameters:
+    statisticsFilters:
+      in: query
+      name: filters
+      description: 'The filter parameters defined in the URL are optional. Any dimension present in the data product can be used as filter parameter.
+
+        The structure of a filter parameter follows DIMENSION_CODE=VALUE
+
+        * DIMENSION_CODE: the code of the dimension used to filter data (case insensitive)
+
+        * VALUE: value of the filter is the position in the dimension (case insensitive) e.g. time=2019 or geo=FR
+
+        '
+      required: false
+      schema:
+        type: object
+        additionalProperties:
+          type: string
+      style: form
+      explode: true
+    statisticsFormat:
+      in: query
+      name: format
+      description: 'The format of the returned data.
+
+        '
+      required: false
+      schema:
+        type: string
+        enum:
+        - JSON
+        default: JSON
+    statisticsLastTimePeriod:
+      in: query
+      name: lastTimePeriod
+      description: 'A numeric value counting down until the TIME_PERIOD dimension values are included in the returned file.
+
+        '
+      required: false
+      schema:
+        type: integer
+    statisticsUntilTimePeriod:
+      in: query
+      name: untilTimePeriod
+      description: 'The specific TIME_PERIOD value to filter the returned file until this value.
+
+        '
+      required: false
+      schema:
+        type: string
+    datasetCode:
+      in: path
+      name: datasetCode
+      description: 'The code of the dataset to be queried.
+
+        '
+      required: true
+      schema:
+        type: string
+    statisticsSinceTimePeriod:
+      in: query
+      name: sinceTimePeriod
+      description: 'The specific TIME_PERIOD value to filter the returned file since this value.
+
+        '
+      required: false
+      schema:
+        type: string
+    lang:
+      in: query
+      name: lang
+      description: 'The language of the requested data.
+
+        '
+      required: false
+      schema:
+        type: string
+        enum:
+        - en
+        - fr
+        - de
+        default: en

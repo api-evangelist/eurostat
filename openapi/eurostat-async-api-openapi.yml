@@ -1,0 +1,103 @@
+openapi: 3.0.0
+info:
+  version: '1.0'
+  title: Eurostat SDMX RESTful Async API
+  description: 'Listing of supported SDMX requests based on
+
+    * [official sdmx-rest 2.1 specifications](https://github.com/sdmx-twg/sdmx-rest/tree/v1.5.0/v2_1/ws/rest/docs)
+
+    * [official sdmx-rest 3.0 specifications](https://github.com/sdmx-twg/sdmx-rest/tree/v2.0.0/doc)
+
+
+    For additional information, please consult the [online-help](https://ec.europa.eu/eurostat/web/user-guides/data-browser).
+
+    '
+  contact:
+    name: Contact Eurostat user support
+    url: https://ec.europa.eu/eurostat/help/support
+servers:
+- description: Eurostat
+  url: https://ec.europa.eu/eurostat/api/dissemination
+- description: Eurostat - Comext datasets
+  url: https://ec.europa.eu/eurostat/api/comext/dissemination
+tags:
+- name: Async
+  description: asynchronous processing
+  externalDocs:
+    url: https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-detailed-guidelines/asynchronous-api
+paths:
+  /1.0/async/status/{uuid}:
+    get:
+      operationId: getAsyncStatus
+      description: The status of a request that is processed asynchronously can be checked
+      tags:
+      - Async
+      parameters:
+      - $ref: '#/components/parameters/uuid'
+      responses:
+        '200':
+          description: 'The status of a request that is processed asynchronously can be one of the following values:
+
+            * SUBMITTED -  the request is submitted for processing
+
+            * PROCESSING -  the request is currently being processed
+
+            * AVAILABLE - the data is available for download
+
+            * EXPIRED - the request was processed but the data is no longer available (cache expired)'
+          content:
+            application/xml:
+              schema:
+                type: string
+              examples:
+                SUBMITTED:
+                  value: "<?xml version=\"1.0\" encoding=\"UTF-8\"?> <S:Envelope xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:S=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <env:Header/>\n  <S:Body>\n    <ns0:asyncResponse xmlns:ns1=\"http://estat.ec.europa.eu/disschain/asynchronous\" xmlns:ns0=\"http://estat.ec.europa.eu/disschain/soap/asynchronous\">\n      <ns1:status>\n        <ns1:key>0f164c29-0e96-4757-9b81-e9fcff8b9899</ns1:key>\n        <ns1:status>SUBMITTED</ns1:status>\n      </ns1:status>\n    </ns0:asyncResponse>\n  </S:Body>\n</S:Envelope>"
+        '400':
+          description: Error cases
+          content:
+            application/xml:
+              schema:
+                type: string
+              examples:
+                UNKNOWN_REQUEST:
+                  value: "<?xml version=\"1.0\" encoding=\"UTF-8\"?> <S:Envelope xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:S=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <env:Header/>\n  <S:Body>\n    <S:Fault xmlns:S=\"http://schemas.xmlsoap.org/soap/envelope/\">\n      <faultcode>100</faultcode>\n      <faultstring>UNKNOWN_REQUEST: Unknown request.</faultstring>\n    </S:Fault>\n  </S:Body>\n</S:Envelope>"
+                DATA_NOT_YET_AVAILABLE:
+                  value: "<?xml version=\"1.0\" encoding=\"UTF-8\"?> <S:Envelope xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:S=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <env:Header/>\n  <S:Body>\n    <S:Fault>\n      <faultcode>100</faultcode>\n      <faultstring>DATA_NOT_YET_AVAILABLE: Requested data is not yet available for download. Check the status of your request.</faultstring>\n    </S:Fault>\n  </S:Body>\n</S:Envelope>"
+  /1.0/async/data/{uuid}:
+    get:
+      operationId: getAsyncData
+      description: The status of a request that is processed asynchronously can be checked
+      tags:
+      - Async
+      parameters:
+      - $ref: '#/components/parameters/uuid'
+      responses:
+        '200':
+          description: Async processing status.
+          content:
+            application/xml:
+              schema:
+                type: string
+        '400':
+          description: Error cases
+          content:
+            application/xml:
+              schema:
+                type: string
+              examples:
+                UNKNOWN_REQUEST:
+                  value: "<?xml version=\"1.0\" encoding=\"UTF-8\"?> <S:Envelope xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:S=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <env:Header/>\n  <S:Body>\n    <S:Fault xmlns:S=\"http://schemas.xmlsoap.org/soap/envelope/\">\n      <faultcode>100</faultcode>\n      <faultstring>UNKNOWN_REQUEST: Unknown request.</faultstring>\n    </S:Fault>\n  </S:Body>\n</S:Envelope>"
+                DATA_NOT_YET_AVAILABLE:
+                  value: "<?xml version=\"1.0\" encoding=\"UTF-8\"?> <S:Envelope xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:S=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <env:Header/>\n  <S:Body>\n    <S:Fault>\n      <faultcode>100</faultcode>\n      <faultstring>DATA_NOT_YET_AVAILABLE: Requested data is not yet available for download. Check the status of your request.</faultstring>\n    </S:Fault>\n  </S:Body>\n</S:Envelope>"
+components:
+  parameters:
+    uuid:
+      in: path
+      name: uuid
+      description: 'This value is the key to use for checking status of data availability from the Asynchronous Endpoint.
+
+        '
+      required: true
+      schema:
+        type: string
+        pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$

@@ -1,0 +1,265 @@
+openapi: 3.0.0
+info:
+  version: '1.0'
+  title: Eurostat SDMX RESTful Async SDMX 2.1 Navigation Structure queries API
+  description: 'Listing of supported SDMX requests based on
+
+    * [official sdmx-rest 2.1 specifications](https://github.com/sdmx-twg/sdmx-rest/tree/v1.5.0/v2_1/ws/rest/docs)
+
+    * [official sdmx-rest 3.0 specifications](https://github.com/sdmx-twg/sdmx-rest/tree/v2.0.0/doc)
+
+
+    For additional information, please consult the [online-help](https://ec.europa.eu/eurostat/web/user-guides/data-browser).
+
+    '
+  contact:
+    name: Contact Eurostat user support
+    url: https://ec.europa.eu/eurostat/help/support
+servers:
+- description: Eurostat
+  url: https://ec.europa.eu/eurostat/api/dissemination
+- description: Eurostat - Comext datasets
+  url: https://ec.europa.eu/eurostat/api/comext/dissemination
+tags:
+- name: SDMX 2.1 Navigation Structure queries
+paths:
+  /sdmx/2.1/categoryscheme/{agencyID}/{resourceID}/{version}:
+    get:
+      summary: Get category schemes
+      tags:
+      - SDMX 2.1 Navigation Structure queries
+      parameters:
+      - $ref: '#/components/parameters/agencies'
+      - $ref: '#/components/parameters/resourceIDs'
+      - $ref: '#/components/parameters/versions'
+      - $ref: '#/components/parameters/references'
+      - $ref: '#/components/parameters/structDetail'
+      - $ref: '#/components/parameters/accept-encoding'
+      - $ref: '#/components/parameters/accept-language'
+      responses:
+        '200':
+          $ref: '#/components/responses/200-struct'
+        '304':
+          $ref: '#/components/responses/304'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '406':
+          $ref: '#/components/responses/406'
+        '413':
+          $ref: '#/components/responses/413'
+        '414':
+          $ref: '#/components/responses/414'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+  /sdmx/2.1/categorisation/{agencyID}/{resourceID}/{version}:
+    get:
+      summary: Get categorisations
+      tags:
+      - SDMX 2.1 Navigation Structure queries
+      parameters:
+      - $ref: '#/components/parameters/agencies'
+      - $ref: '#/components/parameters/resourceIDs'
+      - $ref: '#/components/parameters/versions'
+      - $ref: '#/components/parameters/references'
+      - $ref: '#/components/parameters/structDetail'
+      - $ref: '#/components/parameters/accept-encoding'
+      - $ref: '#/components/parameters/accept-language'
+      responses:
+        '200':
+          $ref: '#/components/responses/200-struct'
+        '304':
+          $ref: '#/components/responses/304'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '406':
+          $ref: '#/components/responses/406'
+        '413':
+          $ref: '#/components/responses/413'
+        '414':
+          $ref: '#/components/responses/414'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+components:
+  responses:
+    '503':
+      description: Service unavailable
+    '501':
+      description: Not implemented
+    '414':
+      description: URI too long
+    '403':
+      description: Forbidden
+    '500':
+      description: Internal server error
+    '400':
+      description: Bad syntax
+    '404':
+      description: Not found
+    '401':
+      description: Unauthorized
+    '304':
+      description: No changes
+    '413':
+      description: Request entity too large
+    '406':
+      description: Not acceptable
+    200-struct:
+      description: OK
+      content:
+        application/vnd.sdmx.structure+xml;version=2.1:
+          schema:
+            type: string
+        application/vnd.sdmx.structure+json;version=1.0.0:
+          schema:
+            type: string
+  parameters:
+    agencies:
+      in: path
+      name: agencyID
+      description: 'The agency maintaining the artefact to be returned.
+
+
+        The keyword `all` can be used to indicate that artefacts maintained by any maintenance agency should be returned.
+
+        '
+      required: true
+      schema:
+        type: string
+        pattern: ^(([A-Za-z][A-Za-z\d_-]*)(\.[A-Za-z][A-Za-z\d_-]*)*,)?[A-Za-z\d_@$-]+(\+([A-Za-z][A-Za-z\d_-]*(\.[A-Za-z][A-Za-z\d_-]*)*,)?[A-Za-z\d_@$-]+)*$
+    accept-language:
+      in: header
+      name: Accept-Language
+      description: 'Specifies the client''s preferred language.
+
+        '
+      schema:
+        type: string
+    structDetail:
+      in: query
+      name: detail
+      description: 'The amount of information to be returned.
+
+
+        Possible values are:
+
+
+        * `allstubs`: All artefacts should be returned as stubs, containing only identification information, as well as the artefacts'' name
+
+        * `referencestubs`: Referenced artefacts should be returned as stubs, containing only identification information, as well as the artefacts'' name
+
+        * `referencepartial`: Referenced item schemes should only include items used by the artefact to be returned. For example, a concept scheme would only contain the concepts used in a DSD, and its isPartial flag would be set to `true`
+
+        * `allcompletestubs`: All artefacts should be returned as complete stubs, containing identification information, the artefacts'' name, description, annotations and isFinal information
+
+        * `referencecompletestubs`: Referenced artefacts should be returned as complete stubs, containing identification information, the artefacts'' name, description, annotations and isFinal information
+
+        * `full`: All available information for all artefacts should be returned
+
+        '
+      required: false
+      schema:
+        type: string
+        enum:
+        - allstubs
+        - referencestubs
+        - referencepartial
+        - allcompletestubs
+        - referencecompletestubs
+        - full
+        default: full
+    resourceIDs:
+      in: path
+      name: resourceID
+      description: 'The id of the artefact to be returned.
+
+
+        The keyword `all` can be used to indicate that any artefact of the specified resource type, {agencyID} and {version} should be returned.
+
+        '
+      required: true
+      schema:
+        type: string
+        pattern: ^([A-Za-z\d_@$-]+(\+[A-Za-z\d_@$-]+)*)*$
+    versions:
+      in: path
+      name: version
+      description: 'The version of the artefact to be returned.
+
+
+        The keyword `all` can be used to return all versions of the matching resource.
+
+
+        The keyword `latest` can be used to return the latest production version of the matching resource.
+
+        '
+      required: true
+      schema:
+        type: string
+        pattern: ^(all|latest|[\d]+(\.[\d]+)*(\+[\d]+(\.[\d]+)*)*)$
+    accept-encoding:
+      in: header
+      name: Accept-Encoding
+      description: 'Specifies whether the response should be compressed and how.
+
+
+        `identity` (the default) indicates that no compression will be performed.
+
+        '
+      schema:
+        type: string
+        enum:
+        - gzip
+        default: identity
+    references:
+      in: query
+      name: references
+      description: 'Instructs the web service to return (or not) the artefacts referenced by the artefact to be returned.
+
+
+        Possible values are:
+
+
+        * `none`: No reference will be returned
+
+        * `parents`: Returns the artefacts that use the artefact matching the query
+
+        * `parentsandsiblings`: Returns the artefacts that use the artefact matching the query, as well as the artefacts referenced by these artefacts
+
+        * `children`: Returns the artefacts referenced by the artefact to be returned
+
+        * `descendants`: References of references, up to any level, will be returned
+
+        * `all`: The combination of parentsandsiblings and descendants
+
+        '
+      required: false
+      schema:
+        type: string
+        enum:
+        - none
+        - parents
+        - parentsandsiblings
+        - children
+        - descendants
+        - all
+        default: none
