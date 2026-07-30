@@ -1,7 +1,19 @@
 aid: eurostat
 name: Eurostat
 description: Eurostat is the statistical office of the European Union, providing free and open REST APIs for programmatic access to European statistical data covering demographics, economy, trade, agriculture, transport, environment, and dozens of other indicators across EU member states and regions.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: free
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Free
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/eurostat.png
 url: https://raw.githubusercontent.com/api-evangelist/eurostat/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -18,79 +30,201 @@ tags:
   - Environment
   - SDMX
 apis:
-  - name: Eurostat Statistics API
-    description: The primary REST API for accessing Eurostat datasets in JSON-stat 2.0 format. Supports filtering by geography, time period, and any dataset dimension. Returns synchronous or asynchronous responses depending on query size.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction
-    baseURL: https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/
-    tags:
-      - Statistics
-      - JSON-stat
-      - European Union
-    properties:
-      - type: Documentation
-        url: https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction
-      - type: GettingStarted
-        url: https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-getting-started/api
-      - type: DetailedGuidelines
-        url: https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-detailed-guidelines/api-statistics
-  - name: Eurostat SDMX 2.1 API
-    description: SDMX 2.1-compliant web service providing access to Eurostat datasets and structural metadata in SDMX-ML (XML), SDMX-CSV, and TSV formats.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction
-    baseURL: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/
-    tags:
-      - SDMX
-      - XML
-      - Statistics
-      - European Union
-    properties:
-      - type: Documentation
-        url: https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction
-      - type: OpenAPI
-        url: openapi/eurostat-sdmx-rest-openapi.yaml
-  - name: Eurostat SDMX 3.0 API
-    description: SDMX 3.0-compliant web service providing access to Eurostat datasets, dataflows, data structure definitions, and codelists. Supports SDMX-ML 3.0 and 2.1, SDMX-CSV 2.0 and 1.0, TSV, and JSON-stat formats.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-getting-started/sdmx3.0
-    baseURL: https://ec.europa.eu/eurostat/api/dissemination/sdmx/3.0/
-    tags:
-      - SDMX
-      - XML
-      - CSV
-      - Statistics
-      - European Union
-    properties:
-      - type: Documentation
-        url: https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-getting-started/sdmx3.0
-      - type: DetailedGuidelines
-        url: https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-detailed-guidelines/sdmx3-0/data-query
-  - name: Eurostat Asynchronous API
-    description: Asynchronous dissemination API for large dataset extractions between 500,000 and 5,000,000 cells. Clients submit a request, receive a unique key, poll for status, and download results when available.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-detailed-guidelines/asynchronous-api
-    baseURL: https://ec.europa.eu/eurostat/api/dissemination/1.0/async/
-    tags:
-      - Asynchronous
-      - Large Datasets
-      - Statistics
-      - European Union
-    properties:
-      - type: Documentation
-        url: https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-detailed-guidelines/asynchronous-api
-  - name: Eurostat Catalogue API
-    description: API for discovering all publicly available Eurostat datasets, browsing the navigation tree, and retrieving dataset metadata before querying.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction
-    baseURL: https://ec.europa.eu/eurostat/api/dissemination/catalogue/
-    tags:
-      - Catalogue
-      - Metadata
-      - Discovery
-      - European Union
-    properties:
-      - type: Documentation
-        url: https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction
+- name: Eurostat Statistics API
+  description: >-
+    The primary REST API for accessing Eurostat datasets in JSON-stat 2.0 format. Supports filtering by
+    geography, time period, and any dataset dimension. Returns synchronous or asynchronous responses depending
+    on query size.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: >-
+    https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction
+  baseURL: https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/
+  tags:
+  - Statistics
+  - JSON-stat
+  - European Union
+  properties:
+  - type: Documentation
+    url: >-
+      https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction
+  - type: GettingStarted
+    url: >-
+      https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-getting-started/api
+  - type: DetailedGuidelines
+    url: >-
+      https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-detailed-guidelines/api-statistics
+- name: Eurostat SDMX 3.0 API
+  description: >-
+    SDMX 3.0-compliant web service providing access to Eurostat datasets, dataflows, data structure definitions,
+    and codelists. Supports SDMX-ML 3.0 and 2.1, SDMX-CSV 2.0 and 1.0, TSV, and JSON-stat formats.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: >-
+    https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-getting-started/sdmx3.0
+  baseURL: https://ec.europa.eu/eurostat/api/dissemination/sdmx/3.0/
+  tags:
+  - SDMX
+  - XML
+  - CSV
+  - Statistics
+  - European Union
+  properties:
+  - type: Documentation
+    url: >-
+      https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-getting-started/sdmx3.0
+  - type: DetailedGuidelines
+    url: >-
+      https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-detailed-guidelines/sdmx3-0/data-query
+- name: Eurostat Asynchronous API
+  description: >-
+    Asynchronous dissemination API for large dataset extractions between 500,000 and 5,000,000 cells.
+    Clients submit a request, receive a unique key, poll for status, and download results when available.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: >-
+    https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-detailed-guidelines/asynchronous-api
+  baseURL: https://ec.europa.eu/eurostat/api/dissemination/1.0/async/
+  tags:
+  - Asynchronous
+  - Large Datasets
+  - Statistics
+  - European Union
+  properties:
+  - type: Documentation
+    url: >-
+      https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-detailed-guidelines/asynchronous-api
+- name: Eurostat Catalogue API
+  description: >-
+    API for discovering all publicly available Eurostat datasets, browsing the navigation tree, and retrieving
+    dataset metadata before querying.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: >-
+    https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction
+  baseURL: https://ec.europa.eu/eurostat/api/dissemination/catalogue/
+  tags:
+  - Catalogue
+  - Metadata
+  - Discovery
+  - European Union
+  properties:
+  - type: Documentation
+    url: >-
+      https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction
+- aid: eurostat:eurostat-async-api
+  name: Eurostat Async API
+  description: asynchronous processing
+  humanURL: >-
+    https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction
+  baseURL: https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/
+  tags:
+  - Async
+  properties:
+  - type: OpenAPI
+    url: openapi/eurostat-async-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction
+- aid: eurostat:eurostat-catalogue-queries-api
+  name: Eurostat Catalogue queries API
+  description: The Catalogue queries API from Eurostat — 7 operation(s) for catalogue queries.
+  humanURL: >-
+    https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction
+  baseURL: https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/
+  tags:
+  - Catalogue queries
+  properties:
+  - type: OpenAPI
+    url: openapi/eurostat-catalogue-queries-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction
+- aid: eurostat:eurostat-sdmx-2-1-data-queries-api
+  name: Eurostat SDMX 2.1 Data queries API
+  description: The SDMX 2.1 Data queries API from Eurostat — 1 operation(s) for sdmx 2.1 data queries.
+  humanURL: >-
+    https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction
+  baseURL: https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/
+  tags:
+  - SDMX 2.1 Data queries
+  properties:
+  - type: OpenAPI
+    url: openapi/eurostat-sdmx-2-1-data-queries-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction
+- aid: eurostat:eurostat-sdmx-2-1-navigation-structure-queries-api
+  name: Eurostat SDMX 2.1 Navigation Structure queries API
+  description: >-
+    The SDMX 2.1 Navigation Structure queries API from Eurostat — 2 operation(s) for sdmx 2.1 navigation
+    structure queries.
+  humanURL: >-
+    https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction
+  baseURL: https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/
+  tags:
+  - SDMX 2.1 Navigation Structure queries
+  properties:
+  - type: OpenAPI
+    url: openapi/eurostat-sdmx-2-1-navigation-structure-queries-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction
+- aid: eurostat:eurostat-sdmx-2-1-structure-queries-api
+  name: Eurostat SDMX 2.1 Structure queries API
+  description: >-
+    The SDMX 2.1 Structure queries API from Eurostat — 5 operation(s) for sdmx 2.1 structure queries.
+  humanURL: >-
+    https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction
+  baseURL: https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/
+  tags:
+  - SDMX 2.1 Structure queries
+  properties:
+  - type: OpenAPI
+    url: openapi/eurostat-sdmx-2-1-structure-queries-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction
+- aid: eurostat:eurostat-sdmx-3-0-data-queries-api
+  name: Eurostat SDMX 3.0 Data queries API
+  description: The SDMX 3.0 Data queries API from Eurostat — 2 operation(s) for sdmx 3.0 data queries.
+  humanURL: >-
+    https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction
+  baseURL: https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/
+  tags:
+  - SDMX 3.0 Data queries
+  properties:
+  - type: OpenAPI
+    url: openapi/eurostat-sdmx-3-0-data-queries-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction
+- aid: eurostat:eurostat-sdmx-3-0-structure-queries-api
+  name: Eurostat SDMX 3.0 Structure queries API
+  description: >-
+    The SDMX 3.0 Structure queries API from Eurostat — 10 operation(s) for sdmx 3.0 structure queries.
+  humanURL: >-
+    https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction
+  baseURL: https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/
+  tags:
+  - SDMX 3.0 Structure queries
+  properties:
+  - type: OpenAPI
+    url: openapi/eurostat-sdmx-3-0-structure-queries-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction
+- aid: eurostat:eurostat-statistics-data-queries-api
+  name: Eurostat Statistics data queries API
+  description: >-
+    The Statistics data queries API from Eurostat — 1 operation(s) for statistics data queries.
+  humanURL: >-
+    https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction
+  baseURL: https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/
+  tags:
+  - Statistics data queries
+  properties:
+  - type: OpenAPI
+    url: openapi/eurostat-statistics-data-queries-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction
 common:
   - type: AgenticAccess
     url: agentic-access/eurostat-agentic-access.yml
