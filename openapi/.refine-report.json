@@ -1,0 +1,28 @@
+{
+  "provider": "eurostat",
+  "sources": [
+    "eurostat-async-api-openapi.yml",
+    "eurostat-catalogue-queries-api-openapi.yml",
+    "eurostat-sdmx-2-1-data-queries-api-openapi.yml",
+    "eurostat-sdmx-2-1-navigation-structure-queries-api-openapi.yml",
+    "eurostat-sdmx-2-1-structure-queries-api-openapi.yml",
+    "eurostat-sdmx-3-0-data-queries-api-openapi.yml",
+    "eurostat-sdmx-3-0-structure-queries-api-openapi.yml",
+    "eurostat-statistics-data-queries-api-openapi.yml"
+  ],
+  "outputs": [
+    "eurostat-async-api-openapi.yml",
+    "eurostat-catalogue-queries-api-openapi.yml",
+    "eurostat-sdmx-2-1-data-queries-api-openapi.yml",
+    "eurostat-sdmx-2-1-navigation-structure-queries-api-openapi.yml",
+    "eurostat-sdmx-2-1-structure-queries-api-openapi.yml",
+    "eurostat-sdmx-3-0-data-queries-api-openapi.yml",
+    "eurostat-sdmx-3-0-structure-queries-api-openapi.yml",
+    "eurostat-statistics-data-queries-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

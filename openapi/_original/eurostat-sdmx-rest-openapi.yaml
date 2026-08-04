@@ -1,0 +1,1904 @@
+openapi: 3.0.0
+info:
+  version: '1.0'
+  title: 'Eurostat SDMX RESTful API'
+  description: |
+    Listing of supported SDMX requests based on
+    * [official sdmx-rest 2.1 specifications](https://github.com/sdmx-twg/sdmx-rest/tree/v1.5.0/v2_1/ws/rest/docs)
+    * [official sdmx-rest 3.0 specifications](https://github.com/sdmx-twg/sdmx-rest/tree/v2.0.0/doc)
+
+    For additional information, please consult the [online-help](https://ec.europa.eu/eurostat/web/user-guides/data-browser).
+
+  contact:
+    name: Contact Eurostat user support
+    url: https://ec.europa.eu/eurostat/help/support
+
+tags:
+  - name: SDMX 2.1 Data queries
+  - name: SDMX 2.1 Structure queries
+  - name: SDMX 2.1 Navigation Structure queries
+  - name: SDMX 3.0 Data queries
+  - name: SDMX 3.0 Structure queries
+  - name: Async
+    description: asynchronous processing
+    externalDocs:
+      url: https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-detailed-guidelines/asynchronous-api
+servers:
+  - description: Eurostat
+    url: https://ec.europa.eu/eurostat/api/dissemination
+  - description: Eurostat - Comext datasets
+    url: https://ec.europa.eu/eurostat/api/comext/dissemination
+paths:
+  /sdmx/2.1/data/{flow}/{key}:
+    get:
+      summary: 'Get data'
+      tags:
+        - SDMX 2.1 Data queries
+      parameters:
+        - $ref: '#/components/parameters/flow'
+        - $ref: '#/components/parameters/key'
+        - $ref: '#/components/parameters/startPeriod'
+        - $ref: '#/components/parameters/endPeriod'
+        - $ref: '#/components/parameters/firstNObservations'
+        - $ref: '#/components/parameters/lastNObservations'
+        - $ref: '#/components/parameters/dimensionAtObservation'
+        - $ref: '#/components/parameters/detail'
+        - $ref: '#/components/parameters/accept-encoding'
+        - $ref: '#/components/parameters/accept-language'
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '304':
+          $ref: '#/components/responses/304'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '406':
+          $ref: '#/components/responses/406'
+        '413':
+          $ref: '#/components/responses/413'
+        '414':
+          $ref: '#/components/responses/414'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+
+  /sdmx/3.0/data/dataflow/{agencyID}/{resourceID}/{version}:
+    get:
+      summary: 'Get data'
+      tags:
+        - SDMX 3.0 Data queries
+      parameters:
+        - $ref: '#/components/parameters/agencyID'
+        - $ref: '#/components/parameters/resourceID'
+        - $ref: '#/components/parameters/version3.0'
+        - $ref: '#/components/parameters/c'
+        - $ref: '#/components/parameters/attributes'
+        - $ref: '#/components/parameters/measures'
+        - $ref: '#/components/parameters/format_data3.0'
+        - $ref: '#/components/parameters/formatversion_data3.0'
+        - $ref: '#/components/parameters/lang_data3.0'
+        - $ref: '#/components/parameters/labels'
+        - $ref: '#/components/parameters/compress'
+        - $ref: '#/components/parameters/accept-encoding'
+        - $ref: '#/components/parameters/accept-language'
+      responses:
+        '200':
+          $ref: '#/components/responses/200-sdmx3.0'
+        '304':
+          $ref: '#/components/responses/304'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '406':
+          $ref: '#/components/responses/406'
+        '413':
+          $ref: '#/components/responses/413'
+        '414':
+          $ref: '#/components/responses/414'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+
+  /sdmx/3.0/data/dataflow/{agencyID}/{resourceID}/{version}/{key}:
+    get:
+      summary: 'Get data'
+      tags:
+        - SDMX 3.0 Data queries
+      parameters:
+        - $ref: '#/components/parameters/agencyID'
+        - $ref: '#/components/parameters/resourceID'
+        - $ref: '#/components/parameters/version3.0'
+        - $ref: '#/components/parameters/key3.0'
+        - $ref: '#/components/parameters/c'
+        - $ref: '#/components/parameters/attributes'
+        - $ref: '#/components/parameters/measures'
+        - $ref: '#/components/parameters/format_data3.0'
+        - $ref: '#/components/parameters/formatversion_data3.0'
+        - $ref: '#/components/parameters/lang_data3.0'
+        - $ref: '#/components/parameters/labels'
+        - $ref: '#/components/parameters/compress'
+        - $ref: '#/components/parameters/accept-encoding'
+        - $ref: '#/components/parameters/accept-language'
+      responses:
+        '200':
+          $ref: '#/components/responses/200-sdmx3.0'
+        '304':
+          $ref: '#/components/responses/304'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '406':
+          $ref: '#/components/responses/406'
+        '413':
+          $ref: '#/components/responses/413'
+        '414':
+          $ref: '#/components/responses/414'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+
+  /sdmx/2.1/dataflow/{agencyID}/{resourceID}/{version}:
+    get:
+      summary: 'Get dataflows'
+      tags:
+        - SDMX 2.1 Structure queries
+      parameters:
+        - $ref: '#/components/parameters/agencies'
+        - $ref: '#/components/parameters/resourceIDs'
+        - $ref: '#/components/parameters/versions'
+        - $ref: '#/components/parameters/references'
+        - $ref: '#/components/parameters/structDetail'
+        - $ref: '#/components/parameters/accept-encoding'
+        - $ref: '#/components/parameters/accept-language'
+      responses:
+        '200':
+          $ref: '#/components/responses/200-struct'
+        '304':
+          $ref: '#/components/responses/304'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '406':
+          $ref: '#/components/responses/406'
+        '413':
+          $ref: '#/components/responses/413'
+        '414':
+          $ref: '#/components/responses/414'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+
+  /sdmx/2.1/contentconstraint/{agencyID}/{resourceID}/{version}:
+    get:
+      summary: 'Get content constraints'
+      tags:
+        - SDMX 2.1 Structure queries
+      parameters:
+        - $ref: '#/components/parameters/agencies'
+        - $ref: '#/components/parameters/resourceIDs'
+        - $ref: '#/components/parameters/versions'
+        - $ref: '#/components/parameters/references'
+        - $ref: '#/components/parameters/structDetail'
+        - $ref: '#/components/parameters/accept-encoding'
+        - $ref: '#/components/parameters/accept-language'
+      responses:
+        '200':
+          $ref: '#/components/responses/200-struct'
+        '304':
+          $ref: '#/components/responses/304'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '406':
+          $ref: '#/components/responses/406'
+        '413':
+          $ref: '#/components/responses/413'
+        '414':
+          $ref: '#/components/responses/414'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+
+  /sdmx/2.1/datastructure/{agencyID}/{resourceID}/{version}:
+    get:
+      summary: 'Get data structures'
+      tags:
+        - SDMX 2.1 Structure queries
+      parameters:
+        - $ref: '#/components/parameters/agencies'
+        - $ref: '#/components/parameters/resourceIDs'
+        - $ref: '#/components/parameters/versions'
+        - $ref: '#/components/parameters/references'
+        - $ref: '#/components/parameters/structDetail'
+        - $ref: '#/components/parameters/accept-encoding'
+        - $ref: '#/components/parameters/accept-language'
+      responses:
+        '200':
+          $ref: '#/components/responses/200-struct'
+        '304':
+          $ref: '#/components/responses/304'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '406':
+          $ref: '#/components/responses/406'
+        '413':
+          $ref: '#/components/responses/413'
+        '414':
+          $ref: '#/components/responses/414'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+
+
+
+  /sdmx/2.1/conceptscheme/{agencyID}/{resourceID}/{version}:
+    get:
+      summary: 'Get concept schemes'
+      tags:
+        - SDMX 2.1 Structure queries
+      parameters:
+        - $ref: '#/components/parameters/agencies'
+        - $ref: '#/components/parameters/resourceIDs'
+        - $ref: '#/components/parameters/versions'
+        - $ref: '#/components/parameters/references'
+        - $ref: '#/components/parameters/structDetail'
+        - $ref: '#/components/parameters/accept-encoding'
+        - $ref: '#/components/parameters/accept-language'
+      responses:
+        '200':
+          $ref: '#/components/responses/200-struct'
+        '304':
+          $ref: '#/components/responses/304'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '406':
+          $ref: '#/components/responses/406'
+        '413':
+          $ref: '#/components/responses/413'
+        '414':
+          $ref: '#/components/responses/414'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+
+  /sdmx/2.1/codelist/{agencyID}/{resourceID}/{version}:
+    get:
+      summary: 'Get codelists'
+      tags:
+        - SDMX 2.1 Structure queries
+      parameters:
+        - $ref: '#/components/parameters/agencies'
+        - $ref: '#/components/parameters/resourceIDs'
+        - $ref: '#/components/parameters/versions'
+        - $ref: '#/components/parameters/references'
+        - $ref: '#/components/parameters/structDetail'
+        - $ref: '#/components/parameters/accept-encoding'
+        - $ref: '#/components/parameters/accept-language'
+      responses:
+        '200':
+          $ref: '#/components/responses/200-struct'
+        '304':
+          $ref: '#/components/responses/304'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '406':
+          $ref: '#/components/responses/406'
+        '413':
+          $ref: '#/components/responses/413'
+        '414':
+          $ref: '#/components/responses/414'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+  /sdmx/3.0/structure/dataflow/{agencyID}/{resourceID}:
+    get:
+      summary: 'Get dataflows'
+      tags:
+        - SDMX 3.0 Structure queries
+      description: |
+        Structure queries allow **retrieving structural metadata**.
+
+        Dataflow structure queries in SDMX allow you to retrieve structural metadata available from the 'dataflow' of a particular dataset.
+
+      parameters:
+        - $ref: '#/components/parameters/agencyID'
+        - $ref: '#/components/parameters/resourceID'
+        - $ref: '#/components/parameters/references_n_c_d'
+        - $ref: '#/components/parameters/structDetail3.0_dataflow'
+        - $ref: '#/components/parameters/format_struct3.0'
+        - $ref: '#/components/parameters/formatversion_struct3.0'
+        - $ref: '#/components/parameters/compress'
+        - $ref: '#/components/parameters/accept-encoding'
+        - $ref: '#/components/parameters/accept-language'
+      responses:
+        '200':
+          $ref: '#/components/responses/200-struct-sdmx3.0'
+        '304':
+          $ref: '#/components/responses/304'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '406':
+          $ref: '#/components/responses/406'
+        '413':
+          $ref: '#/components/responses/413'
+        '414':
+          $ref: '#/components/responses/414'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+  /sdmx/3.0/structure/dataflow/{agencyID}/{resourceID}/{version}:
+    get:
+      summary: 'Get dataflows'
+      tags:
+        - SDMX 3.0 Structure queries
+      description: |
+        Structure queries allow **retrieving structural metadata**.
+
+        Dataflow structure queries in SDMX allow you to retrieve structural metadata available from the 'dataflow' of a particular dataset.
+
+      parameters:
+        - $ref: '#/components/parameters/agencyID'
+        - $ref: '#/components/parameters/resourceID'
+        - $ref: '#/components/parameters/version-struct3.0'
+        - $ref: '#/components/parameters/references_n_c_d'
+        - $ref: '#/components/parameters/structDetail3.0_dataflow'
+        - $ref: '#/components/parameters/format_struct3.0'
+        - $ref: '#/components/parameters/formatversion_struct3.0'
+        - $ref: '#/components/parameters/compress'
+        - $ref: '#/components/parameters/accept-encoding'
+        - $ref: '#/components/parameters/accept-language'
+      responses:
+        '200':
+          $ref: '#/components/responses/200-struct-sdmx3.0'
+        '304':
+          $ref: '#/components/responses/304'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '406':
+          $ref: '#/components/responses/406'
+        '413':
+          $ref: '#/components/responses/413'
+        '414':
+          $ref: '#/components/responses/414'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+  /sdmx/3.0/structure/dataconstraint/{agencyID}/{resourceID}:
+    get:
+      summary: 'Get dataconstraints'
+      tags:
+        - SDMX 3.0 Structure queries
+      description: |
+        Structure queries allow **retrieving structural metadata**.
+
+        Dataconstraint structure queries in SDMX allow you to retrieve structural metadata available from the 'dataconstraint' of a particular dataset.
+      parameters:
+        - $ref: '#/components/parameters/agencyID'
+        - $ref: '#/components/parameters/resourceID'
+        - $ref: '#/components/parameters/references_n'
+        - $ref: '#/components/parameters/structDetail3.0'
+        - $ref: '#/components/parameters/format_struct3.0'
+        - $ref: '#/components/parameters/formatversion_struct3.0'
+        - $ref: '#/components/parameters/compress'
+        - $ref: '#/components/parameters/accept-encoding'
+        - $ref: '#/components/parameters/accept-language'
+      responses:
+        '200':
+          $ref: '#/components/responses/200-struct-sdmx3.0'
+        '304':
+          $ref: '#/components/responses/304'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '406':
+          $ref: '#/components/responses/406'
+        '413':
+          $ref: '#/components/responses/413'
+        '414':
+          $ref: '#/components/responses/414'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+  /sdmx/3.0/structure/dataconstraint/{agencyID}/{resourceID}/{version}:
+    get:
+      summary: 'Get dataconstraints'
+      tags:
+        - SDMX 3.0 Structure queries
+      description: |
+        Structure queries allow **retrieving structural metadata**.
+
+        Dataconstraint structure queries in SDMX allow you to retrieve structural metadata available from the 'dataconstraint' of a particular dataset.
+      parameters:
+        - $ref: '#/components/parameters/agencyID'
+        - $ref: '#/components/parameters/resourceID'
+        - $ref: '#/components/parameters/version-struct3.0'
+        - $ref: '#/components/parameters/references_n'
+        - $ref: '#/components/parameters/structDetail3.0'
+        - $ref: '#/components/parameters/format_struct3.0'
+        - $ref: '#/components/parameters/formatversion_struct3.0'
+        - $ref: '#/components/parameters/compress'
+        - $ref: '#/components/parameters/accept-encoding'
+        - $ref: '#/components/parameters/accept-language'
+      responses:
+        '200':
+          $ref: '#/components/responses/200-struct-sdmx3.0'
+        '304':
+          $ref: '#/components/responses/304'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '406':
+          $ref: '#/components/responses/406'
+        '413':
+          $ref: '#/components/responses/413'
+        '414':
+          $ref: '#/components/responses/414'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+  /sdmx/3.0/structure/datastructure/{agencyID}/{resourceID}:
+    get:
+      summary: 'Get datastructure'
+      tags:
+        - SDMX 3.0 Structure queries
+      description: |
+        Structure queries allow **retrieving structural metadata**.
+
+        Datastructure queries in SDMX allow you to retrieve structural metadata available from the 'datastructure' of a particular dataset.
+      parameters:
+        - $ref: '#/components/parameters/agencyID'
+        - $ref: '#/components/parameters/resourceID'
+        - $ref: '#/components/parameters/references'
+        - $ref: '#/components/parameters/structDetail3.0'
+        - $ref: '#/components/parameters/format_struct3.0'
+        - $ref: '#/components/parameters/formatversion_struct3.0'
+        - $ref: '#/components/parameters/compress'
+        - $ref: '#/components/parameters/accept-encoding'
+        - $ref: '#/components/parameters/accept-language'
+      responses:
+        '200':
+          $ref: '#/components/responses/200-struct-sdmx3.0'
+        '304':
+          $ref: '#/components/responses/304'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '406':
+          $ref: '#/components/responses/406'
+        '413':
+          $ref: '#/components/responses/413'
+        '414':
+          $ref: '#/components/responses/414'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+  /sdmx/3.0/structure/datastructure/{agencyID}/{resourceID}/{version}:
+    get:
+      summary: 'Get datastructure'
+      tags:
+        - SDMX 3.0 Structure queries
+      description: |
+        Structure queries allow **retrieving structural metadata**.
+
+        Datastructure queries in SDMX allow you to retrieve structural metadata available from the 'datastructure' of a particular dataset.
+      parameters:
+        - $ref: '#/components/parameters/agencyID'
+        - $ref: '#/components/parameters/resourceID'
+        - $ref: '#/components/parameters/version-struct3.0'
+        - $ref: '#/components/parameters/references'
+        - $ref: '#/components/parameters/structDetail3.0'
+        - $ref: '#/components/parameters/format_struct3.0'
+        - $ref: '#/components/parameters/formatversion_struct3.0'
+        - $ref: '#/components/parameters/compress'
+        - $ref: '#/components/parameters/accept-encoding'
+        - $ref: '#/components/parameters/accept-language'
+      responses:
+        '200':
+          $ref: '#/components/responses/200-struct-sdmx3.0'
+        '304':
+          $ref: '#/components/responses/304'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '406':
+          $ref: '#/components/responses/406'
+        '413':
+          $ref: '#/components/responses/413'
+        '414':
+          $ref: '#/components/responses/414'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+  /sdmx/3.0/structure/conceptscheme/{agencyID}/{resourceID}:
+    get:
+      summary: 'Get conceptscheme'
+      tags:
+        - SDMX 3.0 Structure queries
+      description: |
+        Structure queries allow **retrieving structural metadata**.
+
+        Conceptscheme queries in SDMX allow you to retrieve structural metadata available from a particular 'conceptscheme'.
+      parameters:
+        - $ref: '#/components/parameters/agencyID'
+        - $ref: '#/components/parameters/resourceID'
+        - $ref: '#/components/parameters/references_n_p_ps'
+        - $ref: '#/components/parameters/structDetail3.0'
+        - $ref: '#/components/parameters/format_struct3.0'
+        - $ref: '#/components/parameters/formatversion_struct3.0'
+        - $ref: '#/components/parameters/compress'
+        - $ref: '#/components/parameters/accept-encoding'
+        - $ref: '#/components/parameters/accept-language'
+      responses:
+        '200':
+          $ref: '#/components/responses/200-struct-sdmx3.0'
+        '304':
+          $ref: '#/components/responses/304'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '406':
+          $ref: '#/components/responses/406'
+        '413':
+          $ref: '#/components/responses/413'
+        '414':
+          $ref: '#/components/responses/414'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+  /sdmx/3.0/structure/conceptscheme/{agencyID}/{resourceID}/{version}:
+    get:
+      summary: 'Get conceptscheme'
+      tags:
+        - SDMX 3.0 Structure queries
+      description: |
+        Structure queries allow **retrieving structural metadata**.
+
+        Conceptscheme queries in SDMX allow you to retrieve structural metadata available from a particular 'conceptscheme'.
+      parameters:
+        - $ref: '#/components/parameters/agencyID'
+        - $ref: '#/components/parameters/resourceID'
+        - $ref: '#/components/parameters/version-struct3.0'
+        - $ref: '#/components/parameters/references_n_p_ps'
+        - $ref: '#/components/parameters/structDetail3.0'
+        - $ref: '#/components/parameters/format_struct3.0'
+        - $ref: '#/components/parameters/formatversion_struct3.0'
+        - $ref: '#/components/parameters/compress'
+        - $ref: '#/components/parameters/accept-encoding'
+        - $ref: '#/components/parameters/accept-language'
+      responses:
+        '200':
+          $ref: '#/components/responses/200-struct-sdmx3.0'
+        '304':
+          $ref: '#/components/responses/304'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '406':
+          $ref: '#/components/responses/406'
+        '413':
+          $ref: '#/components/responses/413'
+        '414':
+          $ref: '#/components/responses/414'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+  /sdmx/3.0/structure/codelist/{agencyID}/{resourceID}:
+    get:
+      summary: 'Get codelist'
+      tags:
+        - SDMX 3.0 Structure queries
+      description: |
+        Structure queries allow **retrieving structural metadata**.
+
+        Codelist structure queries in SDMX allow you to retrieve structural metadata available from a particular 'codelist'.
+      parameters:
+        - $ref: '#/components/parameters/agencyID'
+        - $ref: '#/components/parameters/resourceID'
+        - $ref: '#/components/parameters/references_n_p_ps'
+        - $ref: '#/components/parameters/structDetail3.0'
+        - $ref: '#/components/parameters/format_struct3.0'
+        - $ref: '#/components/parameters/formatversion_struct3.0'
+        - $ref: '#/components/parameters/compress'
+        - $ref: '#/components/parameters/accept-encoding'
+        - $ref: '#/components/parameters/accept-language'
+      responses:
+        '200':
+          $ref: '#/components/responses/200-struct-sdmx3.0'
+        '304':
+          $ref: '#/components/responses/304'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '406':
+          $ref: '#/components/responses/406'
+        '413':
+          $ref: '#/components/responses/413'
+        '414':
+          $ref: '#/components/responses/414'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+  /sdmx/3.0/structure/codelist/{agencyID}/{resourceID}/{version}:
+    get:
+      summary: 'Get codelist'
+      tags:
+        - SDMX 3.0 Structure queries
+      description: |
+        Structure queries allow **retrieving structural metadata**.
+
+        Codelist structure queries in SDMX allow you to retrieve structural metadata available from a particular 'codelist'.
+      parameters:
+        - $ref: '#/components/parameters/agencyID'
+        - $ref: '#/components/parameters/resourceID'
+        - $ref: '#/components/parameters/version-struct3.0'
+        - $ref: '#/components/parameters/references_n_p_ps'
+        - $ref: '#/components/parameters/structDetail3.0'
+        - $ref: '#/components/parameters/format_struct3.0'
+        - $ref: '#/components/parameters/formatversion_struct3.0'
+        - $ref: '#/components/parameters/compress'
+        - $ref: '#/components/parameters/accept-encoding'
+        - $ref: '#/components/parameters/accept-language'
+      responses:
+        '200':
+          $ref: '#/components/responses/200-struct-sdmx3.0'
+        '304':
+          $ref: '#/components/responses/304'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '406':
+          $ref: '#/components/responses/406'
+        '413':
+          $ref: '#/components/responses/413'
+        '414':
+          $ref: '#/components/responses/414'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+  /sdmx/2.1/categoryscheme/{agencyID}/{resourceID}/{version}:
+    get:
+      summary: 'Get category schemes'
+      tags:
+        - SDMX 2.1 Navigation Structure queries
+      parameters:
+        - $ref: '#/components/parameters/agencies'
+        - $ref: '#/components/parameters/resourceIDs'
+        - $ref: '#/components/parameters/versions'
+        - $ref: '#/components/parameters/references'
+        - $ref: '#/components/parameters/structDetail'
+        - $ref: '#/components/parameters/accept-encoding'
+        - $ref: '#/components/parameters/accept-language'
+      responses:
+        '200':
+          $ref: '#/components/responses/200-struct'
+        '304':
+          $ref: '#/components/responses/304'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '406':
+          $ref: '#/components/responses/406'
+        '413':
+          $ref: '#/components/responses/413'
+        '414':
+          $ref: '#/components/responses/414'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+
+  /sdmx/2.1/categorisation/{agencyID}/{resourceID}/{version}:
+    get:
+      summary: 'Get categorisations'
+      tags:
+        - SDMX 2.1 Navigation Structure queries
+      parameters:
+        - $ref: '#/components/parameters/agencies'
+        - $ref: '#/components/parameters/resourceIDs'
+        - $ref: '#/components/parameters/versions'
+        - $ref: '#/components/parameters/references'
+        - $ref: '#/components/parameters/structDetail'
+        - $ref: '#/components/parameters/accept-encoding'
+        - $ref: '#/components/parameters/accept-language'
+      responses:
+        '200':
+          $ref: '#/components/responses/200-struct'
+        '304':
+          $ref: '#/components/responses/304'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '406':
+          $ref: '#/components/responses/406'
+        '413':
+          $ref: '#/components/responses/413'
+        '414':
+          $ref: '#/components/responses/414'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+
+  /1.0/async/status/{uuid}:
+    get:
+      operationId: getAsyncStatus
+      description: The status of a request that is processed asynchronously can be checked
+      tags:
+        - Async
+      parameters:
+        - $ref: '#/components/parameters/uuid'
+      responses:
+        '200':
+          description: >-
+            The status of a request that is processed asynchronously can be one of the following values:
+
+            * SUBMITTED -  the request is submitted for processing
+
+            * PROCESSING -  the request is currently being processed
+
+            * AVAILABLE - the data is available for download
+
+            * EXPIRED - the request was processed but the data is no longer available (cache expired)
+          content:
+            application/xml:
+              schema:
+                type: string
+              examples:
+                SUBMITTED:
+                  value: >-
+                    <?xml version="1.0" encoding="UTF-8"?>
+                    <S:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+                      <env:Header/>
+                      <S:Body>
+                        <ns0:asyncResponse xmlns:ns1="http://estat.ec.europa.eu/disschain/asynchronous" xmlns:ns0="http://estat.ec.europa.eu/disschain/soap/asynchronous">
+                          <ns1:status>
+                            <ns1:key>0f164c29-0e96-4757-9b81-e9fcff8b9899</ns1:key>
+                            <ns1:status>SUBMITTED</ns1:status>
+                          </ns1:status>
+                        </ns0:asyncResponse>
+                      </S:Body>
+                    </S:Envelope>
+        '400':
+          description: Error cases
+          content:
+            application/xml:
+              schema:
+                type: string
+              examples:
+                UNKNOWN_REQUEST:
+                  value: >-
+                    <?xml version="1.0" encoding="UTF-8"?>
+                    <S:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+                      <env:Header/>
+                      <S:Body>
+                        <S:Fault xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+                          <faultcode>100</faultcode>
+                          <faultstring>UNKNOWN_REQUEST: Unknown request.</faultstring>
+                        </S:Fault>
+                      </S:Body>
+                    </S:Envelope>
+                DATA_NOT_YET_AVAILABLE:
+                  value: >-
+                    <?xml version="1.0" encoding="UTF-8"?>
+                    <S:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+                      <env:Header/>
+                      <S:Body>
+                        <S:Fault>
+                          <faultcode>100</faultcode>
+                          <faultstring>DATA_NOT_YET_AVAILABLE: Requested data is not yet available for download. Check the status of your request.</faultstring>
+                        </S:Fault>
+                      </S:Body>
+                    </S:Envelope>
+
+  /1.0/async/data/{uuid}:
+    get:
+      operationId: getAsyncData
+      description: The status of a request that is processed asynchronously can be checked
+      tags:
+        - Async
+      parameters:
+        - $ref: '#/components/parameters/uuid'
+      responses:
+        '200':
+          description: Async processing status.
+          content:
+            application/xml:
+              schema:
+                type: string
+        '400':
+          description: Error cases
+          content:
+            application/xml:
+              schema:
+                type: string
+              examples:
+                UNKNOWN_REQUEST:
+                  value: >-
+                    <?xml version="1.0" encoding="UTF-8"?>
+                    <S:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+                      <env:Header/>
+                      <S:Body>
+                        <S:Fault xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+                          <faultcode>100</faultcode>
+                          <faultstring>UNKNOWN_REQUEST: Unknown request.</faultstring>
+                        </S:Fault>
+                      </S:Body>
+                    </S:Envelope>
+                DATA_NOT_YET_AVAILABLE:
+                  value: >-
+                    <?xml version="1.0" encoding="UTF-8"?>
+                    <S:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+                      <env:Header/>
+                      <S:Body>
+                        <S:Fault>
+                          <faultcode>100</faultcode>
+                          <faultstring>DATA_NOT_YET_AVAILABLE: Requested data is not yet available for download. Check the status of your request.</faultstring>
+                        </S:Fault>
+                      </S:Body>
+                    </S:Envelope>
+
+  /catalogue/dcat/{agencyID}:
+    get:
+      summary: Generate a catalogue of all datasets in RDF format
+      tags:
+        - Catalogue queries
+      parameters:
+        - $ref: '#/components/parameters/agencyID'
+      responses:
+        '200':
+          $ref: '#/components/responses/200-dcat'
+
+  /catalogue/dcat/{agencyID}/{extractionType}:
+    get:
+      summary: Generate a catalogue of datasets in RDF format
+      tags:
+        - Catalogue queries
+      parameters:
+        - $ref: '#/components/parameters/agencyID'
+        - $ref: '#/components/parameters/extractionType'
+      responses:
+        '200':
+          $ref: '#/components/responses/200-dcat'
+
+  /catalogue/metabase.txt.gz:
+    get:
+      summary: Generate the Metabase which is a catalogue containing the definition of disseminated data products
+      tags:
+        - Catalogue queries
+      responses:
+        '200':
+          $ref: '#/components/responses/200-metabase'
+
+  /catalogue/rss/{language}/statistics-update.rss:
+    get:
+      summary: Generate a web feed which allows users to access updates to online content in a standardized, computer-readable format
+      tags:
+        - Catalogue queries
+      parameters:
+        - $ref: '#/components/parameters/language'
+      responses:
+        '200':
+          $ref: '#/components/responses/200-rss'
+
+  /catalogue/toc/TableOfContent.xsd:
+    get:
+      summary: Return the XML Schema Definition of the Table of Content (TOC)
+      tags:
+        - Catalogue queries
+      responses:
+        '200':
+          $ref: '#/components/responses/200-tocxsd'
+
+  /catalogue/toc/txt:
+    get:
+      summary: Return the Table of Content (TOC) for the specified language in text format
+      tags:
+        - Catalogue queries
+      parameters:
+        - $ref: '#/components/parameters/lang'
+      responses:
+        '200':
+          $ref: '#/components/responses/200-toctxt'
+
+  /catalogue/toc/xml:
+    get:
+      summary: Return the Table of Content (TOC) for all supported languages in XML format
+      tags:
+        - Catalogue queries
+      responses:
+        '200':
+          $ref: '#/components/responses/200-tocxml'
+
+  /statistics/1.0/data/{datasetCode}:
+    get:
+      summary: API Statistics is a web service for data query where parameters don’t have to respect a specific order opposed to API SDMX 2.1
+      tags:
+        - Statistics data queries
+      parameters:
+        - $ref: '#/components/parameters/datasetCode'
+        - $ref: '#/components/parameters/statisticsFormat'
+        - $ref: '#/components/parameters/statisticsFilters'
+        - $ref: '#/components/parameters/statisticsUntilTimePeriod'
+        - $ref: '#/components/parameters/statisticsSinceTimePeriod'
+        - $ref: '#/components/parameters/statisticsLastTimePeriod'
+        - $ref: '#/components/parameters/lang'
+      responses:
+        '200':
+          $ref: '#/components/responses/200-statistics'
+        '400':
+          $ref: '#/components/responses/400'
+        '404':
+          $ref: '#/components/responses/404'
+        '413':
+          $ref: '#/components/responses/413'
+        '500':
+          $ref: '#/components/responses/500'
+
+components:
+  parameters:
+    # ASYNC PARAMETER
+    uuid:
+      in: path
+      name: uuid
+      description: |
+        This value is the key to use for checking status of data availability from the Asynchronous Endpoint.
+      required: true
+      schema:
+        type: string
+        pattern: '^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$'
+    # SDMX PARAMETER
+    flow:
+      in: path
+      name: flow
+      description: |
+        The **statistical domain** (aka dataflow) of the data to be returned.
+
+        Examples:
+
+        * `EXR`: The ID of the domain
+        * `ECB,EXR`: The EXR domain, maintained by the ECB
+        * `ECB,EXR,1.0`: Version 1.0 of the EXR domain, maintained by the ECB
+      required: true
+      schema:
+        type: string
+        pattern: '^([a-zA-Z][a-zA-Z\d_-]*(\.[a-zA-Z][a-zA-Z\d_-]*)*,)?[a-zA-Z\d_@$-]+(,(latest|(\d+(\.\d+)*)))?$'
+    key:
+      in: path
+      name: key
+      description: |
+        The (possibly partial) **key identifying the data to be returned**.
+
+        The keyword `all` can be used to indicate that all data belonging to the specified dataflow and provided by the specified provider must be returned.
+
+        The examples below are based on the following key: Frequency, Country, Component of inflation, Unit of measure.
+         * `M.DE.000000.ANR`: Full key, matching exactly one series, i.e. the monthly (`M`) rates of change (`ANR`) of overall inflation (`000000`) in Germany (`DE`).
+         * `A+M.DE.000000.ANR`: Retrieves both annual and monthly data (`A+M`), matching exactly two series
+         * `A+M..000000.ANR`: The second dimension is wildcarded, and it wil therefore match the annual and monthly rates of change of overall inflation in any country.
+      required: true
+      schema:
+        type: string
+        pattern: '^([\.A-Za-z\d_@$-]+(\+[A-Za-z\d_@$-]+)*)*$'
+    agencyID:
+      in: path
+      name: agencyID
+      description: The agency maintaining the artefact used to generate the schema to be returned.
+      required: true
+      schema:
+        type: string
+        pattern: '^[A-Za-z][A-Za-z\d_-]*(\.[A-Za-z][A-Za-z\d_-]*)*$'
+    resourceID:
+      in: path
+      name: resourceID
+      description: The id of the artefact used to generate the schema to be returned.
+      required: true
+      schema:
+        type: string
+        pattern: '^[A-Za-z\d_@$-]+$'
+    version:
+      in: path
+      name: version
+      description: |
+        The version of the artefact used to generate the schema to be returned.
+
+        The keyword `latest` can be used to return the latest production version of the matching resource.
+      required: true
+      schema:
+        type: string
+        pattern: '^(latest|[\d]+(\.[\d]+)*)$'
+    agencies:
+      in: path
+      name: agencyID
+      description: |
+        The agency maintaining the artefact to be returned.
+
+        The keyword `all` can be used to indicate that artefacts maintained by any maintenance agency should be returned.
+      required: true
+      schema:
+        type: string
+        pattern: '^(([A-Za-z][A-Za-z\d_-]*)(\.[A-Za-z][A-Za-z\d_-]*)*,)?[A-Za-z\d_@$-]+(\+([A-Za-z][A-Za-z\d_-]*(\.[A-Za-z][A-Za-z\d_-]*)*,)?[A-Za-z\d_@$-]+)*$'
+    resourceIDs:
+      in: path
+      name: resourceID
+      description: |
+        The id of the artefact to be returned.
+
+        The keyword `all` can be used to indicate that any artefact of the specified resource type, {agencyID} and {version} should be returned.
+      required: true
+      schema:
+        type: string
+        pattern: '^([A-Za-z\d_@$-]+(\+[A-Za-z\d_@$-]+)*)*$'
+    datasetCode:
+      in: path
+      name: datasetCode
+      description: |
+        The code of the dataset to be queried.
+      required: true
+      schema:
+        type: string
+    key3.0:
+      in: path
+      name: key
+      description: |
+        The combination of dimension values identifying series or slices of the cube (for example `D.USD.EUR.SP00.A`).
+
+        Wildcards are supported using `*` (`D.*.EUR.SP00.A`).
+      required: true
+      schema:
+        type: string
+        pattern: '^(\*|\S+|\.)*$'
+    version3.0:
+      in: path
+      name: version
+      description: |
+        The version of the artefact to be returned.
+
+        The `+` can be used to return the latest production version of the matching resource.
+      required: true
+      schema:
+        type: string
+        pattern: '^(\+|[\d]+(\.[\d]+)*(\+[\d]+(\.[\d]+)*)*)$'
+    version-struct3.0:
+      in: path
+      name: version
+      description: |
+        If provided, the specified version of the artefact will be returned.
+
+        The `+` can be used to return the latest production version of the matching resource.
+
+        No value set, is identical to '+' which returns the latest version.
+      required: true
+      schema:
+        type: string
+        pattern: '^(+|[\d]+(\.[\d]{1,2})*)$'
+    versions:
+      in: path
+      name: version
+      description: |
+        The version of the artefact to be returned.
+
+        The keyword `all` can be used to return all versions of the matching resource.
+
+        The keyword `latest` can be used to return the latest production version of the matching resource.
+      required: true
+      schema:
+        type: string
+        pattern: '^(all|latest|[\d]+(\.[\d]+)*(\+[\d]+(\.[\d]+)*)*)$'
+    extractionType:
+      in: path
+      name: extractionType
+      description: |
+        The type of extraction, only `FULL` and `UPDATES` are supported.
+        * `FULL`: get a catalogue for all datasets?
+        * `UPDATES`: get a catalogue of datasets updated since the latest embargo.
+      required: false
+      schema:
+        type: string
+        enum:
+          - FULL
+          - UPDATES
+    language:
+      in: path
+      name: language
+      description: |
+        The language of the requested data.
+      required: true
+      schema:
+        type: string
+        enum:
+          - en
+          - fr
+          - de
+    lang:
+      in: query
+      name: lang
+      description: |
+        The language of the requested data.
+      required: false
+      schema:
+        type: string
+        enum:
+          - en
+          - fr
+          - de
+        default: en
+    lang_data3.0:
+      in: query
+      name: lang
+      description: |
+        The language of the requested data (extension parameter). Only available for the SDMX CSV format.
+      required: false
+      schema:
+        type: string
+        enum:
+          - en
+          - fr
+          - de
+    lang_struct3.0:
+      in: query
+      name: lang
+      description: |
+        The language of the requested structural metadata (extension parameter). Only available for the JSONSTAT format.
+      required: false
+      schema:
+        type: string
+        enum:
+          - en
+          - fr
+          - de
+    labels:
+      in: query
+      name: labels
+      description: |
+        The information to be returned for dimension and attribute values (extension parameter). Only available for the SDMX CSV format.
+        Possible values are:
+         * id (default): one column is used for each dimension / attribute and contains the code of the position / attribute.
+         * name: one column is used for each dimension / attribute and contains the localized name of the position / attribute.
+         * both: two columns are used for each dimension / attribute and contains the code and localized name of the position / attribute.
+      required: false
+      schema:
+        type: string
+        enum:
+          - id
+          - name
+          - both
+    
+    statisticsFormat:
+      in: query
+      name: format
+      description: |
+        The format of the returned data.
+      required: false
+      schema:
+        type: string
+        enum:
+          - JSON
+        default: JSON
+    statisticsFilters:
+      in: query
+      name: filters
+      description: |
+        The filter parameters defined in the URL are optional. Any dimension present in the data product can be used as filter parameter.
+        The structure of a filter parameter follows DIMENSION_CODE=VALUE
+        * DIMENSION_CODE: the code of the dimension used to filter data (case insensitive)
+        * VALUE: value of the filter is the position in the dimension (case insensitive) e.g. time=2019 or geo=FR
+      required: false
+      schema:
+        type: object
+        additionalProperties:
+          type: string
+      style: form
+      explode: true
+    statisticsUntilTimePeriod:
+      in: query
+      name: untilTimePeriod
+      description: |
+        The specific TIME_PERIOD value to filter the returned file until this value.
+      required: false
+      schema:
+        type: string
+    statisticsSinceTimePeriod:
+      in: query
+      name: sinceTimePeriod
+      description: |
+        The specific TIME_PERIOD value to filter the returned file since this value.
+      required: false
+      schema:
+        type: string
+    statisticsLastTimePeriod:
+      in: query
+      name: lastTimePeriod
+      description: |
+        A numeric value counting down until the TIME_PERIOD dimension values are included in the returned file.
+      required: false
+      schema:
+        type: integer
+    startPeriod:
+      in: query
+      name: startPeriod
+      description: |
+        The start of the period for which results should be supplied (inclusive).
+
+        Can be expressed using 8601 dates or SDMX reporting periods.
+
+        Examples:
+        * `2000`: Year (ISO 8601)
+        * `2000-01`: Month (ISO 8601)
+        * `2000-01-01`: Date (ISO 8601)
+        * `2000-Q1`: Quarter (SDMX)
+        * `2000-W01`: Week (SDMX)
+
+      required: false
+      schema:
+        type: string
+        pattern: '^\d{4}-?((\d{2}(-\d{2})?)|A1|S[1|2]|Q[1-4]|T[1-3]|M(0[1-9]|1[0-2])|W(0[1-9]|[1-4][0-9]|5[0-3])|D(0[0-9][1-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-6]))?$'
+    endPeriod:
+      in: query
+      name: endPeriod
+      description: |
+        The end of the period for which results should be supplied (inclusive).
+
+        Can be expressed using 8601 dates or SDMX reporting periods.
+
+        Examples:
+        * `2000`: Year (ISO 8601)
+        * `2000-01`: Month (ISO 8601)
+        * `2000-01-01`: Date (ISO 8601)
+        * `2000-S1`: Semester (SDMX)
+        * `2000-D001`: Day (SDMX)
+      required: false
+      schema:
+        type: string
+        pattern: '^\d{4}-?((\d{2}(-\d{2})?)|A1|S[1|2]|Q[1-4]|T[1-3]|M(0[1-9]|1[0-2])|W(0[1-9]|[1-4][0-9]|5[0-3])|D(0[0-9][1-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-6]))?$'
+    firstNObservations:
+      in: query
+      name: firstNObservations
+      description: |
+        The maximum number of observations to be returned starting from the oldest one
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+    lastNObservations:
+      in: query
+      name: lastNObservations
+      description: |
+        The maximum number of observations to be returned starting from the most recent one
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+    dimensionAtObservation:
+      in: query
+      name: dimensionAtObservation
+      description: |
+        Indicates **how the data should be packaged**.
+
+        The options are:
+
+        * `TIME_PERIOD`: A timeseries view
+        * The ID of any other dimension: A cross-sectional view of the data
+        * `AllDimensions`: A flat view of the data.
+      required: false
+      schema:
+        type: string
+        pattern: '^[A-Za-z][A-Za-z\d_-]*$'
+        default: TIME_PERIOD
+    detail:
+      in: query
+      name: detail
+      description: |
+        The **amount of information** to be returned.
+
+        Possible options are:
+
+        * `full`: All data and documentation
+        * `dataonly`: Everything except attributes
+        * `serieskeysonly`: The series keys. This is useful to return the series that match a certain query, without returning the actual data (e.g. overview page)
+        * `nodata`: The series, including attributes and annotations, without observations.
+      required: false
+      schema:
+        type: string
+        enum: [ full, dataonly, serieskeysonly, nodata ]
+        default: full
+    structDetail:
+      in: query
+      name: detail
+      description: |
+        The amount of information to be returned.
+
+        Possible values are:
+
+        * `allstubs`: All artefacts should be returned as stubs, containing only identification information, as well as the artefacts' name
+        * `referencestubs`: Referenced artefacts should be returned as stubs, containing only identification information, as well as the artefacts' name
+        * `referencepartial`: Referenced item schemes should only include items used by the artefact to be returned. For example, a concept scheme would only contain the concepts used in a DSD, and its isPartial flag would be set to `true`
+        * `allcompletestubs`: All artefacts should be returned as complete stubs, containing identification information, the artefacts' name, description, annotations and isFinal information
+        * `referencecompletestubs`: Referenced artefacts should be returned as complete stubs, containing identification information, the artefacts' name, description, annotations and isFinal information
+        * `full`: All available information for all artefacts should be returned
+      required: false
+      schema:
+        type: string
+        enum: [ allstubs, referencestubs, referencepartial, allcompletestubs, referencecompletestubs, full ]
+        default: full
+    structDetail3.0:
+      in: query
+      name: detail
+      description: |
+        The amount of information to be returned.
+
+        Possible values are:
+
+        * `allstubs`: All artefacts should be returned as stubs, containing only identification information, as well as the artefacts' name
+        * `referencestubs`: Referenced artefacts should be returned as stubs, containing only identification information, as well as the artefacts' name
+        * `allcompletestubs`: All artefacts should be returned as complete stubs, containing identification information, the artefacts' name, description, annotations and isFinal information
+        * `referencecompletestubs`: Referenced artefacts should be returned as complete stubs, containing identification information, the artefacts' name, description, annotations and isFinal information
+        * `full`: All available information for all artefacts should be returned
+      required: false
+      schema:
+        type: string
+        enum: [ allstubs, referencestubs, allcompletestubs, referencecompletestubs, full ]
+        default: full
+    structDetail3.0_dataflow:
+      in: query
+      name: detail
+      description: |
+        The amount of information to be returned.
+
+        Possible values are:
+
+        * `allstubs`: All artefacts should be returned as stubs, containing only identification information, as well as the artefacts' name
+        * `referencestubs`: Referenced artefacts should be returned as stubs, containing only identification information, as well as the artefacts' name
+        * `referencepartial`: Referenced item schemes should only include items used by the artefact to be returned. For example, a concept scheme would only contain the concepts used in a DSD, and its isPartial flag would be set to `true`. Only available if the "references" parameter is set to children or descendants.
+        * `allcompletestubs`: All artefacts should be returned as complete stubs, containing identification information, the artefacts' name, description, annotations and isFinal information
+        * `referencecompletestubs`: Referenced artefacts should be returned as complete stubs, containing identification information, the artefacts' name, description, annotations and isFinal information
+        * `full`: All available information for all artefacts should be returned
+      required: false
+      schema:
+        type: string
+        enum: [ allstubs, referencestubs, referencepartial, allcompletestubs, referencecompletestubs, full ]
+        default: full
+    references:
+      in: query
+      name: references
+      description: |
+        Instructs the web service to return (or not) the artefacts referenced by the artefact to be returned.
+
+        Possible values are:
+
+        * `none`: No reference will be returned
+        * `parents`: Returns the artefacts that use the artefact matching the query
+        * `parentsandsiblings`: Returns the artefacts that use the artefact matching the query, as well as the artefacts referenced by these artefacts
+        * `children`: Returns the artefacts referenced by the artefact to be returned
+        * `descendants`: References of references, up to any level, will be returned
+        * `all`: The combination of parentsandsiblings and descendants
+      required: false
+      schema:
+        type: string
+        enum: [ none, parents, parentsandsiblings, children, descendants, all ]
+        default: none
+    references_n:
+      in: query
+      name: references
+      description: |
+        Instructs the web service to not return the artefact referenced by the artefact to be returned.
+
+        Possible value is:
+
+        * `none`: No reference will be returned
+      required: false
+      schema:
+        type: string
+        enum: [ none ]
+        default: none
+    references_n_p_ps:
+      in: query
+      name: references
+      description: |
+        Instructs the web service to return (or not) the artefacts referenced by the artefact to be returned.
+
+        Possible values are:
+
+        * `none`: No reference will be returned
+        * `parents`: Returns the artefacts that use the artefact matching the query
+        * `parentsandsiblings`: Returns the artefacts that use the artefact matching the query, as well as the artefacts referenced by these artefacts
+      required: false
+      schema:
+        type: string
+        enum: [ none, parents, parentsandsiblings ]
+        default: none
+    references_n_c_d:
+      in: query
+      name: references
+      description: |
+        Instructs the web service to return (or not) the artefacts referenced by the artefact to be returned.
+
+        Possible values are:
+
+        * `none`: No reference will be returned
+        * `children`: Returns the artefacts referenced by the artefact to be returned
+        * `descendants`: References of references, up to any level, will be returned
+      required: false
+      schema:
+        type: string
+        enum: [ none, children, descendants ]
+        default: none
+    accept-encoding:
+      in: header
+      name: Accept-Encoding
+      description: |
+        Specifies whether the response should be compressed and how.
+
+        `identity` (the default) indicates that no compression will be performed.
+      schema:
+        type: string
+        enum: [ gzip ]
+        default: identity
+    accept-language:
+      in: header
+      name: Accept-Language
+      description: |
+        Specifies the client's preferred language.
+      schema:
+        type: string
+    c:
+      in: query
+      name: c
+      description: |
+        Filter data by component value (e.g. c[FREQ]=A).
+
+        Multiple values are supported.
+
+        In addition, operators may be used:
+
+        Operator | Meaning | Note
+        -- | -- | --
+        eq | Equals | Default if no operator is specified and there is only one value (e.g. `c[FREQ]=M` is equivalent to `c[FREQ]=eq:M`)
+        lt | Less than |
+        le | Less than or equal to |
+        gt | Greater than |
+        ge | Greater than or equal to |
+
+        Operators appear as prefix to the component value(s) and are separated from it by a `:` (e.g. `c[TIME_PERIOD]=ge:2020-01+le:2020-12`).
+        The plus (+) can be used whenever an AND operator is required (i.e. c[TIME_PERIOD]=ge:2020-01+le:2020-12).
+
+        The comma (,) effectively acts as an OR operator.
+
+        The component "c" parameter can be used to additionally define filters on Dimensions on top of key parameter. The c parameter does not filter on attributes, neither measures values.
+      required: false
+      schema:
+        type: object
+      style: deepObject
+      explode: true
+    attributes:
+      in: query
+      name: attributes
+      description: |
+        The attributes to be returned.
+
+        For example, it is possible to instruct the web service to return data only (i.e. no attributes).
+        Note: some restrictions apply depending of the value of the "measures" query parameter:
+        
+        |attributes \ measures    |no value / "all" | "none"       |
+        |-------------------------|-----------------|--------------|
+        |"none"                   | supported       | supported    |
+        |"obs"                    | not supported   | not supported|
+        |"series"                 | not supported   | supported    |
+        |no value / "dsd" / "all" |	supported       | not supported|
+
+      required: false
+      schema:
+        type: string
+        enum:
+          - dsd
+          - series
+          - obs
+          - all
+          - none
+      style: form
+      explode: false
+    measures:
+      in: query
+      name: measures
+      description: |
+        The measures to be returned.
+        
+        Note: some restrictions apply depending of the value of the "attributes" query parameter:
+        
+        |attributes \ measures    |no value / "all" | "none"       |
+        |-------------------------|-----------------|--------------|
+        |"none"                   | supported       | supported    |
+        |"obs"                    | not supported   | not supported|
+        |"series"                 | not supported   | supported    |
+        |no value / "dsd" / "all" |	supported       | not supported|
+
+      required: false
+      schema:
+        type: string
+        enum:
+          - all
+          - none
+      style: form
+      explode: false
+    format_data3.0:
+      in: query
+      name: format
+      description: |
+        The format used to return data (extension parameter). When a "format" is specified, the specific "formatVersion" needs also to be specified.
+        
+        |Format name                          |"format" parameter     | "formatVersion" parameter   |
+        |-------------------------------------|-----------------------|-----------------------------|
+        |Structure-specific data 3.0 (default)| structurespecificdata | 3.0                         |
+        |SDMX-CSV 2.0                         | csvdata               | 2.0                         |
+        
+      required: false
+      schema:
+        type: string
+        enum:
+          - structurespecificdata
+          - csvdata
+      style: form
+      explode: false
+    formatversion_data3.0:
+      in: query
+      name: formatVersion
+      description: |
+        The version of the format used to return data (extension parameter). When a "formatVersion" is specified, the specific "format" needs also to be specified.
+        
+        |Format name                          |"format" parameter     | "formatVersion" parameter   |
+        |-------------------------------------|-----------------------|-----------------------------|
+        |Structure-specific data 3.0 (default)| structurespecificdata | 3.0                         |
+        |SDMX-CSV 2.0                         | csvdata               | 2.0                         |
+        
+      required: false
+      schema:
+        type: string
+        enum:
+          - '2.0'
+          - '3.0'
+      style: form
+      explode: false
+    format_struct3.0:
+      in: query
+      name: format
+      description: |
+        The format used to return the structural metadata (extension parameter). When a "format" is specified, the specific "formatVersion" needs also to be specified.
+        
+        |Format name                          |"format" parameter   | "formatVersion" parameter   |
+        |-------------------------------------|---------------------|-----------------------------|
+        |Structure 3.0 (default)              | structure           | 3.0                         |
+        
+      required: false
+      schema:
+        type: string
+        enum:
+          - structure
+      style: form
+      explode: false
+    formatversion_struct3.0:
+      in: query
+      name: formatVersion
+      description: |
+        The version of the format used to return the structural metadata (extension parameter). When a "formatVersion" is specified, the specific "format" needs also to be specified.
+        
+        |Format name                          |"format" parameter   | "formatVersion" parameter   |
+        |-------------------------------------|---------------------|-----------------------------|
+        |Structure 3.0 (default)              | structure           | 3.0                         |
+        
+      required: false
+      schema:
+        type: string
+        enum:
+          - '3.0'
+      style: form
+      explode: false
+    compress:
+      in: query
+      name: compress
+      description: |
+        Whether the response is compressed (default, gzip format) or not.
+        
+      required: false
+      schema:
+        type: string
+        enum:
+          - true
+          - false
+      style: form
+      explode: false
+
+  responses:
+    '200':
+      description: OK
+      content:
+        application/vnd.sdmx.genericdata+xml;version=2.1:
+          schema:
+            type: string
+        application/vnd.sdmx.structurespecificdata+xml;version=2.1:
+          schema:
+            type: string
+        application/vnd.sdmx.generictimeseriesdata+xml;version=2.1:
+          schema:
+            type: string
+        application/vnd.sdmx.structurespecifictimeseriesdata+xml;version=2.1:
+          schema:
+            type: string
+        application/vnd.sdmx.data+csv;version=1.0.0:
+          schema:
+            type: string
+    '200-schemas':
+      description: OK
+      content:
+        application/vnd.sdmx.schema+xml;version=2.1:
+          schema:
+            type: string
+        application/vnd.sdmx.structure+xml;version=2.1:
+          schema:
+            type: string
+        application/vnd.sdmx.structure+json;version=1.0.0:
+          schema:
+            type: string
+    '200-struct':
+      description: OK
+      content:
+        application/vnd.sdmx.structure+xml;version=2.1:
+          schema:
+            type: string
+        application/vnd.sdmx.structure+json;version=1.0.0:
+          schema:
+            type: string
+    '200-dcat':
+      description: OK
+      content:
+        application/octet-stream:
+          schema:
+            type: string
+            format: binary
+    '200-metabase':
+      description: OK
+      content:
+        application/octet-stream:
+          schema:
+            type: string
+            format: binary
+    '200-rss':
+      description: OK
+      content:
+        application/xml:
+          schema:
+            type: string
+    '200-toctxt':
+      description: OK
+      content:
+        text/plain:
+          schema:
+            type: string
+    '200-tocxml':
+      description: OK
+      content:
+        application/xml:
+          schema:
+            type: string
+    '200-tocxsd':
+      description: OK
+      content:
+        application/xml:
+          schema:
+            type: string
+    '200-statistics':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: string
+    '200-struct-sdmx3.0':
+      description: OK
+      content:
+        application/vnd.sdmx.structure+xml;version=3.0:
+          schema:
+            type: string
+    '200-sdmx3.0':
+      description: OK
+      content:
+        application/vnd.sdmx.data+xml;version=3.0.0:
+          schema:
+            type: string
+        application/vnd.sdmx.genericdata+xml;version=2.1:
+          schema:
+            type: string
+        application/vnd.sdmx.structurespecificdata+xml;version=2.1:
+          schema:
+            type: string
+        application/vnd.sdmx.generictimeseriesdata+xml;version=2.1:
+          schema:
+            type: string
+        application/vnd.sdmx.data+csv;version=2.0.0:
+          schema:
+            type: string
+        application/vnd.sdmx.data+csv;version=1.0.0:
+          schema:
+            type: string
+    '304':
+      description: No changes
+    '400':
+      description: Bad syntax
+    '401':
+      description: Unauthorized
+    '403':
+      description: Forbidden
+    '404':
+      description: Not found
+    '406':
+      description: Not acceptable
+    '413':
+      description: Request entity too large
+    '414':
+      description: URI too long
+    '500':
+      description: Internal server error
+    '501':
+      description: Not implemented
+    '503':
+      description: Service unavailable
