@@ -1,0 +1,202 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Eurostat SDMX RESTful Async SDMX 3.0 Data queries API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SDMX 3.0 Data queries",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/3.0/data/dataflow/:agencyID/:resourceID/:version",
+            "headers": [
+              {
+                "name": "Accept-Encoding",
+                "value": ""
+              },
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "agencyID",
+                "value": "",
+                "type": "path",
+                "description": "The agency maintaining the artefact used to generate the schema to be returned."
+              },
+              {
+                "name": "resourceID",
+                "value": "",
+                "type": "path",
+                "description": "The id of the artefact used to generate the schema to be returned."
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path",
+                "description": "The version of the artefact to be returned.\n\nThe `+` can be used to return the latest production version of the matching resource.\n"
+              },
+              {
+                "name": "c",
+                "value": "",
+                "type": "query",
+                "description": "Filter data by component value (e.g. c[FREQ]=A).\n\nMultiple values are supported.\n\nIn addition, operators may be used:\n\nOperator | Meaning | Note\n-- | -- | --\neq | Equals | Default if no operator is specified and there is only one value (e.g. `c[FREQ]=M` is equivalent to `c[FREQ]=eq:M`)\nlt | Less than |\nle | Less than or equal to |\ngt | Greater than |\nge | Greater than or equal to |\n\nOperators appear as prefix to the component value(s) and are separated from it by a `:` (e.g. `c[TIME_PERIOD]=ge:2020-01+le:2020-12`).\nThe plus (+) can be used whenever an AND operator is required (i.e. c[TIME_PERIOD]=ge:2020-01+le:2020-12).\n\nThe comma (,) effectively acts as an OR operator.\n\nThe component \"c\" parameter can be used to additionally define filters on Dimensions on top of key parameter. The c parameter does not filter on attributes, neither measures values.\n"
+              },
+              {
+                "name": "attributes",
+                "value": "",
+                "type": "query",
+                "description": "The attributes to be returned.\n\nFor example, it is possible to instruct the web service to return data only (i.e. no attributes).\nNote: some restrictions apply depending of the value of the \"measures\" query parameter:\n\n|attributes \\ measures    |no value / \"all\" | \"none\"       |\n|-------------------------|-----------------|--------------|\n|\"none\"                   | supported       | supported    |\n|\"obs\"                    | not supported   | not supported|\n|\"series\"                 | not supported   | supported    |\n|no value / \"dsd\" / \"all\" |\tsupported       | not supported|\n"
+              },
+              {
+                "name": "measures",
+                "value": "",
+                "type": "query",
+                "description": "The measures to be returned.\n\nNote: some restrictions apply depending of the value of the \"attributes\" query parameter:\n\n|attributes \\ measures    |no value / \"all\" | \"none\"       |\n|-------------------------|-----------------|--------------|\n|\"none\"                   | supported       | supported    |\n|\"obs\"                    | not supported   | not supported|\n|\"series\"                 | not supported   | supported    |\n|no value / \"dsd\" / \"all\" |\tsupported       | not supported|\n"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The format used to return data (extension parameter). When a \"format\" is specified, the specific \"formatVersion\" needs also to be specified.\n\n|Format name                          |\"format\" parameter     | \"formatVersion\" parameter   |\n|-------------------------------------|-----------------------|-----------------------------|\n|Structure-specific data 3.0 (default)| structurespecificdata | 3.0                         |\n|SDMX-CSV 2.0                         | csvdata               | 2.0                         |\n"
+              },
+              {
+                "name": "formatVersion",
+                "value": "",
+                "type": "query",
+                "description": "The version of the format used to return data (extension parameter). When a \"formatVersion\" is specified, the specific \"format\" needs also to be specified.\n\n|Format name                          |\"format\" parameter     | \"formatVersion\" parameter   |\n|-------------------------------------|-----------------------|-----------------------------|\n|Structure-specific data 3.0 (default)| structurespecificdata | 3.0                         |\n|SDMX-CSV 2.0                         | csvdata               | 2.0                         |\n"
+              },
+              {
+                "name": "lang",
+                "value": "",
+                "type": "query",
+                "description": "The language of the requested data (extension parameter). Only available for the SDMX CSV format.\n"
+              },
+              {
+                "name": "labels",
+                "value": "",
+                "type": "query",
+                "description": "The information to be returned for dimension and attribute values (extension parameter). Only available for the SDMX CSV format.\nPossible values are:\n * id (default): one column is used for each dimension / attribute and contains the code of the position / attribute.\n * name: one column is used for each dimension / attribute and contains the localized name of the position / attribute.\n * both: two columns are used for each dimension / attribute and contains the code and localized name of the position / attribute.\n"
+              },
+              {
+                "name": "compress",
+                "value": "",
+                "type": "query",
+                "description": "Whether the response is compressed (default, gzip format) or not.\n"
+              }
+            ]
+          },
+          "docs": "Get data"
+        },
+        {
+          "info": {
+            "name": "Get data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/3.0/data/dataflow/:agencyID/:resourceID/:version/:key",
+            "headers": [
+              {
+                "name": "Accept-Encoding",
+                "value": ""
+              },
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "agencyID",
+                "value": "",
+                "type": "path",
+                "description": "The agency maintaining the artefact used to generate the schema to be returned."
+              },
+              {
+                "name": "resourceID",
+                "value": "",
+                "type": "path",
+                "description": "The id of the artefact used to generate the schema to be returned."
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path",
+                "description": "The version of the artefact to be returned.\n\nThe `+` can be used to return the latest production version of the matching resource.\n"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "path",
+                "description": "The combination of dimension values identifying series or slices of the cube (for example `D.USD.EUR.SP00.A`).\n\nWildcards are supported using `*` (`D.*.EUR.SP00.A`).\n"
+              },
+              {
+                "name": "c",
+                "value": "",
+                "type": "query",
+                "description": "Filter data by component value (e.g. c[FREQ]=A).\n\nMultiple values are supported.\n\nIn addition, operators may be used:\n\nOperator | Meaning | Note\n-- | -- | --\neq | Equals | Default if no operator is specified and there is only one value (e.g. `c[FREQ]=M` is equivalent to `c[FREQ]=eq:M`)\nlt | Less than |\nle | Less than or equal to |\ngt | Greater than |\nge | Greater than or equal to |\n\nOperators appear as prefix to the component value(s) and are separated from it by a `:` (e.g. `c[TIME_PERIOD]=ge:2020-01+le:2020-12`).\nThe plus (+) can be used whenever an AND operator is required (i.e. c[TIME_PERIOD]=ge:2020-01+le:2020-12).\n\nThe comma (,) effectively acts as an OR operator.\n\nThe component \"c\" parameter can be used to additionally define filters on Dimensions on top of key parameter. The c parameter does not filter on attributes, neither measures values.\n"
+              },
+              {
+                "name": "attributes",
+                "value": "",
+                "type": "query",
+                "description": "The attributes to be returned.\n\nFor example, it is possible to instruct the web service to return data only (i.e. no attributes).\nNote: some restrictions apply depending of the value of the \"measures\" query parameter:\n\n|attributes \\ measures    |no value / \"all\" | \"none\"       |\n|-------------------------|-----------------|--------------|\n|\"none\"                   | supported       | supported    |\n|\"obs\"                    | not supported   | not supported|\n|\"series\"                 | not supported   | supported    |\n|no value / \"dsd\" / \"all\" |\tsupported       | not supported|\n"
+              },
+              {
+                "name": "measures",
+                "value": "",
+                "type": "query",
+                "description": "The measures to be returned.\n\nNote: some restrictions apply depending of the value of the \"attributes\" query parameter:\n\n|attributes \\ measures    |no value / \"all\" | \"none\"       |\n|-------------------------|-----------------|--------------|\n|\"none\"                   | supported       | supported    |\n|\"obs\"                    | not supported   | not supported|\n|\"series\"                 | not supported   | supported    |\n|no value / \"dsd\" / \"all\" |\tsupported       | not supported|\n"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The format used to return data (extension parameter). When a \"format\" is specified, the specific \"formatVersion\" needs also to be specified.\n\n|Format name                          |\"format\" parameter     | \"formatVersion\" parameter   |\n|-------------------------------------|-----------------------|-----------------------------|\n|Structure-specific data 3.0 (default)| structurespecificdata | 3.0                         |\n|SDMX-CSV 2.0                         | csvdata               | 2.0                         |\n"
+              },
+              {
+                "name": "formatVersion",
+                "value": "",
+                "type": "query",
+                "description": "The version of the format used to return data (extension parameter). When a \"formatVersion\" is specified, the specific \"format\" needs also to be specified.\n\n|Format name                          |\"format\" parameter     | \"formatVersion\" parameter   |\n|-------------------------------------|-----------------------|-----------------------------|\n|Structure-specific data 3.0 (default)| structurespecificdata | 3.0                         |\n|SDMX-CSV 2.0                         | csvdata               | 2.0                         |\n"
+              },
+              {
+                "name": "lang",
+                "value": "",
+                "type": "query",
+                "description": "The language of the requested data (extension parameter). Only available for the SDMX CSV format.\n"
+              },
+              {
+                "name": "labels",
+                "value": "",
+                "type": "query",
+                "description": "The information to be returned for dimension and attribute values (extension parameter). Only available for the SDMX CSV format.\nPossible values are:\n * id (default): one column is used for each dimension / attribute and contains the code of the position / attribute.\n * name: one column is used for each dimension / attribute and contains the localized name of the position / attribute.\n * both: two columns are used for each dimension / attribute and contains the code and localized name of the position / attribute.\n"
+              },
+              {
+                "name": "compress",
+                "value": "",
+                "type": "query",
+                "description": "Whether the response is compressed (default, gzip format) or not.\n"
+              }
+            ]
+          },
+          "docs": "Get data"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,124 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Eurostat SDMX RESTful Async SDMX 2.1 Navigation Structure queries API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SDMX 2.1 Navigation Structure queries",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get category schemes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/categoryscheme/:agencyID/:resourceID/:version",
+            "headers": [
+              {
+                "name": "Accept-Encoding",
+                "value": ""
+              },
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "agencyID",
+                "value": "",
+                "type": "path",
+                "description": "The agency maintaining the artefact to be returned.\n\nThe keyword `all` can be used to indicate that artefacts maintained by any maintenance agency should be returned.\n"
+              },
+              {
+                "name": "resourceID",
+                "value": "",
+                "type": "path",
+                "description": "The id of the artefact to be returned.\n\nThe keyword `all` can be used to indicate that any artefact of the specified resource type, {agencyID} and {version} should be returned.\n"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path",
+                "description": "The version of the artefact to be returned.\n\nThe keyword `all` can be used to return all versions of the matching resource.\n\nThe keyword `latest` can be used to return the latest production version of the matching resource.\n"
+              },
+              {
+                "name": "references",
+                "value": "",
+                "type": "query",
+                "description": "Instructs the web service to return (or not) the artefacts referenced by the artefact to be returned.\n\nPossible values are:\n\n* `none`: No reference will be returned\n* `parents`: Returns the artefacts that use the artefact matching the query\n* `parentsandsiblings`: Returns the artefacts that use the artefact matching the query, as well as the artefacts referenced by these artefacts\n* `children`: Returns the artefacts referenced by the artefact to be returned\n* `descendants`: References of references, up to any level, will be returned\n* `all`: The combination of parentsandsiblings and descendants\n"
+              },
+              {
+                "name": "detail",
+                "value": "",
+                "type": "query",
+                "description": "The amount of information to be returned.\n\nPossible values are:\n\n* `allstubs`: All artefacts should be returned as stubs, containing only identification information, as well as the artefacts' name\n* `referencestubs`: Referenced artefacts should be returned as stubs, containing only identification information, as well as the artefacts' name\n* `referencepartial`: Referenced item schemes should only include items used by the artefact to be returned. For example, a concept scheme would only contain the concepts used in a DSD, and its isPartial flag would be set to `true`\n* `allcompletestubs`: All artefacts should be returned as complete stubs, containing identification information, the artefacts' name, description, annotations and isFinal information\n* `referencecompletestubs`: Referenced artefacts should be returned as complete stubs, containing identification information, the artefacts' name, description, annotations and isFinal information\n* `full`: All available information for all artefacts should be returned\n"
+              }
+            ]
+          },
+          "docs": "Get category schemes"
+        },
+        {
+          "info": {
+            "name": "Get categorisations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/categorisation/:agencyID/:resourceID/:version",
+            "headers": [
+              {
+                "name": "Accept-Encoding",
+                "value": ""
+              },
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "agencyID",
+                "value": "",
+                "type": "path",
+                "description": "The agency maintaining the artefact to be returned.\n\nThe keyword `all` can be used to indicate that artefacts maintained by any maintenance agency should be returned.\n"
+              },
+              {
+                "name": "resourceID",
+                "value": "",
+                "type": "path",
+                "description": "The id of the artefact to be returned.\n\nThe keyword `all` can be used to indicate that any artefact of the specified resource type, {agencyID} and {version} should be returned.\n"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path",
+                "description": "The version of the artefact to be returned.\n\nThe keyword `all` can be used to return all versions of the matching resource.\n\nThe keyword `latest` can be used to return the latest production version of the matching resource.\n"
+              },
+              {
+                "name": "references",
+                "value": "",
+                "type": "query",
+                "description": "Instructs the web service to return (or not) the artefacts referenced by the artefact to be returned.\n\nPossible values are:\n\n* `none`: No reference will be returned\n* `parents`: Returns the artefacts that use the artefact matching the query\n* `parentsandsiblings`: Returns the artefacts that use the artefact matching the query, as well as the artefacts referenced by these artefacts\n* `children`: Returns the artefacts referenced by the artefact to be returned\n* `descendants`: References of references, up to any level, will be returned\n* `all`: The combination of parentsandsiblings and descendants\n"
+              },
+              {
+                "name": "detail",
+                "value": "",
+                "type": "query",
+                "description": "The amount of information to be returned.\n\nPossible values are:\n\n* `allstubs`: All artefacts should be returned as stubs, containing only identification information, as well as the artefacts' name\n* `referencestubs`: Referenced artefacts should be returned as stubs, containing only identification information, as well as the artefacts' name\n* `referencepartial`: Referenced item schemes should only include items used by the artefact to be returned. For example, a concept scheme would only contain the concepts used in a DSD, and its isPartial flag would be set to `true`\n* `allcompletestubs`: All artefacts should be returned as complete stubs, containing identification information, the artefacts' name, description, annotations and isFinal information\n* `referencecompletestubs`: Referenced artefacts should be returned as complete stubs, containing identification information, the artefacts' name, description, annotations and isFinal information\n* `full`: All available information for all artefacts should be returned\n"
+              }
+            ]
+          },
+          "docs": "Get categorisations"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

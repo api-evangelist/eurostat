@@ -1,0 +1,2774 @@
+{
+  "item": [
+    {
+      "id": "a670f75c-6507-4c65-b23e-4d5b8e76924b",
+      "name": "SDMX 3.0 Data queries",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "31760fa0-1513-4df8-9236-d16b78def3e6",
+          "name": "Get data",
+          "request": {
+            "name": "Get data",
+            "description": {},
+            "url": {
+              "path": [
+                "sdmx",
+                "3.0",
+                "data",
+                "dataflow",
+                ":agencyID",
+                ":resourceID",
+                ":version"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "attributes",
+                  "value": "<string>",
+                  "description": "The attributes to be returned.\n\nFor example, it is possible to instruct the web service to return data only (i.e. no attributes).\nNote: some restrictions apply depending of the value of the \"measures\" query parameter:\n\n|attributes \\ measures    |no value / \"all\" | \"none\"       |\n|-------------------------|-----------------|--------------|\n|\"none\"                   | supported       | supported    |\n|\"obs\"                    | not supported   | not supported|\n|\"series\"                 | not supported   | supported    |\n|no value / \"dsd\" / \"all\" |\tsupported       | not supported|\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "measures",
+                  "value": "<string>",
+                  "description": "The measures to be returned.\n\nNote: some restrictions apply depending of the value of the \"attributes\" query parameter:\n\n|attributes \\ measures    |no value / \"all\" | \"none\"       |\n|-------------------------|-----------------|--------------|\n|\"none\"                   | supported       | supported    |\n|\"obs\"                    | not supported   | not supported|\n|\"series\"                 | not supported   | supported    |\n|no value / \"dsd\" / \"all\" |\tsupported       | not supported|\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "<string>",
+                  "description": "The format used to return data (extension parameter). When a \"format\" is specified, the specific \"formatVersion\" needs also to be specified.\n\n|Format name                          |\"format\" parameter     | \"formatVersion\" parameter   |\n|-------------------------------------|-----------------------|-----------------------------|\n|Structure-specific data 3.0 (default)| structurespecificdata | 3.0                         |\n|SDMX-CSV 2.0                         | csvdata               | 2.0                         |\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "formatVersion",
+                  "value": "<string>",
+                  "description": "The version of the format used to return data (extension parameter). When a \"formatVersion\" is specified, the specific \"format\" needs also to be specified.\n\n|Format name                          |\"format\" parameter     | \"formatVersion\" parameter   |\n|-------------------------------------|-----------------------|-----------------------------|\n|Structure-specific data 3.0 (default)| structurespecificdata | 3.0                         |\n|SDMX-CSV 2.0                         | csvdata               | 2.0                         |\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "lang",
+                  "value": "<string>",
+                  "description": "The language of the requested data (extension parameter). Only available for the SDMX CSV format.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "labels",
+                  "value": "<string>",
+                  "description": "The information to be returned for dimension and attribute values (extension parameter). Only available for the SDMX CSV format.\nPossible values are:\n * id (default): one column is used for each dimension / attribute and contains the code of the position / attribute.\n * name: one column is used for each dimension / attribute and contains the localized name of the position / attribute.\n * both: two columns are used for each dimension / attribute and contains the code and localized name of the position / attribute.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "compress",
+                  "value": "<string>",
+                  "description": "Whether the response is compressed (default, gzip format) or not.\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "agencyID",
+                  "description": "(Required) The agency maintaining the artefact used to generate the schema to be returned."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceID",
+                  "description": "(Required) The id of the artefact used to generate the schema to be returned."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "version",
+                  "description": "(Required) The version of the artefact to be returned.\n\nThe `+` can be used to return the latest production version of the matching resource.\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                "key": "Accept-Encoding",
+                "value": "identity"
+              },
+              {
+                "disabled": false,
+                "description": "Specifies the client's preferred language.\n",
+                "key": "Accept-Language",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.sdmx.data+xml;version=3.0.0"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d7321425-356c-48de-996b-e2a68b4ac32b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "3.0",
+                    "data",
+                    "dataflow",
+                    ":agencyID",
+                    ":resourceID",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "attributes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "measures",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "formatVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "labels",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compress",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyID",
+                      "description": "(Required) The agency maintaining the artefact used to generate the schema to be returned."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceID",
+                      "description": "(Required) The id of the artefact used to generate the schema to be returned."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version of the artefact to be returned.\n\nThe `+` can be used to return the latest production version of the matching resource.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.sdmx.data+xml;version=3.0.0"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.sdmx.generictimeseriesdata+xml;version=2.1"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            },
+            {
+              "id": "05b7df53-8c92-4ff6-9821-c617d244aa42",
+              "name": "No changes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "3.0",
+                    "data",
+                    "dataflow",
+                    ":agencyID",
+                    ":resourceID",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "attributes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "measures",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "formatVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "labels",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compress",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyID",
+                      "description": "(Required) The agency maintaining the artefact used to generate the schema to be returned."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceID",
+                      "description": "(Required) The id of the artefact used to generate the schema to be returned."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version of the artefact to be returned.\n\nThe `+` can be used to return the latest production version of the matching resource.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "64b169aa-d91f-4353-9dce-ab8420d359c8",
+              "name": "Bad syntax",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "3.0",
+                    "data",
+                    "dataflow",
+                    ":agencyID",
+                    ":resourceID",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "attributes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "measures",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "formatVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "labels",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compress",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyID",
+                      "description": "(Required) The agency maintaining the artefact used to generate the schema to be returned."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceID",
+                      "description": "(Required) The id of the artefact used to generate the schema to be returned."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version of the artefact to be returned.\n\nThe `+` can be used to return the latest production version of the matching resource.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fb725547-470a-4622-957c-0afda04e07bd",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "3.0",
+                    "data",
+                    "dataflow",
+                    ":agencyID",
+                    ":resourceID",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "attributes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "measures",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "formatVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "labels",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compress",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyID",
+                      "description": "(Required) The agency maintaining the artefact used to generate the schema to be returned."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceID",
+                      "description": "(Required) The id of the artefact used to generate the schema to be returned."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version of the artefact to be returned.\n\nThe `+` can be used to return the latest production version of the matching resource.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3d41d00d-0ed3-43e5-b235-39e2bf89fcc6",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "3.0",
+                    "data",
+                    "dataflow",
+                    ":agencyID",
+                    ":resourceID",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "attributes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "measures",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "formatVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "labels",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compress",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyID",
+                      "description": "(Required) The agency maintaining the artefact used to generate the schema to be returned."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceID",
+                      "description": "(Required) The id of the artefact used to generate the schema to be returned."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version of the artefact to be returned.\n\nThe `+` can be used to return the latest production version of the matching resource.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "17bd5c2c-061d-4d5d-bd65-15c7f77aaf13",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "3.0",
+                    "data",
+                    "dataflow",
+                    ":agencyID",
+                    ":resourceID",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "attributes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "measures",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "formatVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "labels",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compress",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyID",
+                      "description": "(Required) The agency maintaining the artefact used to generate the schema to be returned."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceID",
+                      "description": "(Required) The id of the artefact used to generate the schema to be returned."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version of the artefact to be returned.\n\nThe `+` can be used to return the latest production version of the matching resource.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5cb35837-ec96-4593-b215-b8066ef9017a",
+              "name": "Not acceptable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "3.0",
+                    "data",
+                    "dataflow",
+                    ":agencyID",
+                    ":resourceID",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "attributes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "measures",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "formatVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "labels",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compress",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyID",
+                      "description": "(Required) The agency maintaining the artefact used to generate the schema to be returned."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceID",
+                      "description": "(Required) The id of the artefact used to generate the schema to be returned."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version of the artefact to be returned.\n\nThe `+` can be used to return the latest production version of the matching resource.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d0d299f1-f4e3-4ab4-8099-03266de9986b",
+              "name": "Request entity too large",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "3.0",
+                    "data",
+                    "dataflow",
+                    ":agencyID",
+                    ":resourceID",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "attributes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "measures",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "formatVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "labels",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compress",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyID",
+                      "description": "(Required) The agency maintaining the artefact used to generate the schema to be returned."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceID",
+                      "description": "(Required) The id of the artefact used to generate the schema to be returned."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version of the artefact to be returned.\n\nThe `+` can be used to return the latest production version of the matching resource.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "981297a2-7cc7-464f-853a-41cffdffcc6f",
+              "name": "URI too long",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "3.0",
+                    "data",
+                    "dataflow",
+                    ":agencyID",
+                    ":resourceID",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "attributes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "measures",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "formatVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "labels",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compress",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyID",
+                      "description": "(Required) The agency maintaining the artefact used to generate the schema to be returned."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceID",
+                      "description": "(Required) The id of the artefact used to generate the schema to be returned."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version of the artefact to be returned.\n\nThe `+` can be used to return the latest production version of the matching resource.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Request-URI Too Long",
+              "code": 414,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "06326783-2cc0-4365-b953-d32e79184a2e",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "3.0",
+                    "data",
+                    "dataflow",
+                    ":agencyID",
+                    ":resourceID",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "attributes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "measures",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "formatVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "labels",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compress",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyID",
+                      "description": "(Required) The agency maintaining the artefact used to generate the schema to be returned."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceID",
+                      "description": "(Required) The id of the artefact used to generate the schema to be returned."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version of the artefact to be returned.\n\nThe `+` can be used to return the latest production version of the matching resource.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7110133c-a0ef-4511-87ad-ba2811115f6b",
+              "name": "Not implemented",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "3.0",
+                    "data",
+                    "dataflow",
+                    ":agencyID",
+                    ":resourceID",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "attributes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "measures",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "formatVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "labels",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compress",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyID",
+                      "description": "(Required) The agency maintaining the artefact used to generate the schema to be returned."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceID",
+                      "description": "(Required) The id of the artefact used to generate the schema to be returned."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version of the artefact to be returned.\n\nThe `+` can be used to return the latest production version of the matching resource.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "652596da-4de6-41f1-a0bc-3e5376c759fe",
+              "name": "Service unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "3.0",
+                    "data",
+                    "dataflow",
+                    ":agencyID",
+                    ":resourceID",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "attributes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "measures",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "formatVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "labels",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compress",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyID",
+                      "description": "(Required) The agency maintaining the artefact used to generate the schema to be returned."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceID",
+                      "description": "(Required) The id of the artefact used to generate the schema to be returned."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version of the artefact to be returned.\n\nThe `+` can be used to return the latest production version of the matching resource.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "04e027c3-6bb1-4d1d-96bd-2dbf1e50722a",
+          "name": "Get data",
+          "request": {
+            "name": "Get data",
+            "description": {},
+            "url": {
+              "path": [
+                "sdmx",
+                "3.0",
+                "data",
+                "dataflow",
+                ":agencyID",
+                ":resourceID",
+                ":version",
+                ":key"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "attributes",
+                  "value": "<string>",
+                  "description": "The attributes to be returned.\n\nFor example, it is possible to instruct the web service to return data only (i.e. no attributes).\nNote: some restrictions apply depending of the value of the \"measures\" query parameter:\n\n|attributes \\ measures    |no value / \"all\" | \"none\"       |\n|-------------------------|-----------------|--------------|\n|\"none\"                   | supported       | supported    |\n|\"obs\"                    | not supported   | not supported|\n|\"series\"                 | not supported   | supported    |\n|no value / \"dsd\" / \"all\" |\tsupported       | not supported|\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "measures",
+                  "value": "<string>",
+                  "description": "The measures to be returned.\n\nNote: some restrictions apply depending of the value of the \"attributes\" query parameter:\n\n|attributes \\ measures    |no value / \"all\" | \"none\"       |\n|-------------------------|-----------------|--------------|\n|\"none\"                   | supported       | supported    |\n|\"obs\"                    | not supported   | not supported|\n|\"series\"                 | not supported   | supported    |\n|no value / \"dsd\" / \"all\" |\tsupported       | not supported|\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "<string>",
+                  "description": "The format used to return data (extension parameter). When a \"format\" is specified, the specific \"formatVersion\" needs also to be specified.\n\n|Format name                          |\"format\" parameter     | \"formatVersion\" parameter   |\n|-------------------------------------|-----------------------|-----------------------------|\n|Structure-specific data 3.0 (default)| structurespecificdata | 3.0                         |\n|SDMX-CSV 2.0                         | csvdata               | 2.0                         |\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "formatVersion",
+                  "value": "<string>",
+                  "description": "The version of the format used to return data (extension parameter). When a \"formatVersion\" is specified, the specific \"format\" needs also to be specified.\n\n|Format name                          |\"format\" parameter     | \"formatVersion\" parameter   |\n|-------------------------------------|-----------------------|-----------------------------|\n|Structure-specific data 3.0 (default)| structurespecificdata | 3.0                         |\n|SDMX-CSV 2.0                         | csvdata               | 2.0                         |\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "lang",
+                  "value": "<string>",
+                  "description": "The language of the requested data (extension parameter). Only available for the SDMX CSV format.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "labels",
+                  "value": "<string>",
+                  "description": "The information to be returned for dimension and attribute values (extension parameter). Only available for the SDMX CSV format.\nPossible values are:\n * id (default): one column is used for each dimension / attribute and contains the code of the position / attribute.\n * name: one column is used for each dimension / attribute and contains the localized name of the position / attribute.\n * both: two columns are used for each dimension / attribute and contains the code and localized name of the position / attribute.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "compress",
+                  "value": "<string>",
+                  "description": "Whether the response is compressed (default, gzip format) or not.\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "agencyID",
+                  "description": "(Required) The agency maintaining the artefact used to generate the schema to be returned."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceID",
+                  "description": "(Required) The id of the artefact used to generate the schema to be returned."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "version",
+                  "description": "(Required) The version of the artefact to be returned.\n\nThe `+` can be used to return the latest production version of the matching resource.\n"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "key",
+                  "description": "(Required) The combination of dimension values identifying series or slices of the cube (for example `D.USD.EUR.SP00.A`).\n\nWildcards are supported using `*` (`D.*.EUR.SP00.A`).\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                "key": "Accept-Encoding",
+                "value": "identity"
+              },
+              {
+                "disabled": false,
+                "description": "Specifies the client's preferred language.\n",
+                "key": "Accept-Language",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.sdmx.data+xml;version=3.0.0"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1a297578-4080-4992-a648-5486a2db9881",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "3.0",
+                    "data",
+                    "dataflow",
+                    ":agencyID",
+                    ":resourceID",
+                    ":version",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "attributes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "measures",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "formatVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "labels",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compress",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyID",
+                      "description": "(Required) The agency maintaining the artefact used to generate the schema to be returned."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceID",
+                      "description": "(Required) The id of the artefact used to generate the schema to be returned."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version of the artefact to be returned.\n\nThe `+` can be used to return the latest production version of the matching resource.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) The combination of dimension values identifying series or slices of the cube (for example `D.USD.EUR.SP00.A`).\n\nWildcards are supported using `*` (`D.*.EUR.SP00.A`).\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.sdmx.data+xml;version=3.0.0"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.sdmx.generictimeseriesdata+xml;version=2.1"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            },
+            {
+              "id": "ca4b3697-0052-4c0b-be56-bae10a4fbeb2",
+              "name": "No changes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "3.0",
+                    "data",
+                    "dataflow",
+                    ":agencyID",
+                    ":resourceID",
+                    ":version",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "attributes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "measures",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "formatVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "labels",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compress",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyID",
+                      "description": "(Required) The agency maintaining the artefact used to generate the schema to be returned."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceID",
+                      "description": "(Required) The id of the artefact used to generate the schema to be returned."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version of the artefact to be returned.\n\nThe `+` can be used to return the latest production version of the matching resource.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) The combination of dimension values identifying series or slices of the cube (for example `D.USD.EUR.SP00.A`).\n\nWildcards are supported using `*` (`D.*.EUR.SP00.A`).\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4a0dcc9b-3586-4aa1-abfd-8593fdcd1718",
+              "name": "Bad syntax",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "3.0",
+                    "data",
+                    "dataflow",
+                    ":agencyID",
+                    ":resourceID",
+                    ":version",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "attributes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "measures",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "formatVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "labels",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compress",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyID",
+                      "description": "(Required) The agency maintaining the artefact used to generate the schema to be returned."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceID",
+                      "description": "(Required) The id of the artefact used to generate the schema to be returned."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version of the artefact to be returned.\n\nThe `+` can be used to return the latest production version of the matching resource.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) The combination of dimension values identifying series or slices of the cube (for example `D.USD.EUR.SP00.A`).\n\nWildcards are supported using `*` (`D.*.EUR.SP00.A`).\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8c94561e-ec35-4d15-9d3e-6dd74af578dd",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "3.0",
+                    "data",
+                    "dataflow",
+                    ":agencyID",
+                    ":resourceID",
+                    ":version",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "attributes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "measures",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "formatVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "labels",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compress",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyID",
+                      "description": "(Required) The agency maintaining the artefact used to generate the schema to be returned."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceID",
+                      "description": "(Required) The id of the artefact used to generate the schema to be returned."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version of the artefact to be returned.\n\nThe `+` can be used to return the latest production version of the matching resource.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) The combination of dimension values identifying series or slices of the cube (for example `D.USD.EUR.SP00.A`).\n\nWildcards are supported using `*` (`D.*.EUR.SP00.A`).\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cd1e1907-51a1-4cde-837f-4ba98fbea382",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "3.0",
+                    "data",
+                    "dataflow",
+                    ":agencyID",
+                    ":resourceID",
+                    ":version",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "attributes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "measures",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "formatVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "labels",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compress",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyID",
+                      "description": "(Required) The agency maintaining the artefact used to generate the schema to be returned."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceID",
+                      "description": "(Required) The id of the artefact used to generate the schema to be returned."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version of the artefact to be returned.\n\nThe `+` can be used to return the latest production version of the matching resource.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) The combination of dimension values identifying series or slices of the cube (for example `D.USD.EUR.SP00.A`).\n\nWildcards are supported using `*` (`D.*.EUR.SP00.A`).\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f5ef5e7a-470c-47c8-8a38-2b939555ff54",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "3.0",
+                    "data",
+                    "dataflow",
+                    ":agencyID",
+                    ":resourceID",
+                    ":version",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "attributes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "measures",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "formatVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "labels",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compress",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyID",
+                      "description": "(Required) The agency maintaining the artefact used to generate the schema to be returned."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceID",
+                      "description": "(Required) The id of the artefact used to generate the schema to be returned."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version of the artefact to be returned.\n\nThe `+` can be used to return the latest production version of the matching resource.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) The combination of dimension values identifying series or slices of the cube (for example `D.USD.EUR.SP00.A`).\n\nWildcards are supported using `*` (`D.*.EUR.SP00.A`).\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "786fb117-6546-49d6-98ac-9d1f87f14099",
+              "name": "Not acceptable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "3.0",
+                    "data",
+                    "dataflow",
+                    ":agencyID",
+                    ":resourceID",
+                    ":version",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "attributes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "measures",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "formatVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "labels",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compress",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyID",
+                      "description": "(Required) The agency maintaining the artefact used to generate the schema to be returned."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceID",
+                      "description": "(Required) The id of the artefact used to generate the schema to be returned."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version of the artefact to be returned.\n\nThe `+` can be used to return the latest production version of the matching resource.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) The combination of dimension values identifying series or slices of the cube (for example `D.USD.EUR.SP00.A`).\n\nWildcards are supported using `*` (`D.*.EUR.SP00.A`).\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c202134c-59d1-4197-8ac8-d2393eb5830f",
+              "name": "Request entity too large",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "3.0",
+                    "data",
+                    "dataflow",
+                    ":agencyID",
+                    ":resourceID",
+                    ":version",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "attributes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "measures",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "formatVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "labels",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compress",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyID",
+                      "description": "(Required) The agency maintaining the artefact used to generate the schema to be returned."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceID",
+                      "description": "(Required) The id of the artefact used to generate the schema to be returned."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version of the artefact to be returned.\n\nThe `+` can be used to return the latest production version of the matching resource.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) The combination of dimension values identifying series or slices of the cube (for example `D.USD.EUR.SP00.A`).\n\nWildcards are supported using `*` (`D.*.EUR.SP00.A`).\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ec0a0630-6948-460a-ab7a-2ffa0fb7e91f",
+              "name": "URI too long",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "3.0",
+                    "data",
+                    "dataflow",
+                    ":agencyID",
+                    ":resourceID",
+                    ":version",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "attributes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "measures",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "formatVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "labels",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compress",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyID",
+                      "description": "(Required) The agency maintaining the artefact used to generate the schema to be returned."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceID",
+                      "description": "(Required) The id of the artefact used to generate the schema to be returned."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version of the artefact to be returned.\n\nThe `+` can be used to return the latest production version of the matching resource.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) The combination of dimension values identifying series or slices of the cube (for example `D.USD.EUR.SP00.A`).\n\nWildcards are supported using `*` (`D.*.EUR.SP00.A`).\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Request-URI Too Long",
+              "code": 414,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "07ffd1f6-9a33-4cf0-97ba-8de3c04fcd03",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "3.0",
+                    "data",
+                    "dataflow",
+                    ":agencyID",
+                    ":resourceID",
+                    ":version",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "attributes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "measures",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "formatVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "labels",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compress",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyID",
+                      "description": "(Required) The agency maintaining the artefact used to generate the schema to be returned."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceID",
+                      "description": "(Required) The id of the artefact used to generate the schema to be returned."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version of the artefact to be returned.\n\nThe `+` can be used to return the latest production version of the matching resource.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) The combination of dimension values identifying series or slices of the cube (for example `D.USD.EUR.SP00.A`).\n\nWildcards are supported using `*` (`D.*.EUR.SP00.A`).\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d5cd7a24-a68f-488c-a529-9e6c856353d4",
+              "name": "Not implemented",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "3.0",
+                    "data",
+                    "dataflow",
+                    ":agencyID",
+                    ":resourceID",
+                    ":version",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "attributes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "measures",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "formatVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "labels",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compress",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyID",
+                      "description": "(Required) The agency maintaining the artefact used to generate the schema to be returned."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceID",
+                      "description": "(Required) The id of the artefact used to generate the schema to be returned."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version of the artefact to be returned.\n\nThe `+` can be used to return the latest production version of the matching resource.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) The combination of dimension values identifying series or slices of the cube (for example `D.USD.EUR.SP00.A`).\n\nWildcards are supported using `*` (`D.*.EUR.SP00.A`).\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "20778f67-ef4b-416b-8ded-425d6debfd18",
+              "name": "Service unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "3.0",
+                    "data",
+                    "dataflow",
+                    ":agencyID",
+                    ":resourceID",
+                    ":version",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "attributes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "measures",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "formatVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "labels",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compress",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyID",
+                      "description": "(Required) The agency maintaining the artefact used to generate the schema to be returned."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceID",
+                      "description": "(Required) The id of the artefact used to generate the schema to be returned."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version of the artefact to be returned.\n\nThe `+` can be used to return the latest production version of the matching resource.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) The combination of dimension values identifying series or slices of the cube (for example `D.USD.EUR.SP00.A`).\n\nWildcards are supported using `*` (`D.*.EUR.SP00.A`).\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://ec.europa.eu/eurostat/api/dissemination",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "da55a575-c497-4e14-a0c9-06a4ce879e20",
+    "name": "Eurostat SDMX RESTful Async SDMX 3.0 Data queries API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Listing of supported SDMX requests based on\n* [official sdmx-rest 2.1 specifications](https://github.com/sdmx-twg/sdmx-rest/tree/v1.5.0/v2_1/ws/rest/docs)\n* [official sdmx-rest 3.0 specifications](https://github.com/sdmx-twg/sdmx-rest/tree/v2.0.0/doc)\n\nFor additional information, please consult the [online-help](https://ec.europa.eu/eurostat/web/user-guides/data-browser).\n\n\nContact Support:\n Name: Contact Eurostat user support",
+      "type": "text/plain"
+    }
+  }
+}

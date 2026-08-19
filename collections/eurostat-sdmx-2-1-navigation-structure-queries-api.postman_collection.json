@@ -1,0 +1,2104 @@
+{
+  "item": [
+    {
+      "id": "a57163ff-78ab-4646-812a-1acc70f0925b",
+      "name": "SDMX 2.1 Navigation Structure queries",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "104182e3-4535-4095-9124-5f9bb7bfe7cb",
+          "name": "Get category schemes",
+          "request": {
+            "name": "Get category schemes",
+            "description": {},
+            "url": {
+              "path": [
+                "sdmx",
+                "2.1",
+                "categoryscheme",
+                ":agencyID",
+                ":resourceID",
+                ":version"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "references",
+                  "value": "none",
+                  "description": "Instructs the web service to return (or not) the artefacts referenced by the artefact to be returned.\n\nPossible values are:\n\n* `none`: No reference will be returned\n* `parents`: Returns the artefacts that use the artefact matching the query\n* `parentsandsiblings`: Returns the artefacts that use the artefact matching the query, as well as the artefacts referenced by these artefacts\n* `children`: Returns the artefacts referenced by the artefact to be returned\n* `descendants`: References of references, up to any level, will be returned\n* `all`: The combination of parentsandsiblings and descendants\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "detail",
+                  "value": "full",
+                  "description": "The amount of information to be returned.\n\nPossible values are:\n\n* `allstubs`: All artefacts should be returned as stubs, containing only identification information, as well as the artefacts' name\n* `referencestubs`: Referenced artefacts should be returned as stubs, containing only identification information, as well as the artefacts' name\n* `referencepartial`: Referenced item schemes should only include items used by the artefact to be returned. For example, a concept scheme would only contain the concepts used in a DSD, and its isPartial flag would be set to `true`\n* `allcompletestubs`: All artefacts should be returned as complete stubs, containing identification information, the artefacts' name, description, annotations and isFinal information\n* `referencecompletestubs`: Referenced artefacts should be returned as complete stubs, containing identification information, the artefacts' name, description, annotations and isFinal information\n* `full`: All available information for all artefacts should be returned\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "agencyID",
+                  "description": "(Required) The agency maintaining the artefact to be returned.\n\nThe keyword `all` can be used to indicate that artefacts maintained by any maintenance agency should be returned.\n"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceID",
+                  "description": "(Required) The id of the artefact to be returned.\n\nThe keyword `all` can be used to indicate that any artefact of the specified resource type, {agencyID} and {version} should be returned.\n"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "version",
+                  "description": "(Required) The version of the artefact to be returned.\n\nThe keyword `all` can be used to return all versions of the matching resource.\n\nThe keyword `latest` can be used to return the latest production version of the matching resource.\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                "key": "Accept-Encoding",
+                "value": "identity"
+              },
+              {
+                "disabled": false,
+                "description": "Specifies the client's preferred language.\n",
+                "key": "Accept-Language",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.sdmx.structure+xml;version=2.1"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b4f5ed3a-0c0d-407e-a842-b50b727e445b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "2.1",
+                    "categoryscheme",
+                    ":agencyID",
+                    ":resourceID",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "references",
+                      "value": "none"
+                    },
+                    {
+                      "key": "detail",
+                      "value": "full"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyID",
+                      "description": "(Required) The agency maintaining the artefact to be returned.\n\nThe keyword `all` can be used to indicate that artefacts maintained by any maintenance agency should be returned.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceID",
+                      "description": "(Required) The id of the artefact to be returned.\n\nThe keyword `all` can be used to indicate that any artefact of the specified resource type, {agencyID} and {version} should be returned.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version of the artefact to be returned.\n\nThe keyword `all` can be used to return all versions of the matching resource.\n\nThe keyword `latest` can be used to return the latest production version of the matching resource.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.sdmx.structure+xml;version=2.1"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.sdmx.structure+json;version=1.0.0"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "383e3a4b-96a3-4940-a91b-9cc58a5a8963",
+              "name": "No changes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "2.1",
+                    "categoryscheme",
+                    ":agencyID",
+                    ":resourceID",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "references",
+                      "value": "none"
+                    },
+                    {
+                      "key": "detail",
+                      "value": "full"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyID",
+                      "description": "(Required) The agency maintaining the artefact to be returned.\n\nThe keyword `all` can be used to indicate that artefacts maintained by any maintenance agency should be returned.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceID",
+                      "description": "(Required) The id of the artefact to be returned.\n\nThe keyword `all` can be used to indicate that any artefact of the specified resource type, {agencyID} and {version} should be returned.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version of the artefact to be returned.\n\nThe keyword `all` can be used to return all versions of the matching resource.\n\nThe keyword `latest` can be used to return the latest production version of the matching resource.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "624334b2-b90c-493d-8581-f71c7ac9dc0b",
+              "name": "Bad syntax",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "2.1",
+                    "categoryscheme",
+                    ":agencyID",
+                    ":resourceID",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "references",
+                      "value": "none"
+                    },
+                    {
+                      "key": "detail",
+                      "value": "full"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyID",
+                      "description": "(Required) The agency maintaining the artefact to be returned.\n\nThe keyword `all` can be used to indicate that artefacts maintained by any maintenance agency should be returned.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceID",
+                      "description": "(Required) The id of the artefact to be returned.\n\nThe keyword `all` can be used to indicate that any artefact of the specified resource type, {agencyID} and {version} should be returned.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version of the artefact to be returned.\n\nThe keyword `all` can be used to return all versions of the matching resource.\n\nThe keyword `latest` can be used to return the latest production version of the matching resource.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d697f7ff-1930-4695-8ab5-c357bfc7cecb",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "2.1",
+                    "categoryscheme",
+                    ":agencyID",
+                    ":resourceID",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "references",
+                      "value": "none"
+                    },
+                    {
+                      "key": "detail",
+                      "value": "full"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyID",
+                      "description": "(Required) The agency maintaining the artefact to be returned.\n\nThe keyword `all` can be used to indicate that artefacts maintained by any maintenance agency should be returned.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceID",
+                      "description": "(Required) The id of the artefact to be returned.\n\nThe keyword `all` can be used to indicate that any artefact of the specified resource type, {agencyID} and {version} should be returned.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version of the artefact to be returned.\n\nThe keyword `all` can be used to return all versions of the matching resource.\n\nThe keyword `latest` can be used to return the latest production version of the matching resource.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "219ca0df-033e-45b9-ae7b-7c048673535f",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "2.1",
+                    "categoryscheme",
+                    ":agencyID",
+                    ":resourceID",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "references",
+                      "value": "none"
+                    },
+                    {
+                      "key": "detail",
+                      "value": "full"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyID",
+                      "description": "(Required) The agency maintaining the artefact to be returned.\n\nThe keyword `all` can be used to indicate that artefacts maintained by any maintenance agency should be returned.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceID",
+                      "description": "(Required) The id of the artefact to be returned.\n\nThe keyword `all` can be used to indicate that any artefact of the specified resource type, {agencyID} and {version} should be returned.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version of the artefact to be returned.\n\nThe keyword `all` can be used to return all versions of the matching resource.\n\nThe keyword `latest` can be used to return the latest production version of the matching resource.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4b30a6e6-ae23-4e3a-9d45-a560f4d0d48a",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "2.1",
+                    "categoryscheme",
+                    ":agencyID",
+                    ":resourceID",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "references",
+                      "value": "none"
+                    },
+                    {
+                      "key": "detail",
+                      "value": "full"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyID",
+                      "description": "(Required) The agency maintaining the artefact to be returned.\n\nThe keyword `all` can be used to indicate that artefacts maintained by any maintenance agency should be returned.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceID",
+                      "description": "(Required) The id of the artefact to be returned.\n\nThe keyword `all` can be used to indicate that any artefact of the specified resource type, {agencyID} and {version} should be returned.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version of the artefact to be returned.\n\nThe keyword `all` can be used to return all versions of the matching resource.\n\nThe keyword `latest` can be used to return the latest production version of the matching resource.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7a981741-2ec9-4f19-95fb-526cff23253c",
+              "name": "Not acceptable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "2.1",
+                    "categoryscheme",
+                    ":agencyID",
+                    ":resourceID",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "references",
+                      "value": "none"
+                    },
+                    {
+                      "key": "detail",
+                      "value": "full"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyID",
+                      "description": "(Required) The agency maintaining the artefact to be returned.\n\nThe keyword `all` can be used to indicate that artefacts maintained by any maintenance agency should be returned.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceID",
+                      "description": "(Required) The id of the artefact to be returned.\n\nThe keyword `all` can be used to indicate that any artefact of the specified resource type, {agencyID} and {version} should be returned.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version of the artefact to be returned.\n\nThe keyword `all` can be used to return all versions of the matching resource.\n\nThe keyword `latest` can be used to return the latest production version of the matching resource.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7a5e41d3-97b6-4dfa-9bf4-60f6f0d0bc96",
+              "name": "Request entity too large",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "2.1",
+                    "categoryscheme",
+                    ":agencyID",
+                    ":resourceID",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "references",
+                      "value": "none"
+                    },
+                    {
+                      "key": "detail",
+                      "value": "full"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyID",
+                      "description": "(Required) The agency maintaining the artefact to be returned.\n\nThe keyword `all` can be used to indicate that artefacts maintained by any maintenance agency should be returned.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceID",
+                      "description": "(Required) The id of the artefact to be returned.\n\nThe keyword `all` can be used to indicate that any artefact of the specified resource type, {agencyID} and {version} should be returned.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version of the artefact to be returned.\n\nThe keyword `all` can be used to return all versions of the matching resource.\n\nThe keyword `latest` can be used to return the latest production version of the matching resource.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5dcae6c8-cef3-4970-8b9d-54f88af05453",
+              "name": "URI too long",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "2.1",
+                    "categoryscheme",
+                    ":agencyID",
+                    ":resourceID",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "references",
+                      "value": "none"
+                    },
+                    {
+                      "key": "detail",
+                      "value": "full"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyID",
+                      "description": "(Required) The agency maintaining the artefact to be returned.\n\nThe keyword `all` can be used to indicate that artefacts maintained by any maintenance agency should be returned.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceID",
+                      "description": "(Required) The id of the artefact to be returned.\n\nThe keyword `all` can be used to indicate that any artefact of the specified resource type, {agencyID} and {version} should be returned.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version of the artefact to be returned.\n\nThe keyword `all` can be used to return all versions of the matching resource.\n\nThe keyword `latest` can be used to return the latest production version of the matching resource.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Request-URI Too Long",
+              "code": 414,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e5bf263c-3e6c-4d78-8bbd-3ddaa945e69a",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "2.1",
+                    "categoryscheme",
+                    ":agencyID",
+                    ":resourceID",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "references",
+                      "value": "none"
+                    },
+                    {
+                      "key": "detail",
+                      "value": "full"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyID",
+                      "description": "(Required) The agency maintaining the artefact to be returned.\n\nThe keyword `all` can be used to indicate that artefacts maintained by any maintenance agency should be returned.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceID",
+                      "description": "(Required) The id of the artefact to be returned.\n\nThe keyword `all` can be used to indicate that any artefact of the specified resource type, {agencyID} and {version} should be returned.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version of the artefact to be returned.\n\nThe keyword `all` can be used to return all versions of the matching resource.\n\nThe keyword `latest` can be used to return the latest production version of the matching resource.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ea944249-02a7-4670-af9b-1529050342e2",
+              "name": "Not implemented",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "2.1",
+                    "categoryscheme",
+                    ":agencyID",
+                    ":resourceID",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "references",
+                      "value": "none"
+                    },
+                    {
+                      "key": "detail",
+                      "value": "full"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyID",
+                      "description": "(Required) The agency maintaining the artefact to be returned.\n\nThe keyword `all` can be used to indicate that artefacts maintained by any maintenance agency should be returned.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceID",
+                      "description": "(Required) The id of the artefact to be returned.\n\nThe keyword `all` can be used to indicate that any artefact of the specified resource type, {agencyID} and {version} should be returned.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version of the artefact to be returned.\n\nThe keyword `all` can be used to return all versions of the matching resource.\n\nThe keyword `latest` can be used to return the latest production version of the matching resource.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1383e0c8-81f8-47ca-a825-f4b72742f145",
+              "name": "Service unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "2.1",
+                    "categoryscheme",
+                    ":agencyID",
+                    ":resourceID",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "references",
+                      "value": "none"
+                    },
+                    {
+                      "key": "detail",
+                      "value": "full"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyID",
+                      "description": "(Required) The agency maintaining the artefact to be returned.\n\nThe keyword `all` can be used to indicate that artefacts maintained by any maintenance agency should be returned.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceID",
+                      "description": "(Required) The id of the artefact to be returned.\n\nThe keyword `all` can be used to indicate that any artefact of the specified resource type, {agencyID} and {version} should be returned.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version of the artefact to be returned.\n\nThe keyword `all` can be used to return all versions of the matching resource.\n\nThe keyword `latest` can be used to return the latest production version of the matching resource.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0a6f1775-9c80-40b4-ad89-47dd8e07d559",
+          "name": "Get categorisations",
+          "request": {
+            "name": "Get categorisations",
+            "description": {},
+            "url": {
+              "path": [
+                "sdmx",
+                "2.1",
+                "categorisation",
+                ":agencyID",
+                ":resourceID",
+                ":version"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "references",
+                  "value": "none",
+                  "description": "Instructs the web service to return (or not) the artefacts referenced by the artefact to be returned.\n\nPossible values are:\n\n* `none`: No reference will be returned\n* `parents`: Returns the artefacts that use the artefact matching the query\n* `parentsandsiblings`: Returns the artefacts that use the artefact matching the query, as well as the artefacts referenced by these artefacts\n* `children`: Returns the artefacts referenced by the artefact to be returned\n* `descendants`: References of references, up to any level, will be returned\n* `all`: The combination of parentsandsiblings and descendants\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "detail",
+                  "value": "full",
+                  "description": "The amount of information to be returned.\n\nPossible values are:\n\n* `allstubs`: All artefacts should be returned as stubs, containing only identification information, as well as the artefacts' name\n* `referencestubs`: Referenced artefacts should be returned as stubs, containing only identification information, as well as the artefacts' name\n* `referencepartial`: Referenced item schemes should only include items used by the artefact to be returned. For example, a concept scheme would only contain the concepts used in a DSD, and its isPartial flag would be set to `true`\n* `allcompletestubs`: All artefacts should be returned as complete stubs, containing identification information, the artefacts' name, description, annotations and isFinal information\n* `referencecompletestubs`: Referenced artefacts should be returned as complete stubs, containing identification information, the artefacts' name, description, annotations and isFinal information\n* `full`: All available information for all artefacts should be returned\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "agencyID",
+                  "description": "(Required) The agency maintaining the artefact to be returned.\n\nThe keyword `all` can be used to indicate that artefacts maintained by any maintenance agency should be returned.\n"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceID",
+                  "description": "(Required) The id of the artefact to be returned.\n\nThe keyword `all` can be used to indicate that any artefact of the specified resource type, {agencyID} and {version} should be returned.\n"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "version",
+                  "description": "(Required) The version of the artefact to be returned.\n\nThe keyword `all` can be used to return all versions of the matching resource.\n\nThe keyword `latest` can be used to return the latest production version of the matching resource.\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                "key": "Accept-Encoding",
+                "value": "identity"
+              },
+              {
+                "disabled": false,
+                "description": "Specifies the client's preferred language.\n",
+                "key": "Accept-Language",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.sdmx.structure+xml;version=2.1"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "56d814c7-de6c-40f3-9162-d1929ab059ed",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "2.1",
+                    "categorisation",
+                    ":agencyID",
+                    ":resourceID",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "references",
+                      "value": "none"
+                    },
+                    {
+                      "key": "detail",
+                      "value": "full"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyID",
+                      "description": "(Required) The agency maintaining the artefact to be returned.\n\nThe keyword `all` can be used to indicate that artefacts maintained by any maintenance agency should be returned.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceID",
+                      "description": "(Required) The id of the artefact to be returned.\n\nThe keyword `all` can be used to indicate that any artefact of the specified resource type, {agencyID} and {version} should be returned.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version of the artefact to be returned.\n\nThe keyword `all` can be used to return all versions of the matching resource.\n\nThe keyword `latest` can be used to return the latest production version of the matching resource.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.sdmx.structure+xml;version=2.1"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.sdmx.structure+json;version=1.0.0"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b2916bf-014e-4096-adc7-0b3492efff4b",
+              "name": "No changes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "2.1",
+                    "categorisation",
+                    ":agencyID",
+                    ":resourceID",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "references",
+                      "value": "none"
+                    },
+                    {
+                      "key": "detail",
+                      "value": "full"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyID",
+                      "description": "(Required) The agency maintaining the artefact to be returned.\n\nThe keyword `all` can be used to indicate that artefacts maintained by any maintenance agency should be returned.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceID",
+                      "description": "(Required) The id of the artefact to be returned.\n\nThe keyword `all` can be used to indicate that any artefact of the specified resource type, {agencyID} and {version} should be returned.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version of the artefact to be returned.\n\nThe keyword `all` can be used to return all versions of the matching resource.\n\nThe keyword `latest` can be used to return the latest production version of the matching resource.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c70386b0-3fe4-44ce-a1ae-5033b74aae90",
+              "name": "Bad syntax",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "2.1",
+                    "categorisation",
+                    ":agencyID",
+                    ":resourceID",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "references",
+                      "value": "none"
+                    },
+                    {
+                      "key": "detail",
+                      "value": "full"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyID",
+                      "description": "(Required) The agency maintaining the artefact to be returned.\n\nThe keyword `all` can be used to indicate that artefacts maintained by any maintenance agency should be returned.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceID",
+                      "description": "(Required) The id of the artefact to be returned.\n\nThe keyword `all` can be used to indicate that any artefact of the specified resource type, {agencyID} and {version} should be returned.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version of the artefact to be returned.\n\nThe keyword `all` can be used to return all versions of the matching resource.\n\nThe keyword `latest` can be used to return the latest production version of the matching resource.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "914e3f50-5de9-4896-9c2e-41b7a34f9cb0",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "2.1",
+                    "categorisation",
+                    ":agencyID",
+                    ":resourceID",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "references",
+                      "value": "none"
+                    },
+                    {
+                      "key": "detail",
+                      "value": "full"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyID",
+                      "description": "(Required) The agency maintaining the artefact to be returned.\n\nThe keyword `all` can be used to indicate that artefacts maintained by any maintenance agency should be returned.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceID",
+                      "description": "(Required) The id of the artefact to be returned.\n\nThe keyword `all` can be used to indicate that any artefact of the specified resource type, {agencyID} and {version} should be returned.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version of the artefact to be returned.\n\nThe keyword `all` can be used to return all versions of the matching resource.\n\nThe keyword `latest` can be used to return the latest production version of the matching resource.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bd4a7be8-636c-440e-936c-a711bf9c36ca",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "2.1",
+                    "categorisation",
+                    ":agencyID",
+                    ":resourceID",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "references",
+                      "value": "none"
+                    },
+                    {
+                      "key": "detail",
+                      "value": "full"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyID",
+                      "description": "(Required) The agency maintaining the artefact to be returned.\n\nThe keyword `all` can be used to indicate that artefacts maintained by any maintenance agency should be returned.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceID",
+                      "description": "(Required) The id of the artefact to be returned.\n\nThe keyword `all` can be used to indicate that any artefact of the specified resource type, {agencyID} and {version} should be returned.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version of the artefact to be returned.\n\nThe keyword `all` can be used to return all versions of the matching resource.\n\nThe keyword `latest` can be used to return the latest production version of the matching resource.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "45cb5d9b-26ae-43f7-ace7-cf34447f0733",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "2.1",
+                    "categorisation",
+                    ":agencyID",
+                    ":resourceID",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "references",
+                      "value": "none"
+                    },
+                    {
+                      "key": "detail",
+                      "value": "full"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyID",
+                      "description": "(Required) The agency maintaining the artefact to be returned.\n\nThe keyword `all` can be used to indicate that artefacts maintained by any maintenance agency should be returned.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceID",
+                      "description": "(Required) The id of the artefact to be returned.\n\nThe keyword `all` can be used to indicate that any artefact of the specified resource type, {agencyID} and {version} should be returned.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version of the artefact to be returned.\n\nThe keyword `all` can be used to return all versions of the matching resource.\n\nThe keyword `latest` can be used to return the latest production version of the matching resource.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0fe44c3a-c8b2-4452-8af7-82e21387aa1f",
+              "name": "Not acceptable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "2.1",
+                    "categorisation",
+                    ":agencyID",
+                    ":resourceID",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "references",
+                      "value": "none"
+                    },
+                    {
+                      "key": "detail",
+                      "value": "full"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyID",
+                      "description": "(Required) The agency maintaining the artefact to be returned.\n\nThe keyword `all` can be used to indicate that artefacts maintained by any maintenance agency should be returned.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceID",
+                      "description": "(Required) The id of the artefact to be returned.\n\nThe keyword `all` can be used to indicate that any artefact of the specified resource type, {agencyID} and {version} should be returned.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version of the artefact to be returned.\n\nThe keyword `all` can be used to return all versions of the matching resource.\n\nThe keyword `latest` can be used to return the latest production version of the matching resource.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c4807ac0-5ba8-4b03-8a16-b05eac216b07",
+              "name": "Request entity too large",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "2.1",
+                    "categorisation",
+                    ":agencyID",
+                    ":resourceID",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "references",
+                      "value": "none"
+                    },
+                    {
+                      "key": "detail",
+                      "value": "full"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyID",
+                      "description": "(Required) The agency maintaining the artefact to be returned.\n\nThe keyword `all` can be used to indicate that artefacts maintained by any maintenance agency should be returned.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceID",
+                      "description": "(Required) The id of the artefact to be returned.\n\nThe keyword `all` can be used to indicate that any artefact of the specified resource type, {agencyID} and {version} should be returned.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version of the artefact to be returned.\n\nThe keyword `all` can be used to return all versions of the matching resource.\n\nThe keyword `latest` can be used to return the latest production version of the matching resource.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d0554b08-e69b-4732-9124-6f5cc9540f37",
+              "name": "URI too long",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "2.1",
+                    "categorisation",
+                    ":agencyID",
+                    ":resourceID",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "references",
+                      "value": "none"
+                    },
+                    {
+                      "key": "detail",
+                      "value": "full"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyID",
+                      "description": "(Required) The agency maintaining the artefact to be returned.\n\nThe keyword `all` can be used to indicate that artefacts maintained by any maintenance agency should be returned.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceID",
+                      "description": "(Required) The id of the artefact to be returned.\n\nThe keyword `all` can be used to indicate that any artefact of the specified resource type, {agencyID} and {version} should be returned.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version of the artefact to be returned.\n\nThe keyword `all` can be used to return all versions of the matching resource.\n\nThe keyword `latest` can be used to return the latest production version of the matching resource.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Request-URI Too Long",
+              "code": 414,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "85ed1239-5ee6-4a68-9aae-c134ea338ae4",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "2.1",
+                    "categorisation",
+                    ":agencyID",
+                    ":resourceID",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "references",
+                      "value": "none"
+                    },
+                    {
+                      "key": "detail",
+                      "value": "full"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyID",
+                      "description": "(Required) The agency maintaining the artefact to be returned.\n\nThe keyword `all` can be used to indicate that artefacts maintained by any maintenance agency should be returned.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceID",
+                      "description": "(Required) The id of the artefact to be returned.\n\nThe keyword `all` can be used to indicate that any artefact of the specified resource type, {agencyID} and {version} should be returned.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version of the artefact to be returned.\n\nThe keyword `all` can be used to return all versions of the matching resource.\n\nThe keyword `latest` can be used to return the latest production version of the matching resource.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "49dc8ff5-bf8e-4ce5-bcab-25b99712f6c6",
+              "name": "Not implemented",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "2.1",
+                    "categorisation",
+                    ":agencyID",
+                    ":resourceID",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "references",
+                      "value": "none"
+                    },
+                    {
+                      "key": "detail",
+                      "value": "full"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyID",
+                      "description": "(Required) The agency maintaining the artefact to be returned.\n\nThe keyword `all` can be used to indicate that artefacts maintained by any maintenance agency should be returned.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceID",
+                      "description": "(Required) The id of the artefact to be returned.\n\nThe keyword `all` can be used to indicate that any artefact of the specified resource type, {agencyID} and {version} should be returned.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version of the artefact to be returned.\n\nThe keyword `all` can be used to return all versions of the matching resource.\n\nThe keyword `latest` can be used to return the latest production version of the matching resource.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9c8b0014-e6e4-4606-9103-98a9439a0775",
+              "name": "Service unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "2.1",
+                    "categorisation",
+                    ":agencyID",
+                    ":resourceID",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "references",
+                      "value": "none"
+                    },
+                    {
+                      "key": "detail",
+                      "value": "full"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyID",
+                      "description": "(Required) The agency maintaining the artefact to be returned.\n\nThe keyword `all` can be used to indicate that artefacts maintained by any maintenance agency should be returned.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceID",
+                      "description": "(Required) The id of the artefact to be returned.\n\nThe keyword `all` can be used to indicate that any artefact of the specified resource type, {agencyID} and {version} should be returned.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) The version of the artefact to be returned.\n\nThe keyword `all` can be used to return all versions of the matching resource.\n\nThe keyword `latest` can be used to return the latest production version of the matching resource.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://ec.europa.eu/eurostat/api/dissemination",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "0dafa253-2af1-4b45-a803-42474c941467",
+    "name": "Eurostat SDMX RESTful Async SDMX 2.1 Navigation Structure queries API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Listing of supported SDMX requests based on\n* [official sdmx-rest 2.1 specifications](https://github.com/sdmx-twg/sdmx-rest/tree/v1.5.0/v2_1/ws/rest/docs)\n* [official sdmx-rest 3.0 specifications](https://github.com/sdmx-twg/sdmx-rest/tree/v2.0.0/doc)\n\nFor additional information, please consult the [online-help](https://ec.europa.eu/eurostat/web/user-guides/data-browser).\n\n\nContact Support:\n Name: Contact Eurostat user support",
+      "type": "text/plain"
+    }
+  }
+}

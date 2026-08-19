@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Eurostat SDMX RESTful Async API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Async",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "getAsyncStatus",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://ec.europa.eu/eurostat/api/dissemination/1.0/async/status/:uuid",
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path",
+                "description": "This value is the key to use for checking status of data availability from the Asynchronous Endpoint.\n"
+              }
+            ]
+          },
+          "docs": "The status of a request that is processed asynchronously can be checked"
+        },
+        {
+          "info": {
+            "name": "getAsyncData",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://ec.europa.eu/eurostat/api/dissemination/1.0/async/data/:uuid",
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path",
+                "description": "This value is the key to use for checking status of data availability from the Asynchronous Endpoint.\n"
+              }
+            ]
+          },
+          "docs": "The status of a request that is processed asynchronously can be checked"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,605 @@
+{
+  "item": [
+    {
+      "id": "acadcb6a-d024-41d0-b36e-26a847fd5741",
+      "name": "Catalogue queries",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "558742d8-7856-4ff6-ae2a-b4926ea7d418",
+          "name": "Generate a catalogue of all datasets in RDF format",
+          "request": {
+            "name": "Generate a catalogue of all datasets in RDF format",
+            "description": {},
+            "url": {
+              "path": [
+                "catalogue",
+                "dcat",
+                ":agencyID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "agencyID",
+                  "description": "(Required) The agency maintaining the artefact used to generate the schema to be returned."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/octet-stream"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bc9dfda2-a867-49e8-aded-8f07c31e2929",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "catalogue",
+                    "dcat",
+                    ":agencyID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyID",
+                      "description": "(Required) The agency maintaining the artefact used to generate the schema to be returned."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/octet-stream"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/octet-stream"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5e270d64-a0e9-4bc8-8b18-013614fd0e06",
+          "name": "Generate a catalogue of datasets in RDF format",
+          "request": {
+            "name": "Generate a catalogue of datasets in RDF format",
+            "description": {},
+            "url": {
+              "path": [
+                "catalogue",
+                "dcat",
+                ":agencyID",
+                ":extractionType"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "agencyID",
+                  "description": "(Required) The agency maintaining the artefact used to generate the schema to be returned."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "extractionType",
+                  "description": "The type of extraction, only `FULL` and `UPDATES` are supported.\n* `FULL`: get a catalogue for all datasets?\n* `UPDATES`: get a catalogue of datasets updated since the latest embargo.\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/octet-stream"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "153e7bfb-b5b6-41c8-aba7-9cf32d778481",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "catalogue",
+                    "dcat",
+                    ":agencyID",
+                    ":extractionType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyID",
+                      "description": "(Required) The agency maintaining the artefact used to generate the schema to be returned."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "extractionType",
+                      "description": "The type of extraction, only `FULL` and `UPDATES` are supported.\n* `FULL`: get a catalogue for all datasets?\n* `UPDATES`: get a catalogue of datasets updated since the latest embargo.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/octet-stream"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/octet-stream"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f7cfcf33-332b-400c-825d-66864d2576e0",
+          "name": "Generate the Metabase which is a catalogue containing the definition of disseminated data products",
+          "request": {
+            "name": "Generate the Metabase which is a catalogue containing the definition of disseminated data products",
+            "description": {},
+            "url": {
+              "path": [
+                "catalogue",
+                "metabase.txt.gz"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/octet-stream"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "56020c2d-4908-4fb4-8e12-052de65aed2e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "catalogue",
+                    "metabase.txt.gz"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/octet-stream"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/octet-stream"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "19664c66-1111-437e-b7bf-f60149c41832",
+          "name": "Generate a web feed which allows users to access updates to online content in a standardized, computer-readable format",
+          "request": {
+            "name": "Generate a web feed which allows users to access updates to online content in a standardized, computer-readable format",
+            "description": {},
+            "url": {
+              "path": [
+                "catalogue",
+                "rss",
+                ":language",
+                "statistics-update.rss"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "language",
+                  "description": "(Required) The language of the requested data.\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0922381e-acc3-4640-a9bb-dd8fdc9c8680",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "catalogue",
+                    "rss",
+                    ":language",
+                    "statistics-update.rss"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "language",
+                      "description": "(Required) The language of the requested data.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3e16c57c-0167-449b-a023-d5d33ced3124",
+          "name": "Return the XML Schema Definition of the Table of Content (TOC)",
+          "request": {
+            "name": "Return the XML Schema Definition of the Table of Content (TOC)",
+            "description": {},
+            "url": {
+              "path": [
+                "catalogue",
+                "toc",
+                "TableOfContent.xsd"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1b8dd680-1a21-4fe5-b04d-ac10f3638177",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "catalogue",
+                    "toc",
+                    "TableOfContent.xsd"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b4fed724-d35e-4b7b-8c2f-aedd22ef7bcb",
+          "name": "Return the Table of Content (TOC) for the specified language in text format",
+          "request": {
+            "name": "Return the Table of Content (TOC) for the specified language in text format",
+            "description": {},
+            "url": {
+              "path": [
+                "catalogue",
+                "toc",
+                "txt"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lang",
+                  "value": "en",
+                  "description": "The language of the requested data.\n"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9011a22b-de09-4c4e-9cce-7f340abec622",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "catalogue",
+                    "toc",
+                    "txt"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lang",
+                      "value": "en"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "77b16a22-6593-44cf-b5ed-33d322203f1d",
+          "name": "Return the Table of Content (TOC) for all supported languages in XML format",
+          "request": {
+            "name": "Return the Table of Content (TOC) for all supported languages in XML format",
+            "description": {},
+            "url": {
+              "path": [
+                "catalogue",
+                "toc",
+                "xml"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "39691c30-b03d-410c-8d0c-88b3d3404a16",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "catalogue",
+                    "toc",
+                    "xml"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://ec.europa.eu/eurostat/api/dissemination",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b588ed6a-43ce-4a85-9958-acf8b83f0d25",
+    "name": "Eurostat SDMX RESTful Async Catalogue queries API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Listing of supported SDMX requests based on\n* [official sdmx-rest 2.1 specifications](https://github.com/sdmx-twg/sdmx-rest/tree/v1.5.0/v2_1/ws/rest/docs)\n* [official sdmx-rest 3.0 specifications](https://github.com/sdmx-twg/sdmx-rest/tree/v2.0.0/doc)\n\nFor additional information, please consult the [online-help](https://ec.europa.eu/eurostat/web/user-guides/data-browser).\n\n\nContact Support:\n Name: Contact Eurostat user support",
+      "type": "text/plain"
+    }
+  }
+}

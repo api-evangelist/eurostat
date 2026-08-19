@@ -1,0 +1,1180 @@
+{
+  "item": [
+    {
+      "id": "ad52fc83-7f4e-437a-89da-9cc6bb90afa8",
+      "name": "SDMX 2.1 Data queries",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "47af0c45-c6e8-4d0a-92c7-a66f452c73ba",
+          "name": "Get data",
+          "request": {
+            "name": "Get data",
+            "description": {},
+            "url": {
+              "path": [
+                "sdmx",
+                "2.1",
+                "data",
+                ":flow",
+                ":key"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "startPeriod",
+                  "value": "<string>",
+                  "description": "The start of the period for which results should be supplied (inclusive).\n\nCan be expressed using 8601 dates or SDMX reporting periods.\n\nExamples:\n* `2000`: Year (ISO 8601)\n* `2000-01`: Month (ISO 8601)\n* `2000-01-01`: Date (ISO 8601)\n* `2000-Q1`: Quarter (SDMX)\n* `2000-W01`: Week (SDMX)\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "endPeriod",
+                  "value": "<string>",
+                  "description": "The end of the period for which results should be supplied (inclusive).\n\nCan be expressed using 8601 dates or SDMX reporting periods.\n\nExamples:\n* `2000`: Year (ISO 8601)\n* `2000-01`: Month (ISO 8601)\n* `2000-01-01`: Date (ISO 8601)\n* `2000-S1`: Semester (SDMX)\n* `2000-D001`: Day (SDMX)\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "firstNObservations",
+                  "value": "<integer>",
+                  "description": "The maximum number of observations to be returned starting from the oldest one\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "lastNObservations",
+                  "value": "<integer>",
+                  "description": "The maximum number of observations to be returned starting from the most recent one\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "dimensionAtObservation",
+                  "value": "TIME_PERIOD",
+                  "description": "Indicates **how the data should be packaged**.\n\nThe options are:\n\n* `TIME_PERIOD`: A timeseries view\n* The ID of any other dimension: A cross-sectional view of the data\n* `AllDimensions`: A flat view of the data.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "detail",
+                  "value": "full",
+                  "description": "The **amount of information** to be returned.\n\nPossible options are:\n\n* `full`: All data and documentation\n* `dataonly`: Everything except attributes\n* `serieskeysonly`: The series keys. This is useful to return the series that match a certain query, without returning the actual data (e.g. overview page)\n* `nodata`: The series, including attributes and annotations, without observations.\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "flow",
+                  "description": "(Required) The **statistical domain** (aka dataflow) of the data to be returned.\n\nExamples:\n\n* `EXR`: The ID of the domain\n* `ECB,EXR`: The EXR domain, maintained by the ECB\n* `ECB,EXR,1.0`: Version 1.0 of the EXR domain, maintained by the ECB\n"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "key",
+                  "description": "(Required) The (possibly partial) **key identifying the data to be returned**.\n\nThe keyword `all` can be used to indicate that all data belonging to the specified dataflow and provided by the specified provider must be returned.\n\nThe examples below are based on the following key: Frequency, Country, Component of inflation, Unit of measure.\n * `M.DE.000000.ANR`: Full key, matching exactly one series, i.e. the monthly (`M`) rates of change (`ANR`) of overall inflation (`000000`) in Germany (`DE`).\n * `A+M.DE.000000.ANR`: Retrieves both annual and monthly data (`A+M`), matching exactly two series\n * `A+M..000000.ANR`: The second dimension is wildcarded, and it wil therefore match the annual and monthly rates of change of overall inflation in any country.\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                "key": "Accept-Encoding",
+                "value": "identity"
+              },
+              {
+                "disabled": false,
+                "description": "Specifies the client's preferred language.\n",
+                "key": "Accept-Language",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.sdmx.genericdata+xml;version=2.1"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2e2401c0-b8b4-4fd5-8f1e-47a461fced18",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "2.1",
+                    "data",
+                    ":flow",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startPeriod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endPeriod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "firstNObservations",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "lastNObservations",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "dimensionAtObservation",
+                      "value": "TIME_PERIOD"
+                    },
+                    {
+                      "key": "detail",
+                      "value": "full"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "flow",
+                      "description": "(Required) The **statistical domain** (aka dataflow) of the data to be returned.\n\nExamples:\n\n* `EXR`: The ID of the domain\n* `ECB,EXR`: The EXR domain, maintained by the ECB\n* `ECB,EXR,1.0`: Version 1.0 of the EXR domain, maintained by the ECB\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) The (possibly partial) **key identifying the data to be returned**.\n\nThe keyword `all` can be used to indicate that all data belonging to the specified dataflow and provided by the specified provider must be returned.\n\nThe examples below are based on the following key: Frequency, Country, Component of inflation, Unit of measure.\n * `M.DE.000000.ANR`: Full key, matching exactly one series, i.e. the monthly (`M`) rates of change (`ANR`) of overall inflation (`000000`) in Germany (`DE`).\n * `A+M.DE.000000.ANR`: Retrieves both annual and monthly data (`A+M`), matching exactly two series\n * `A+M..000000.ANR`: The second dimension is wildcarded, and it wil therefore match the annual and monthly rates of change of overall inflation in any country.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.sdmx.genericdata+xml;version=2.1"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.sdmx.structurespecifictimeseriesdata+xml;version=2.1"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            },
+            {
+              "id": "9decb69c-52b9-4e2a-a7e1-33b276e523a7",
+              "name": "No changes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "2.1",
+                    "data",
+                    ":flow",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startPeriod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endPeriod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "firstNObservations",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "lastNObservations",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "dimensionAtObservation",
+                      "value": "TIME_PERIOD"
+                    },
+                    {
+                      "key": "detail",
+                      "value": "full"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "flow",
+                      "description": "(Required) The **statistical domain** (aka dataflow) of the data to be returned.\n\nExamples:\n\n* `EXR`: The ID of the domain\n* `ECB,EXR`: The EXR domain, maintained by the ECB\n* `ECB,EXR,1.0`: Version 1.0 of the EXR domain, maintained by the ECB\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) The (possibly partial) **key identifying the data to be returned**.\n\nThe keyword `all` can be used to indicate that all data belonging to the specified dataflow and provided by the specified provider must be returned.\n\nThe examples below are based on the following key: Frequency, Country, Component of inflation, Unit of measure.\n * `M.DE.000000.ANR`: Full key, matching exactly one series, i.e. the monthly (`M`) rates of change (`ANR`) of overall inflation (`000000`) in Germany (`DE`).\n * `A+M.DE.000000.ANR`: Retrieves both annual and monthly data (`A+M`), matching exactly two series\n * `A+M..000000.ANR`: The second dimension is wildcarded, and it wil therefore match the annual and monthly rates of change of overall inflation in any country.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "79dfd3fc-6417-42f4-ae83-7611be8064cc",
+              "name": "Bad syntax",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "2.1",
+                    "data",
+                    ":flow",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startPeriod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endPeriod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "firstNObservations",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "lastNObservations",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "dimensionAtObservation",
+                      "value": "TIME_PERIOD"
+                    },
+                    {
+                      "key": "detail",
+                      "value": "full"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "flow",
+                      "description": "(Required) The **statistical domain** (aka dataflow) of the data to be returned.\n\nExamples:\n\n* `EXR`: The ID of the domain\n* `ECB,EXR`: The EXR domain, maintained by the ECB\n* `ECB,EXR,1.0`: Version 1.0 of the EXR domain, maintained by the ECB\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) The (possibly partial) **key identifying the data to be returned**.\n\nThe keyword `all` can be used to indicate that all data belonging to the specified dataflow and provided by the specified provider must be returned.\n\nThe examples below are based on the following key: Frequency, Country, Component of inflation, Unit of measure.\n * `M.DE.000000.ANR`: Full key, matching exactly one series, i.e. the monthly (`M`) rates of change (`ANR`) of overall inflation (`000000`) in Germany (`DE`).\n * `A+M.DE.000000.ANR`: Retrieves both annual and monthly data (`A+M`), matching exactly two series\n * `A+M..000000.ANR`: The second dimension is wildcarded, and it wil therefore match the annual and monthly rates of change of overall inflation in any country.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "75e07097-50a9-4922-8198-8f9a6498a8c9",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "2.1",
+                    "data",
+                    ":flow",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startPeriod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endPeriod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "firstNObservations",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "lastNObservations",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "dimensionAtObservation",
+                      "value": "TIME_PERIOD"
+                    },
+                    {
+                      "key": "detail",
+                      "value": "full"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "flow",
+                      "description": "(Required) The **statistical domain** (aka dataflow) of the data to be returned.\n\nExamples:\n\n* `EXR`: The ID of the domain\n* `ECB,EXR`: The EXR domain, maintained by the ECB\n* `ECB,EXR,1.0`: Version 1.0 of the EXR domain, maintained by the ECB\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) The (possibly partial) **key identifying the data to be returned**.\n\nThe keyword `all` can be used to indicate that all data belonging to the specified dataflow and provided by the specified provider must be returned.\n\nThe examples below are based on the following key: Frequency, Country, Component of inflation, Unit of measure.\n * `M.DE.000000.ANR`: Full key, matching exactly one series, i.e. the monthly (`M`) rates of change (`ANR`) of overall inflation (`000000`) in Germany (`DE`).\n * `A+M.DE.000000.ANR`: Retrieves both annual and monthly data (`A+M`), matching exactly two series\n * `A+M..000000.ANR`: The second dimension is wildcarded, and it wil therefore match the annual and monthly rates of change of overall inflation in any country.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "623890b2-42cd-4da7-84da-cec2b015dc24",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "2.1",
+                    "data",
+                    ":flow",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startPeriod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endPeriod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "firstNObservations",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "lastNObservations",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "dimensionAtObservation",
+                      "value": "TIME_PERIOD"
+                    },
+                    {
+                      "key": "detail",
+                      "value": "full"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "flow",
+                      "description": "(Required) The **statistical domain** (aka dataflow) of the data to be returned.\n\nExamples:\n\n* `EXR`: The ID of the domain\n* `ECB,EXR`: The EXR domain, maintained by the ECB\n* `ECB,EXR,1.0`: Version 1.0 of the EXR domain, maintained by the ECB\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) The (possibly partial) **key identifying the data to be returned**.\n\nThe keyword `all` can be used to indicate that all data belonging to the specified dataflow and provided by the specified provider must be returned.\n\nThe examples below are based on the following key: Frequency, Country, Component of inflation, Unit of measure.\n * `M.DE.000000.ANR`: Full key, matching exactly one series, i.e. the monthly (`M`) rates of change (`ANR`) of overall inflation (`000000`) in Germany (`DE`).\n * `A+M.DE.000000.ANR`: Retrieves both annual and monthly data (`A+M`), matching exactly two series\n * `A+M..000000.ANR`: The second dimension is wildcarded, and it wil therefore match the annual and monthly rates of change of overall inflation in any country.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ec1ac5bb-f90a-499b-adc3-45763e40c8d2",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "2.1",
+                    "data",
+                    ":flow",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startPeriod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endPeriod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "firstNObservations",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "lastNObservations",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "dimensionAtObservation",
+                      "value": "TIME_PERIOD"
+                    },
+                    {
+                      "key": "detail",
+                      "value": "full"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "flow",
+                      "description": "(Required) The **statistical domain** (aka dataflow) of the data to be returned.\n\nExamples:\n\n* `EXR`: The ID of the domain\n* `ECB,EXR`: The EXR domain, maintained by the ECB\n* `ECB,EXR,1.0`: Version 1.0 of the EXR domain, maintained by the ECB\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) The (possibly partial) **key identifying the data to be returned**.\n\nThe keyword `all` can be used to indicate that all data belonging to the specified dataflow and provided by the specified provider must be returned.\n\nThe examples below are based on the following key: Frequency, Country, Component of inflation, Unit of measure.\n * `M.DE.000000.ANR`: Full key, matching exactly one series, i.e. the monthly (`M`) rates of change (`ANR`) of overall inflation (`000000`) in Germany (`DE`).\n * `A+M.DE.000000.ANR`: Retrieves both annual and monthly data (`A+M`), matching exactly two series\n * `A+M..000000.ANR`: The second dimension is wildcarded, and it wil therefore match the annual and monthly rates of change of overall inflation in any country.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f988d9e8-ad2b-4f9d-b81c-06dbed437e7d",
+              "name": "Not acceptable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "2.1",
+                    "data",
+                    ":flow",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startPeriod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endPeriod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "firstNObservations",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "lastNObservations",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "dimensionAtObservation",
+                      "value": "TIME_PERIOD"
+                    },
+                    {
+                      "key": "detail",
+                      "value": "full"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "flow",
+                      "description": "(Required) The **statistical domain** (aka dataflow) of the data to be returned.\n\nExamples:\n\n* `EXR`: The ID of the domain\n* `ECB,EXR`: The EXR domain, maintained by the ECB\n* `ECB,EXR,1.0`: Version 1.0 of the EXR domain, maintained by the ECB\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) The (possibly partial) **key identifying the data to be returned**.\n\nThe keyword `all` can be used to indicate that all data belonging to the specified dataflow and provided by the specified provider must be returned.\n\nThe examples below are based on the following key: Frequency, Country, Component of inflation, Unit of measure.\n * `M.DE.000000.ANR`: Full key, matching exactly one series, i.e. the monthly (`M`) rates of change (`ANR`) of overall inflation (`000000`) in Germany (`DE`).\n * `A+M.DE.000000.ANR`: Retrieves both annual and monthly data (`A+M`), matching exactly two series\n * `A+M..000000.ANR`: The second dimension is wildcarded, and it wil therefore match the annual and monthly rates of change of overall inflation in any country.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ea319eba-1896-4bf3-8071-f9849ed7b2f7",
+              "name": "Request entity too large",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "2.1",
+                    "data",
+                    ":flow",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startPeriod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endPeriod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "firstNObservations",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "lastNObservations",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "dimensionAtObservation",
+                      "value": "TIME_PERIOD"
+                    },
+                    {
+                      "key": "detail",
+                      "value": "full"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "flow",
+                      "description": "(Required) The **statistical domain** (aka dataflow) of the data to be returned.\n\nExamples:\n\n* `EXR`: The ID of the domain\n* `ECB,EXR`: The EXR domain, maintained by the ECB\n* `ECB,EXR,1.0`: Version 1.0 of the EXR domain, maintained by the ECB\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) The (possibly partial) **key identifying the data to be returned**.\n\nThe keyword `all` can be used to indicate that all data belonging to the specified dataflow and provided by the specified provider must be returned.\n\nThe examples below are based on the following key: Frequency, Country, Component of inflation, Unit of measure.\n * `M.DE.000000.ANR`: Full key, matching exactly one series, i.e. the monthly (`M`) rates of change (`ANR`) of overall inflation (`000000`) in Germany (`DE`).\n * `A+M.DE.000000.ANR`: Retrieves both annual and monthly data (`A+M`), matching exactly two series\n * `A+M..000000.ANR`: The second dimension is wildcarded, and it wil therefore match the annual and monthly rates of change of overall inflation in any country.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a38abf35-561b-4e70-81e7-25d2ead181ba",
+              "name": "URI too long",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "2.1",
+                    "data",
+                    ":flow",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startPeriod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endPeriod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "firstNObservations",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "lastNObservations",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "dimensionAtObservation",
+                      "value": "TIME_PERIOD"
+                    },
+                    {
+                      "key": "detail",
+                      "value": "full"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "flow",
+                      "description": "(Required) The **statistical domain** (aka dataflow) of the data to be returned.\n\nExamples:\n\n* `EXR`: The ID of the domain\n* `ECB,EXR`: The EXR domain, maintained by the ECB\n* `ECB,EXR,1.0`: Version 1.0 of the EXR domain, maintained by the ECB\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) The (possibly partial) **key identifying the data to be returned**.\n\nThe keyword `all` can be used to indicate that all data belonging to the specified dataflow and provided by the specified provider must be returned.\n\nThe examples below are based on the following key: Frequency, Country, Component of inflation, Unit of measure.\n * `M.DE.000000.ANR`: Full key, matching exactly one series, i.e. the monthly (`M`) rates of change (`ANR`) of overall inflation (`000000`) in Germany (`DE`).\n * `A+M.DE.000000.ANR`: Retrieves both annual and monthly data (`A+M`), matching exactly two series\n * `A+M..000000.ANR`: The second dimension is wildcarded, and it wil therefore match the annual and monthly rates of change of overall inflation in any country.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Request-URI Too Long",
+              "code": 414,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ab8cbd5b-ec24-4c11-ade6-f9df71ef80e0",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "2.1",
+                    "data",
+                    ":flow",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startPeriod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endPeriod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "firstNObservations",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "lastNObservations",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "dimensionAtObservation",
+                      "value": "TIME_PERIOD"
+                    },
+                    {
+                      "key": "detail",
+                      "value": "full"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "flow",
+                      "description": "(Required) The **statistical domain** (aka dataflow) of the data to be returned.\n\nExamples:\n\n* `EXR`: The ID of the domain\n* `ECB,EXR`: The EXR domain, maintained by the ECB\n* `ECB,EXR,1.0`: Version 1.0 of the EXR domain, maintained by the ECB\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) The (possibly partial) **key identifying the data to be returned**.\n\nThe keyword `all` can be used to indicate that all data belonging to the specified dataflow and provided by the specified provider must be returned.\n\nThe examples below are based on the following key: Frequency, Country, Component of inflation, Unit of measure.\n * `M.DE.000000.ANR`: Full key, matching exactly one series, i.e. the monthly (`M`) rates of change (`ANR`) of overall inflation (`000000`) in Germany (`DE`).\n * `A+M.DE.000000.ANR`: Retrieves both annual and monthly data (`A+M`), matching exactly two series\n * `A+M..000000.ANR`: The second dimension is wildcarded, and it wil therefore match the annual and monthly rates of change of overall inflation in any country.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7be39fea-0adc-48dd-baf4-32d86afdb45a",
+              "name": "Not implemented",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "2.1",
+                    "data",
+                    ":flow",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startPeriod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endPeriod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "firstNObservations",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "lastNObservations",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "dimensionAtObservation",
+                      "value": "TIME_PERIOD"
+                    },
+                    {
+                      "key": "detail",
+                      "value": "full"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "flow",
+                      "description": "(Required) The **statistical domain** (aka dataflow) of the data to be returned.\n\nExamples:\n\n* `EXR`: The ID of the domain\n* `ECB,EXR`: The EXR domain, maintained by the ECB\n* `ECB,EXR,1.0`: Version 1.0 of the EXR domain, maintained by the ECB\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) The (possibly partial) **key identifying the data to be returned**.\n\nThe keyword `all` can be used to indicate that all data belonging to the specified dataflow and provided by the specified provider must be returned.\n\nThe examples below are based on the following key: Frequency, Country, Component of inflation, Unit of measure.\n * `M.DE.000000.ANR`: Full key, matching exactly one series, i.e. the monthly (`M`) rates of change (`ANR`) of overall inflation (`000000`) in Germany (`DE`).\n * `A+M.DE.000000.ANR`: Retrieves both annual and monthly data (`A+M`), matching exactly two series\n * `A+M..000000.ANR`: The second dimension is wildcarded, and it wil therefore match the annual and monthly rates of change of overall inflation in any country.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f5727523-0574-4b23-b0fa-2ec822f46558",
+              "name": "Service unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdmx",
+                    "2.1",
+                    "data",
+                    ":flow",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startPeriod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endPeriod",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "firstNObservations",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "lastNObservations",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "dimensionAtObservation",
+                      "value": "TIME_PERIOD"
+                    },
+                    {
+                      "key": "detail",
+                      "value": "full"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "flow",
+                      "description": "(Required) The **statistical domain** (aka dataflow) of the data to be returned.\n\nExamples:\n\n* `EXR`: The ID of the domain\n* `ECB,EXR`: The EXR domain, maintained by the ECB\n* `ECB,EXR,1.0`: Version 1.0 of the EXR domain, maintained by the ECB\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) The (possibly partial) **key identifying the data to be returned**.\n\nThe keyword `all` can be used to indicate that all data belonging to the specified dataflow and provided by the specified provider must be returned.\n\nThe examples below are based on the following key: Frequency, Country, Component of inflation, Unit of measure.\n * `M.DE.000000.ANR`: Full key, matching exactly one series, i.e. the monthly (`M`) rates of change (`ANR`) of overall inflation (`000000`) in Germany (`DE`).\n * `A+M.DE.000000.ANR`: Retrieves both annual and monthly data (`A+M`), matching exactly two series\n * `A+M..000000.ANR`: The second dimension is wildcarded, and it wil therefore match the annual and monthly rates of change of overall inflation in any country.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Specifies whether the response should be compressed and how.\n\n`identity` (the default) indicates that no compression will be performed.\n",
+                    "key": "Accept-Encoding",
+                    "value": "identity"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies the client's preferred language.\n",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://ec.europa.eu/eurostat/api/dissemination",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "9e0c9c15-d11b-43d7-8f86-e94f534200f1",
+    "name": "Eurostat SDMX RESTful Async SDMX 2.1 Data queries API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Listing of supported SDMX requests based on\n* [official sdmx-rest 2.1 specifications](https://github.com/sdmx-twg/sdmx-rest/tree/v1.5.0/v2_1/ws/rest/docs)\n* [official sdmx-rest 3.0 specifications](https://github.com/sdmx-twg/sdmx-rest/tree/v2.0.0/doc)\n\nFor additional information, please consult the [online-help](https://ec.europa.eu/eurostat/web/user-guides/data-browser).\n\n\nContact Support:\n Name: Contact Eurostat user support",
+      "type": "text/plain"
+    }
+  }
+}

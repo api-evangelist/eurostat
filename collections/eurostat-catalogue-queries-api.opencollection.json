@@ -1,0 +1,133 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Eurostat SDMX RESTful Async Catalogue queries API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Catalogue queries",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate a catalogue of all datasets in RDF format",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://ec.europa.eu/eurostat/api/dissemination/catalogue/dcat/:agencyID",
+            "params": [
+              {
+                "name": "agencyID",
+                "value": "",
+                "type": "path",
+                "description": "The agency maintaining the artefact used to generate the schema to be returned."
+              }
+            ]
+          },
+          "docs": "Generate a catalogue of all datasets in RDF format"
+        },
+        {
+          "info": {
+            "name": "Generate a catalogue of datasets in RDF format",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://ec.europa.eu/eurostat/api/dissemination/catalogue/dcat/:agencyID/:extractionType",
+            "params": [
+              {
+                "name": "agencyID",
+                "value": "",
+                "type": "path",
+                "description": "The agency maintaining the artefact used to generate the schema to be returned."
+              },
+              {
+                "name": "extractionType",
+                "value": "",
+                "type": "path",
+                "description": "The type of extraction, only `FULL` and `UPDATES` are supported.\n* `FULL`: get a catalogue for all datasets?\n* `UPDATES`: get a catalogue of datasets updated since the latest embargo.\n"
+              }
+            ]
+          },
+          "docs": "Generate a catalogue of datasets in RDF format"
+        },
+        {
+          "info": {
+            "name": "Generate the Metabase which is a catalogue containing the definition of disseminated data products",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://ec.europa.eu/eurostat/api/dissemination/catalogue/metabase.txt.gz"
+          },
+          "docs": "Generate the Metabase which is a catalogue containing the definition of disseminated data products"
+        },
+        {
+          "info": {
+            "name": "Generate a web feed which allows users to access updates to online content in a standardized, computer-readable format",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://ec.europa.eu/eurostat/api/dissemination/catalogue/rss/:language/statistics-update.rss",
+            "params": [
+              {
+                "name": "language",
+                "value": "",
+                "type": "path",
+                "description": "The language of the requested data.\n"
+              }
+            ]
+          },
+          "docs": "Generate a web feed which allows users to access updates to online content in a standardized, computer-readable format"
+        },
+        {
+          "info": {
+            "name": "Return the XML Schema Definition of the Table of Content (TOC)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://ec.europa.eu/eurostat/api/dissemination/catalogue/toc/TableOfContent.xsd"
+          },
+          "docs": "Return the XML Schema Definition of the Table of Content (TOC)"
+        },
+        {
+          "info": {
+            "name": "Return the Table of Content (TOC) for the specified language in text format",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://ec.europa.eu/eurostat/api/dissemination/catalogue/toc/txt",
+            "params": [
+              {
+                "name": "lang",
+                "value": "",
+                "type": "query",
+                "description": "The language of the requested data.\n"
+              }
+            ]
+          },
+          "docs": "Return the Table of Content (TOC) for the specified language in text format"
+        },
+        {
+          "info": {
+            "name": "Return the Table of Content (TOC) for all supported languages in XML format",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://ec.europa.eu/eurostat/api/dissemination/catalogue/toc/xml"
+          },
+          "docs": "Return the Table of Content (TOC) for all supported languages in XML format"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

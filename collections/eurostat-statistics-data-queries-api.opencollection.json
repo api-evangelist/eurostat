@@ -1,0 +1,73 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Eurostat SDMX RESTful Async Statistics data queries API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Statistics data queries",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "API Statistics is a web service for data query where parameters don’t have to respect a specific order opposed to API SDMX 2.1",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/:datasetCode",
+            "params": [
+              {
+                "name": "datasetCode",
+                "value": "",
+                "type": "path",
+                "description": "The code of the dataset to be queried.\n"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The format of the returned data.\n"
+              },
+              {
+                "name": "filters",
+                "value": "",
+                "type": "query",
+                "description": "The filter parameters defined in the URL are optional. Any dimension present in the data product can be used as filter parameter.\nThe structure of a filter parameter follows DIMENSION_CODE=VALUE\n* DIMENSION_CODE: the code of the dimension used to filter data (case insensitive)\n* VALUE: value of the filter is the position in the dimension (case insensitive) e.g. time=2019 or geo=FR\n"
+              },
+              {
+                "name": "untilTimePeriod",
+                "value": "",
+                "type": "query",
+                "description": "The specific TIME_PERIOD value to filter the returned file until this value.\n"
+              },
+              {
+                "name": "sinceTimePeriod",
+                "value": "",
+                "type": "query",
+                "description": "The specific TIME_PERIOD value to filter the returned file since this value.\n"
+              },
+              {
+                "name": "lastTimePeriod",
+                "value": "",
+                "type": "query",
+                "description": "A numeric value counting down until the TIME_PERIOD dimension values are included in the returned file.\n"
+              },
+              {
+                "name": "lang",
+                "value": "",
+                "type": "query",
+                "description": "The language of the requested data.\n"
+              }
+            ]
+          },
+          "docs": "API Statistics is a web service for data query where parameters don’t have to respect a specific order opposed to API SDMX 2.1"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

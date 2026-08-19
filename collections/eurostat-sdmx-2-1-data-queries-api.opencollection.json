@@ -1,0 +1,89 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Eurostat SDMX RESTful Async SDMX 2.1 Data queries API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SDMX 2.1 Data queries",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/:flow/:key",
+            "headers": [
+              {
+                "name": "Accept-Encoding",
+                "value": ""
+              },
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "flow",
+                "value": "",
+                "type": "path",
+                "description": "The **statistical domain** (aka dataflow) of the data to be returned.\n\nExamples:\n\n* `EXR`: The ID of the domain\n* `ECB,EXR`: The EXR domain, maintained by the ECB\n* `ECB,EXR,1.0`: Version 1.0 of the EXR domain, maintained by the ECB\n"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "path",
+                "description": "The (possibly partial) **key identifying the data to be returned**.\n\nThe keyword `all` can be used to indicate that all data belonging to the specified dataflow and provided by the specified provider must be returned.\n\nThe examples below are based on the following key: Frequency, Country, Component of inflation, Unit of measure.\n * `M.DE.000000.ANR`: Full key, matching exactly one series, i.e. the monthly (`M`) rates of change (`ANR`) of overall inflation (`000000`) in Germany (`DE`).\n * `A+M.DE.000000.ANR`: Retrieves both annual and monthly data (`A+M`), matching exactly two series\n * `A+M..000000.ANR`: The second dimension is wildcarded, and it wil therefore match the annual and monthly rates of change of overall inflation in any country.\n"
+              },
+              {
+                "name": "startPeriod",
+                "value": "",
+                "type": "query",
+                "description": "The start of the period for which results should be supplied (inclusive).\n\nCan be expressed using 8601 dates or SDMX reporting periods.\n\nExamples:\n* `2000`: Year (ISO 8601)\n* `2000-01`: Month (ISO 8601)\n* `2000-01-01`: Date (ISO 8601)\n* `2000-Q1`: Quarter (SDMX)\n* `2000-W01`: Week (SDMX)\n"
+              },
+              {
+                "name": "endPeriod",
+                "value": "",
+                "type": "query",
+                "description": "The end of the period for which results should be supplied (inclusive).\n\nCan be expressed using 8601 dates or SDMX reporting periods.\n\nExamples:\n* `2000`: Year (ISO 8601)\n* `2000-01`: Month (ISO 8601)\n* `2000-01-01`: Date (ISO 8601)\n* `2000-S1`: Semester (SDMX)\n* `2000-D001`: Day (SDMX)\n"
+              },
+              {
+                "name": "firstNObservations",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of observations to be returned starting from the oldest one\n"
+              },
+              {
+                "name": "lastNObservations",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of observations to be returned starting from the most recent one\n"
+              },
+              {
+                "name": "dimensionAtObservation",
+                "value": "",
+                "type": "query",
+                "description": "Indicates **how the data should be packaged**.\n\nThe options are:\n\n* `TIME_PERIOD`: A timeseries view\n* The ID of any other dimension: A cross-sectional view of the data\n* `AllDimensions`: A flat view of the data.\n"
+              },
+              {
+                "name": "detail",
+                "value": "",
+                "type": "query",
+                "description": "The **amount of information** to be returned.\n\nPossible options are:\n\n* `full`: All data and documentation\n* `dataonly`: Everything except attributes\n* `serieskeysonly`: The series keys. This is useful to return the series that match a certain query, without returning the actual data (e.g. overview page)\n* `nodata`: The series, including attributes and annotations, without observations.\n"
+              }
+            ]
+          },
+          "docs": "Get data"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

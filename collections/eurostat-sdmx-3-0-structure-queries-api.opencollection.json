@@ -1,0 +1,698 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Eurostat SDMX RESTful Async SDMX 3.0 Structure queries API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SDMX 3.0 Structure queries",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get dataflows",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/3.0/structure/dataflow/:agencyID/:resourceID",
+            "headers": [
+              {
+                "name": "Accept-Encoding",
+                "value": ""
+              },
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "agencyID",
+                "value": "",
+                "type": "path",
+                "description": "The agency maintaining the artefact used to generate the schema to be returned."
+              },
+              {
+                "name": "resourceID",
+                "value": "",
+                "type": "path",
+                "description": "The id of the artefact used to generate the schema to be returned."
+              },
+              {
+                "name": "references",
+                "value": "",
+                "type": "query",
+                "description": "Instructs the web service to return (or not) the artefacts referenced by the artefact to be returned.\n\nPossible values are:\n\n* `none`: No reference will be returned\n* `children`: Returns the artefacts referenced by the artefact to be returned\n* `descendants`: References of references, up to any level, will be returned\n"
+              },
+              {
+                "name": "detail",
+                "value": "",
+                "type": "query",
+                "description": "The amount of information to be returned.\n\nPossible values are:\n\n* `allstubs`: All artefacts should be returned as stubs, containing only identification information, as well as the artefacts' name\n* `referencestubs`: Referenced artefacts should be returned as stubs, containing only identification information, as well as the artefacts' name\n* `referencepartial`: Referenced item schemes should only include items used by the artefact to be returned. For example, a concept scheme would only contain the concepts used in a DSD, and its isPartial flag would be set to `true`. Only available if the \"references\" parameter is set to children or descendants.\n* `allcompletestubs`: All artefacts should be returned as complete stubs, containing identification information, the artefacts' name, description, annotations and isFinal information\n* `referencecompletestubs`: Referenced artefacts should be returned as complete stubs, containing identification information, the artefacts' name, description, annotations and isFinal information\n* `full`: All available information for all artefacts should be returned\n"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The format used to return the structural metadata (extension parameter). When a \"format\" is specified, the specific \"formatVersion\" needs also to be specified.\n\n|Format name                          |\"format\" parameter   | \"formatVersion\" parameter   |\n|-------------------------------------|---------------------|-----------------------------|\n|Structure 3.0 (default)              | structure           | 3.0                         |\n"
+              },
+              {
+                "name": "formatVersion",
+                "value": "",
+                "type": "query",
+                "description": "The version of the format used to return the structural metadata (extension parameter). When a \"formatVersion\" is specified, the specific \"format\" needs also to be specified.\n\n|Format name                          |\"format\" parameter   | \"formatVersion\" parameter   |\n|-------------------------------------|---------------------|-----------------------------|\n|Structure 3.0 (default)              | structure           | 3.0                         |\n"
+              },
+              {
+                "name": "compress",
+                "value": "",
+                "type": "query",
+                "description": "Whether the response is compressed (default, gzip format) or not.\n"
+              }
+            ]
+          },
+          "docs": "Structure queries allow **retrieving structural metadata**.\n\nDataflow structure queries in SDMX allow you to retrieve structural metadata available from the 'dataflow' of a particular dataset.\n"
+        },
+        {
+          "info": {
+            "name": "Get dataflows",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/3.0/structure/dataflow/:agencyID/:resourceID/:version",
+            "headers": [
+              {
+                "name": "Accept-Encoding",
+                "value": ""
+              },
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "agencyID",
+                "value": "",
+                "type": "path",
+                "description": "The agency maintaining the artefact used to generate the schema to be returned."
+              },
+              {
+                "name": "resourceID",
+                "value": "",
+                "type": "path",
+                "description": "The id of the artefact used to generate the schema to be returned."
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path",
+                "description": "If provided, the specified version of the artefact will be returned.\n\nThe `+` can be used to return the latest production version of the matching resource.\n\nNo value set, is identical to '+' which returns the latest version.\n"
+              },
+              {
+                "name": "references",
+                "value": "",
+                "type": "query",
+                "description": "Instructs the web service to return (or not) the artefacts referenced by the artefact to be returned.\n\nPossible values are:\n\n* `none`: No reference will be returned\n* `children`: Returns the artefacts referenced by the artefact to be returned\n* `descendants`: References of references, up to any level, will be returned\n"
+              },
+              {
+                "name": "detail",
+                "value": "",
+                "type": "query",
+                "description": "The amount of information to be returned.\n\nPossible values are:\n\n* `allstubs`: All artefacts should be returned as stubs, containing only identification information, as well as the artefacts' name\n* `referencestubs`: Referenced artefacts should be returned as stubs, containing only identification information, as well as the artefacts' name\n* `referencepartial`: Referenced item schemes should only include items used by the artefact to be returned. For example, a concept scheme would only contain the concepts used in a DSD, and its isPartial flag would be set to `true`. Only available if the \"references\" parameter is set to children or descendants.\n* `allcompletestubs`: All artefacts should be returned as complete stubs, containing identification information, the artefacts' name, description, annotations and isFinal information\n* `referencecompletestubs`: Referenced artefacts should be returned as complete stubs, containing identification information, the artefacts' name, description, annotations and isFinal information\n* `full`: All available information for all artefacts should be returned\n"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The format used to return the structural metadata (extension parameter). When a \"format\" is specified, the specific \"formatVersion\" needs also to be specified.\n\n|Format name                          |\"format\" parameter   | \"formatVersion\" parameter   |\n|-------------------------------------|---------------------|-----------------------------|\n|Structure 3.0 (default)              | structure           | 3.0                         |\n"
+              },
+              {
+                "name": "formatVersion",
+                "value": "",
+                "type": "query",
+                "description": "The version of the format used to return the structural metadata (extension parameter). When a \"formatVersion\" is specified, the specific \"format\" needs also to be specified.\n\n|Format name                          |\"format\" parameter   | \"formatVersion\" parameter   |\n|-------------------------------------|---------------------|-----------------------------|\n|Structure 3.0 (default)              | structure           | 3.0                         |\n"
+              },
+              {
+                "name": "compress",
+                "value": "",
+                "type": "query",
+                "description": "Whether the response is compressed (default, gzip format) or not.\n"
+              }
+            ]
+          },
+          "docs": "Structure queries allow **retrieving structural metadata**.\n\nDataflow structure queries in SDMX allow you to retrieve structural metadata available from the 'dataflow' of a particular dataset.\n"
+        },
+        {
+          "info": {
+            "name": "Get dataconstraints",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/3.0/structure/dataconstraint/:agencyID/:resourceID",
+            "headers": [
+              {
+                "name": "Accept-Encoding",
+                "value": ""
+              },
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "agencyID",
+                "value": "",
+                "type": "path",
+                "description": "The agency maintaining the artefact used to generate the schema to be returned."
+              },
+              {
+                "name": "resourceID",
+                "value": "",
+                "type": "path",
+                "description": "The id of the artefact used to generate the schema to be returned."
+              },
+              {
+                "name": "references",
+                "value": "",
+                "type": "query",
+                "description": "Instructs the web service to not return the artefact referenced by the artefact to be returned.\n\nPossible value is:\n\n* `none`: No reference will be returned\n"
+              },
+              {
+                "name": "detail",
+                "value": "",
+                "type": "query",
+                "description": "The amount of information to be returned.\n\nPossible values are:\n\n* `allstubs`: All artefacts should be returned as stubs, containing only identification information, as well as the artefacts' name\n* `referencestubs`: Referenced artefacts should be returned as stubs, containing only identification information, as well as the artefacts' name\n* `allcompletestubs`: All artefacts should be returned as complete stubs, containing identification information, the artefacts' name, description, annotations and isFinal information\n* `referencecompletestubs`: Referenced artefacts should be returned as complete stubs, containing identification information, the artefacts' name, description, annotations and isFinal information\n* `full`: All available information for all artefacts should be returned\n"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The format used to return the structural metadata (extension parameter). When a \"format\" is specified, the specific \"formatVersion\" needs also to be specified.\n\n|Format name                          |\"format\" parameter   | \"formatVersion\" parameter   |\n|-------------------------------------|---------------------|-----------------------------|\n|Structure 3.0 (default)              | structure           | 3.0                         |\n"
+              },
+              {
+                "name": "formatVersion",
+                "value": "",
+                "type": "query",
+                "description": "The version of the format used to return the structural metadata (extension parameter). When a \"formatVersion\" is specified, the specific \"format\" needs also to be specified.\n\n|Format name                          |\"format\" parameter   | \"formatVersion\" parameter   |\n|-------------------------------------|---------------------|-----------------------------|\n|Structure 3.0 (default)              | structure           | 3.0                         |\n"
+              },
+              {
+                "name": "compress",
+                "value": "",
+                "type": "query",
+                "description": "Whether the response is compressed (default, gzip format) or not.\n"
+              }
+            ]
+          },
+          "docs": "Structure queries allow **retrieving structural metadata**.\n\nDataconstraint structure queries in SDMX allow you to retrieve structural metadata available from the 'dataconstraint' of a particular dataset.\n"
+        },
+        {
+          "info": {
+            "name": "Get dataconstraints",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/3.0/structure/dataconstraint/:agencyID/:resourceID/:version",
+            "headers": [
+              {
+                "name": "Accept-Encoding",
+                "value": ""
+              },
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "agencyID",
+                "value": "",
+                "type": "path",
+                "description": "The agency maintaining the artefact used to generate the schema to be returned."
+              },
+              {
+                "name": "resourceID",
+                "value": "",
+                "type": "path",
+                "description": "The id of the artefact used to generate the schema to be returned."
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path",
+                "description": "If provided, the specified version of the artefact will be returned.\n\nThe `+` can be used to return the latest production version of the matching resource.\n\nNo value set, is identical to '+' which returns the latest version.\n"
+              },
+              {
+                "name": "references",
+                "value": "",
+                "type": "query",
+                "description": "Instructs the web service to not return the artefact referenced by the artefact to be returned.\n\nPossible value is:\n\n* `none`: No reference will be returned\n"
+              },
+              {
+                "name": "detail",
+                "value": "",
+                "type": "query",
+                "description": "The amount of information to be returned.\n\nPossible values are:\n\n* `allstubs`: All artefacts should be returned as stubs, containing only identification information, as well as the artefacts' name\n* `referencestubs`: Referenced artefacts should be returned as stubs, containing only identification information, as well as the artefacts' name\n* `allcompletestubs`: All artefacts should be returned as complete stubs, containing identification information, the artefacts' name, description, annotations and isFinal information\n* `referencecompletestubs`: Referenced artefacts should be returned as complete stubs, containing identification information, the artefacts' name, description, annotations and isFinal information\n* `full`: All available information for all artefacts should be returned\n"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The format used to return the structural metadata (extension parameter). When a \"format\" is specified, the specific \"formatVersion\" needs also to be specified.\n\n|Format name                          |\"format\" parameter   | \"formatVersion\" parameter   |\n|-------------------------------------|---------------------|-----------------------------|\n|Structure 3.0 (default)              | structure           | 3.0                         |\n"
+              },
+              {
+                "name": "formatVersion",
+                "value": "",
+                "type": "query",
+                "description": "The version of the format used to return the structural metadata (extension parameter). When a \"formatVersion\" is specified, the specific \"format\" needs also to be specified.\n\n|Format name                          |\"format\" parameter   | \"formatVersion\" parameter   |\n|-------------------------------------|---------------------|-----------------------------|\n|Structure 3.0 (default)              | structure           | 3.0                         |\n"
+              },
+              {
+                "name": "compress",
+                "value": "",
+                "type": "query",
+                "description": "Whether the response is compressed (default, gzip format) or not.\n"
+              }
+            ]
+          },
+          "docs": "Structure queries allow **retrieving structural metadata**.\n\nDataconstraint structure queries in SDMX allow you to retrieve structural metadata available from the 'dataconstraint' of a particular dataset.\n"
+        },
+        {
+          "info": {
+            "name": "Get datastructure",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/3.0/structure/datastructure/:agencyID/:resourceID",
+            "headers": [
+              {
+                "name": "Accept-Encoding",
+                "value": ""
+              },
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "agencyID",
+                "value": "",
+                "type": "path",
+                "description": "The agency maintaining the artefact used to generate the schema to be returned."
+              },
+              {
+                "name": "resourceID",
+                "value": "",
+                "type": "path",
+                "description": "The id of the artefact used to generate the schema to be returned."
+              },
+              {
+                "name": "references",
+                "value": "",
+                "type": "query",
+                "description": "Instructs the web service to return (or not) the artefacts referenced by the artefact to be returned.\n\nPossible values are:\n\n* `none`: No reference will be returned\n* `parents`: Returns the artefacts that use the artefact matching the query\n* `parentsandsiblings`: Returns the artefacts that use the artefact matching the query, as well as the artefacts referenced by these artefacts\n* `children`: Returns the artefacts referenced by the artefact to be returned\n* `descendants`: References of references, up to any level, will be returned\n* `all`: The combination of parentsandsiblings and descendants\n"
+              },
+              {
+                "name": "detail",
+                "value": "",
+                "type": "query",
+                "description": "The amount of information to be returned.\n\nPossible values are:\n\n* `allstubs`: All artefacts should be returned as stubs, containing only identification information, as well as the artefacts' name\n* `referencestubs`: Referenced artefacts should be returned as stubs, containing only identification information, as well as the artefacts' name\n* `allcompletestubs`: All artefacts should be returned as complete stubs, containing identification information, the artefacts' name, description, annotations and isFinal information\n* `referencecompletestubs`: Referenced artefacts should be returned as complete stubs, containing identification information, the artefacts' name, description, annotations and isFinal information\n* `full`: All available information for all artefacts should be returned\n"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The format used to return the structural metadata (extension parameter). When a \"format\" is specified, the specific \"formatVersion\" needs also to be specified.\n\n|Format name                          |\"format\" parameter   | \"formatVersion\" parameter   |\n|-------------------------------------|---------------------|-----------------------------|\n|Structure 3.0 (default)              | structure           | 3.0                         |\n"
+              },
+              {
+                "name": "formatVersion",
+                "value": "",
+                "type": "query",
+                "description": "The version of the format used to return the structural metadata (extension parameter). When a \"formatVersion\" is specified, the specific \"format\" needs also to be specified.\n\n|Format name                          |\"format\" parameter   | \"formatVersion\" parameter   |\n|-------------------------------------|---------------------|-----------------------------|\n|Structure 3.0 (default)              | structure           | 3.0                         |\n"
+              },
+              {
+                "name": "compress",
+                "value": "",
+                "type": "query",
+                "description": "Whether the response is compressed (default, gzip format) or not.\n"
+              }
+            ]
+          },
+          "docs": "Structure queries allow **retrieving structural metadata**.\n\nDatastructure queries in SDMX allow you to retrieve structural metadata available from the 'datastructure' of a particular dataset.\n"
+        },
+        {
+          "info": {
+            "name": "Get datastructure",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/3.0/structure/datastructure/:agencyID/:resourceID/:version",
+            "headers": [
+              {
+                "name": "Accept-Encoding",
+                "value": ""
+              },
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "agencyID",
+                "value": "",
+                "type": "path",
+                "description": "The agency maintaining the artefact used to generate the schema to be returned."
+              },
+              {
+                "name": "resourceID",
+                "value": "",
+                "type": "path",
+                "description": "The id of the artefact used to generate the schema to be returned."
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path",
+                "description": "If provided, the specified version of the artefact will be returned.\n\nThe `+` can be used to return the latest production version of the matching resource.\n\nNo value set, is identical to '+' which returns the latest version.\n"
+              },
+              {
+                "name": "references",
+                "value": "",
+                "type": "query",
+                "description": "Instructs the web service to return (or not) the artefacts referenced by the artefact to be returned.\n\nPossible values are:\n\n* `none`: No reference will be returned\n* `parents`: Returns the artefacts that use the artefact matching the query\n* `parentsandsiblings`: Returns the artefacts that use the artefact matching the query, as well as the artefacts referenced by these artefacts\n* `children`: Returns the artefacts referenced by the artefact to be returned\n* `descendants`: References of references, up to any level, will be returned\n* `all`: The combination of parentsandsiblings and descendants\n"
+              },
+              {
+                "name": "detail",
+                "value": "",
+                "type": "query",
+                "description": "The amount of information to be returned.\n\nPossible values are:\n\n* `allstubs`: All artefacts should be returned as stubs, containing only identification information, as well as the artefacts' name\n* `referencestubs`: Referenced artefacts should be returned as stubs, containing only identification information, as well as the artefacts' name\n* `allcompletestubs`: All artefacts should be returned as complete stubs, containing identification information, the artefacts' name, description, annotations and isFinal information\n* `referencecompletestubs`: Referenced artefacts should be returned as complete stubs, containing identification information, the artefacts' name, description, annotations and isFinal information\n* `full`: All available information for all artefacts should be returned\n"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The format used to return the structural metadata (extension parameter). When a \"format\" is specified, the specific \"formatVersion\" needs also to be specified.\n\n|Format name                          |\"format\" parameter   | \"formatVersion\" parameter   |\n|-------------------------------------|---------------------|-----------------------------|\n|Structure 3.0 (default)              | structure           | 3.0                         |\n"
+              },
+              {
+                "name": "formatVersion",
+                "value": "",
+                "type": "query",
+                "description": "The version of the format used to return the structural metadata (extension parameter). When a \"formatVersion\" is specified, the specific \"format\" needs also to be specified.\n\n|Format name                          |\"format\" parameter   | \"formatVersion\" parameter   |\n|-------------------------------------|---------------------|-----------------------------|\n|Structure 3.0 (default)              | structure           | 3.0                         |\n"
+              },
+              {
+                "name": "compress",
+                "value": "",
+                "type": "query",
+                "description": "Whether the response is compressed (default, gzip format) or not.\n"
+              }
+            ]
+          },
+          "docs": "Structure queries allow **retrieving structural metadata**.\n\nDatastructure queries in SDMX allow you to retrieve structural metadata available from the 'datastructure' of a particular dataset.\n"
+        },
+        {
+          "info": {
+            "name": "Get conceptscheme",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/3.0/structure/conceptscheme/:agencyID/:resourceID",
+            "headers": [
+              {
+                "name": "Accept-Encoding",
+                "value": ""
+              },
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "agencyID",
+                "value": "",
+                "type": "path",
+                "description": "The agency maintaining the artefact used to generate the schema to be returned."
+              },
+              {
+                "name": "resourceID",
+                "value": "",
+                "type": "path",
+                "description": "The id of the artefact used to generate the schema to be returned."
+              },
+              {
+                "name": "references",
+                "value": "",
+                "type": "query",
+                "description": "Instructs the web service to return (or not) the artefacts referenced by the artefact to be returned.\n\nPossible values are:\n\n* `none`: No reference will be returned\n* `parents`: Returns the artefacts that use the artefact matching the query\n* `parentsandsiblings`: Returns the artefacts that use the artefact matching the query, as well as the artefacts referenced by these artefacts\n"
+              },
+              {
+                "name": "detail",
+                "value": "",
+                "type": "query",
+                "description": "The amount of information to be returned.\n\nPossible values are:\n\n* `allstubs`: All artefacts should be returned as stubs, containing only identification information, as well as the artefacts' name\n* `referencestubs`: Referenced artefacts should be returned as stubs, containing only identification information, as well as the artefacts' name\n* `allcompletestubs`: All artefacts should be returned as complete stubs, containing identification information, the artefacts' name, description, annotations and isFinal information\n* `referencecompletestubs`: Referenced artefacts should be returned as complete stubs, containing identification information, the artefacts' name, description, annotations and isFinal information\n* `full`: All available information for all artefacts should be returned\n"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The format used to return the structural metadata (extension parameter). When a \"format\" is specified, the specific \"formatVersion\" needs also to be specified.\n\n|Format name                          |\"format\" parameter   | \"formatVersion\" parameter   |\n|-------------------------------------|---------------------|-----------------------------|\n|Structure 3.0 (default)              | structure           | 3.0                         |\n"
+              },
+              {
+                "name": "formatVersion",
+                "value": "",
+                "type": "query",
+                "description": "The version of the format used to return the structural metadata (extension parameter). When a \"formatVersion\" is specified, the specific \"format\" needs also to be specified.\n\n|Format name                          |\"format\" parameter   | \"formatVersion\" parameter   |\n|-------------------------------------|---------------------|-----------------------------|\n|Structure 3.0 (default)              | structure           | 3.0                         |\n"
+              },
+              {
+                "name": "compress",
+                "value": "",
+                "type": "query",
+                "description": "Whether the response is compressed (default, gzip format) or not.\n"
+              }
+            ]
+          },
+          "docs": "Structure queries allow **retrieving structural metadata**.\n\nConceptscheme queries in SDMX allow you to retrieve structural metadata available from a particular 'conceptscheme'.\n"
+        },
+        {
+          "info": {
+            "name": "Get conceptscheme",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/3.0/structure/conceptscheme/:agencyID/:resourceID/:version",
+            "headers": [
+              {
+                "name": "Accept-Encoding",
+                "value": ""
+              },
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "agencyID",
+                "value": "",
+                "type": "path",
+                "description": "The agency maintaining the artefact used to generate the schema to be returned."
+              },
+              {
+                "name": "resourceID",
+                "value": "",
+                "type": "path",
+                "description": "The id of the artefact used to generate the schema to be returned."
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path",
+                "description": "If provided, the specified version of the artefact will be returned.\n\nThe `+` can be used to return the latest production version of the matching resource.\n\nNo value set, is identical to '+' which returns the latest version.\n"
+              },
+              {
+                "name": "references",
+                "value": "",
+                "type": "query",
+                "description": "Instructs the web service to return (or not) the artefacts referenced by the artefact to be returned.\n\nPossible values are:\n\n* `none`: No reference will be returned\n* `parents`: Returns the artefacts that use the artefact matching the query\n* `parentsandsiblings`: Returns the artefacts that use the artefact matching the query, as well as the artefacts referenced by these artefacts\n"
+              },
+              {
+                "name": "detail",
+                "value": "",
+                "type": "query",
+                "description": "The amount of information to be returned.\n\nPossible values are:\n\n* `allstubs`: All artefacts should be returned as stubs, containing only identification information, as well as the artefacts' name\n* `referencestubs`: Referenced artefacts should be returned as stubs, containing only identification information, as well as the artefacts' name\n* `allcompletestubs`: All artefacts should be returned as complete stubs, containing identification information, the artefacts' name, description, annotations and isFinal information\n* `referencecompletestubs`: Referenced artefacts should be returned as complete stubs, containing identification information, the artefacts' name, description, annotations and isFinal information\n* `full`: All available information for all artefacts should be returned\n"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The format used to return the structural metadata (extension parameter). When a \"format\" is specified, the specific \"formatVersion\" needs also to be specified.\n\n|Format name                          |\"format\" parameter   | \"formatVersion\" parameter   |\n|-------------------------------------|---------------------|-----------------------------|\n|Structure 3.0 (default)              | structure           | 3.0                         |\n"
+              },
+              {
+                "name": "formatVersion",
+                "value": "",
+                "type": "query",
+                "description": "The version of the format used to return the structural metadata (extension parameter). When a \"formatVersion\" is specified, the specific \"format\" needs also to be specified.\n\n|Format name                          |\"format\" parameter   | \"formatVersion\" parameter   |\n|-------------------------------------|---------------------|-----------------------------|\n|Structure 3.0 (default)              | structure           | 3.0                         |\n"
+              },
+              {
+                "name": "compress",
+                "value": "",
+                "type": "query",
+                "description": "Whether the response is compressed (default, gzip format) or not.\n"
+              }
+            ]
+          },
+          "docs": "Structure queries allow **retrieving structural metadata**.\n\nConceptscheme queries in SDMX allow you to retrieve structural metadata available from a particular 'conceptscheme'.\n"
+        },
+        {
+          "info": {
+            "name": "Get codelist",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/3.0/structure/codelist/:agencyID/:resourceID",
+            "headers": [
+              {
+                "name": "Accept-Encoding",
+                "value": ""
+              },
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "agencyID",
+                "value": "",
+                "type": "path",
+                "description": "The agency maintaining the artefact used to generate the schema to be returned."
+              },
+              {
+                "name": "resourceID",
+                "value": "",
+                "type": "path",
+                "description": "The id of the artefact used to generate the schema to be returned."
+              },
+              {
+                "name": "references",
+                "value": "",
+                "type": "query",
+                "description": "Instructs the web service to return (or not) the artefacts referenced by the artefact to be returned.\n\nPossible values are:\n\n* `none`: No reference will be returned\n* `parents`: Returns the artefacts that use the artefact matching the query\n* `parentsandsiblings`: Returns the artefacts that use the artefact matching the query, as well as the artefacts referenced by these artefacts\n"
+              },
+              {
+                "name": "detail",
+                "value": "",
+                "type": "query",
+                "description": "The amount of information to be returned.\n\nPossible values are:\n\n* `allstubs`: All artefacts should be returned as stubs, containing only identification information, as well as the artefacts' name\n* `referencestubs`: Referenced artefacts should be returned as stubs, containing only identification information, as well as the artefacts' name\n* `allcompletestubs`: All artefacts should be returned as complete stubs, containing identification information, the artefacts' name, description, annotations and isFinal information\n* `referencecompletestubs`: Referenced artefacts should be returned as complete stubs, containing identification information, the artefacts' name, description, annotations and isFinal information\n* `full`: All available information for all artefacts should be returned\n"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The format used to return the structural metadata (extension parameter). When a \"format\" is specified, the specific \"formatVersion\" needs also to be specified.\n\n|Format name                          |\"format\" parameter   | \"formatVersion\" parameter   |\n|-------------------------------------|---------------------|-----------------------------|\n|Structure 3.0 (default)              | structure           | 3.0                         |\n"
+              },
+              {
+                "name": "formatVersion",
+                "value": "",
+                "type": "query",
+                "description": "The version of the format used to return the structural metadata (extension parameter). When a \"formatVersion\" is specified, the specific \"format\" needs also to be specified.\n\n|Format name                          |\"format\" parameter   | \"formatVersion\" parameter   |\n|-------------------------------------|---------------------|-----------------------------|\n|Structure 3.0 (default)              | structure           | 3.0                         |\n"
+              },
+              {
+                "name": "compress",
+                "value": "",
+                "type": "query",
+                "description": "Whether the response is compressed (default, gzip format) or not.\n"
+              }
+            ]
+          },
+          "docs": "Structure queries allow **retrieving structural metadata**.\n\nCodelist structure queries in SDMX allow you to retrieve structural metadata available from a particular 'codelist'.\n"
+        },
+        {
+          "info": {
+            "name": "Get codelist",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/3.0/structure/codelist/:agencyID/:resourceID/:version",
+            "headers": [
+              {
+                "name": "Accept-Encoding",
+                "value": ""
+              },
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "agencyID",
+                "value": "",
+                "type": "path",
+                "description": "The agency maintaining the artefact used to generate the schema to be returned."
+              },
+              {
+                "name": "resourceID",
+                "value": "",
+                "type": "path",
+                "description": "The id of the artefact used to generate the schema to be returned."
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path",
+                "description": "If provided, the specified version of the artefact will be returned.\n\nThe `+` can be used to return the latest production version of the matching resource.\n\nNo value set, is identical to '+' which returns the latest version.\n"
+              },
+              {
+                "name": "references",
+                "value": "",
+                "type": "query",
+                "description": "Instructs the web service to return (or not) the artefacts referenced by the artefact to be returned.\n\nPossible values are:\n\n* `none`: No reference will be returned\n* `parents`: Returns the artefacts that use the artefact matching the query\n* `parentsandsiblings`: Returns the artefacts that use the artefact matching the query, as well as the artefacts referenced by these artefacts\n"
+              },
+              {
+                "name": "detail",
+                "value": "",
+                "type": "query",
+                "description": "The amount of information to be returned.\n\nPossible values are:\n\n* `allstubs`: All artefacts should be returned as stubs, containing only identification information, as well as the artefacts' name\n* `referencestubs`: Referenced artefacts should be returned as stubs, containing only identification information, as well as the artefacts' name\n* `allcompletestubs`: All artefacts should be returned as complete stubs, containing identification information, the artefacts' name, description, annotations and isFinal information\n* `referencecompletestubs`: Referenced artefacts should be returned as complete stubs, containing identification information, the artefacts' name, description, annotations and isFinal information\n* `full`: All available information for all artefacts should be returned\n"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The format used to return the structural metadata (extension parameter). When a \"format\" is specified, the specific \"formatVersion\" needs also to be specified.\n\n|Format name                          |\"format\" parameter   | \"formatVersion\" parameter   |\n|-------------------------------------|---------------------|-----------------------------|\n|Structure 3.0 (default)              | structure           | 3.0                         |\n"
+              },
+              {
+                "name": "formatVersion",
+                "value": "",
+                "type": "query",
+                "description": "The version of the format used to return the structural metadata (extension parameter). When a \"formatVersion\" is specified, the specific \"format\" needs also to be specified.\n\n|Format name                          |\"format\" parameter   | \"formatVersion\" parameter   |\n|-------------------------------------|---------------------|-----------------------------|\n|Structure 3.0 (default)              | structure           | 3.0                         |\n"
+              },
+              {
+                "name": "compress",
+                "value": "",
+                "type": "query",
+                "description": "Whether the response is compressed (default, gzip format) or not.\n"
+              }
+            ]
+          },
+          "docs": "Structure queries allow **retrieving structural metadata**.\n\nCodelist structure queries in SDMX allow you to retrieve structural metadata available from a particular 'codelist'.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

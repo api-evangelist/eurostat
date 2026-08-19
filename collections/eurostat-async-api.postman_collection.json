@@ -1,0 +1,308 @@
+{
+  "item": [
+    {
+      "id": "2fd050cb-9c4c-4d9f-99e9-d23518228e40",
+      "name": "Async",
+      "description": {
+        "content": "asynchronous processing",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8b47938c-a368-4083-b8c6-7a88f345d572",
+          "name": "get Async Status",
+          "request": {
+            "name": "get Async Status",
+            "description": {
+              "content": "The status of a request that is processed asynchronously can be checked",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "1.0",
+                "async",
+                "status",
+                ":uuid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "uuid",
+                  "description": "(Required) This value is the key to use for checking status of data availability from the Asynchronous Endpoint.\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3e7e7b6b-fd67-4a60-8f18-1cb5b2c8c484",
+              "name": "The status of a request that is processed asynchronously can be one of the following values:\n* SUBMITTED -  the request is submitted for processing\n* PROCESSING -  the request is currently being processed\n* AVAILABLE - the data is available for download\n* EXPIRED - the request was processed but the data is no longer available (cache expired)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "1.0",
+                    "async",
+                    "status",
+                    ":uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uuid",
+                      "description": "(Required) This value is the key to use for checking status of data availability from the Asynchronous Endpoint.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "body": "<element><?xml version=\"1.0\" encoding=\"UTF-8\"?> <S:Envelope xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:S=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <env:Header/>\n  <S:Body>\n    <ns0:asyncResponse xmlns:ns1=\"http://estat.ec.europa.eu/disschain/asynchronous\" xmlns:ns0=\"http://estat.ec.europa.eu/disschain/soap/asynchronous\">\n      <ns1:status>\n        <ns1:key>0f164c29-0e96-4757-9b81-e9fcff8b9899</ns1:key>\n        <ns1:status>SUBMITTED</ns1:status>\n      </ns1:status>\n    </ns0:asyncResponse>\n  </S:Body>\n</S:Envelope></element>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            },
+            {
+              "id": "4b9ba667-bd5a-4461-aa5c-4bbfe1fbe606",
+              "name": "Error cases",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "1.0",
+                    "async",
+                    "status",
+                    ":uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uuid",
+                      "description": "(Required) This value is the key to use for checking status of data availability from the Asynchronous Endpoint.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "body": "<element><?xml version=\"1.0\" encoding=\"UTF-8\"?> <S:Envelope xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:S=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <env:Header/>\n  <S:Body>\n    <S:Fault xmlns:S=\"http://schemas.xmlsoap.org/soap/envelope/\">\n      <faultcode>100</faultcode>\n      <faultstring>UNKNOWN_REQUEST: Unknown request.</faultstring>\n    </S:Fault>\n  </S:Body>\n</S:Envelope></element>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f5f0d6b8-20fa-47b5-9c3e-fd5fa50f72d5",
+          "name": "get Async Data",
+          "request": {
+            "name": "get Async Data",
+            "description": {
+              "content": "The status of a request that is processed asynchronously can be checked",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "1.0",
+                "async",
+                "data",
+                ":uuid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "uuid",
+                  "description": "(Required) This value is the key to use for checking status of data availability from the Asynchronous Endpoint.\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a8eaab51-005e-4212-a1d7-b4d44b26b729",
+              "name": "Async processing status.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "1.0",
+                    "async",
+                    "data",
+                    ":uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uuid",
+                      "description": "(Required) This value is the key to use for checking status of data availability from the Asynchronous Endpoint.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            },
+            {
+              "id": "9f7b9704-8e88-4400-87ef-f2eeb7633ff1",
+              "name": "Error cases",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "1.0",
+                    "async",
+                    "data",
+                    ":uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uuid",
+                      "description": "(Required) This value is the key to use for checking status of data availability from the Asynchronous Endpoint.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "body": "<element><?xml version=\"1.0\" encoding=\"UTF-8\"?> <S:Envelope xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:S=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <env:Header/>\n  <S:Body>\n    <S:Fault xmlns:S=\"http://schemas.xmlsoap.org/soap/envelope/\">\n      <faultcode>100</faultcode>\n      <faultstring>UNKNOWN_REQUEST: Unknown request.</faultstring>\n    </S:Fault>\n  </S:Body>\n</S:Envelope></element>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://ec.europa.eu/eurostat/api/dissemination",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7d4fbb7e-972d-488f-9ad3-c2bbcbb60326",
+    "name": "Eurostat SDMX RESTful Async API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Listing of supported SDMX requests based on\n* [official sdmx-rest 2.1 specifications](https://github.com/sdmx-twg/sdmx-rest/tree/v1.5.0/v2_1/ws/rest/docs)\n* [official sdmx-rest 3.0 specifications](https://github.com/sdmx-twg/sdmx-rest/tree/v2.0.0/doc)\n\nFor additional information, please consult the [online-help](https://ec.europa.eu/eurostat/web/user-guides/data-browser).\n\n\nContact Support:\n Name: Contact Eurostat user support",
+      "type": "text/plain"
+    }
+  }
+}
