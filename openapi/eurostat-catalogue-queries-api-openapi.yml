@@ -1,17 +1,15 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   version: '1.0'
-  title: Eurostat SDMX RESTful Async Catalogue queries API
+  title: Eurostat SDMX RESTful Catalogue queries API
   description: 'Listing of supported SDMX requests based on
 
-    * [official sdmx-rest 2.1 specifications](https://github.com/sdmx-twg/sdmx-rest/tree/v1.5.0/v2_1/ws/rest/docs)
+    * official sdmx-rest 2.1 specifications
 
-    * [official sdmx-rest 3.0 specifications](https://github.com/sdmx-twg/sdmx-rest/tree/v2.0.0/doc)
+    * official sdmx-rest 3.0 specifications
 
 
-    For additional information, please consult the [online-help](https://ec.europa.eu/eurostat/web/user-guides/data-browser).
-
-    '
+    For additional information, please consult the online-help.'
   contact:
     name: Contact Eurostat user support
     url: https://ec.europa.eu/eurostat/help/support
@@ -33,6 +31,8 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/200-dcat'
+      operationId: getCatalogueDcatByAgencyID
+      x-operation-id-source: derived
   /catalogue/dcat/{agencyID}/{extractionType}:
     get:
       summary: Generate a catalogue of datasets in RDF format
@@ -44,17 +44,21 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/200-dcat'
+      operationId: getCatalogueDcatByAgencyIDByExtractionType
+      x-operation-id-source: derived
   /catalogue/metabase.txt.gz:
     get:
-      summary: Generate the Metabase which is a catalogue containing the definition of disseminated data products
+      summary: Generate the Metabase which is a catalogue containing the definition of…
       tags:
       - Catalogue queries
       responses:
         '200':
           $ref: '#/components/responses/200-metabase'
+      operationId: getCatalogueMetabaseTxtGz
+      x-operation-id-source: derived
   /catalogue/rss/{language}/statistics-update.rss:
     get:
-      summary: Generate a web feed which allows users to access updates to online content in a standardized, computer-readable format
+      summary: Generate a web feed which allows users to access updates to online content in a…
       tags:
       - Catalogue queries
       parameters:
@@ -62,6 +66,8 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/200-rss'
+      operationId: getCatalogueRssByLanguageStatisticsUpdateRss
+      x-operation-id-source: derived
   /catalogue/toc/TableOfContent.xsd:
     get:
       summary: Return the XML Schema Definition of the Table of Content (TOC)
@@ -70,6 +76,8 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/200-tocxsd'
+      operationId: getCatalogueTocTableOfContentXsd
+      x-operation-id-source: derived
   /catalogue/toc/txt:
     get:
       summary: Return the Table of Content (TOC) for the specified language in text format
@@ -80,6 +88,8 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/200-toctxt'
+      operationId: getCatalogueTocTxt
+      x-operation-id-source: derived
   /catalogue/toc/xml:
     get:
       summary: Return the Table of Content (TOC) for all supported languages in XML format
@@ -88,8 +98,29 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/200-tocxml'
+      operationId: getCatalogueTocXml
+      x-operation-id-source: derived
 components:
   responses:
+    200-toctxt:
+      description: OK
+      content:
+        text/plain:
+          schema:
+            type: string
+    200-dcat:
+      description: OK
+      content:
+        application/octet-stream:
+          schema:
+            type: string
+            format: binary
+    200-tocxsd:
+      description: OK
+      content:
+        application/xml:
+          schema:
+            type: string
     200-metabase:
       description: OK
       content:
@@ -109,26 +140,23 @@ components:
         application/xml:
           schema:
             type: string
-    200-tocxsd:
-      description: OK
-      content:
-        application/xml:
-          schema:
-            type: string
-    200-dcat:
-      description: OK
-      content:
-        application/octet-stream:
-          schema:
-            type: string
-            format: binary
-    200-toctxt:
-      description: OK
-      content:
-        text/plain:
-          schema:
-            type: string
   parameters:
+    extractionType:
+      in: path
+      name: extractionType
+      description: 'The type of extraction, only `FULL` and `UPDATES` are supported.
+
+        * `FULL`: get a catalogue for all datasets?
+
+        * `UPDATES`: get a catalogue of datasets updated since the latest embargo.
+
+        '
+      required: false
+      schema:
+        type: string
+        enum:
+        - FULL
+        - UPDATES
     language:
       in: path
       name: language
@@ -150,22 +178,6 @@ components:
       schema:
         type: string
         pattern: ^[A-Za-z][A-Za-z\d_-]*(\.[A-Za-z][A-Za-z\d_-]*)*$
-    extractionType:
-      in: path
-      name: extractionType
-      description: 'The type of extraction, only `FULL` and `UPDATES` are supported.
-
-        * `FULL`: get a catalogue for all datasets?
-
-        * `UPDATES`: get a catalogue of datasets updated since the latest embargo.
-
-        '
-      required: false
-      schema:
-        type: string
-        enum:
-        - FULL
-        - UPDATES
     lang:
       in: query
       name: lang

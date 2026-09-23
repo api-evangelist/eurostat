@@ -1,17 +1,15 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   version: '1.0'
   title: Eurostat SDMX RESTful Async API
   description: 'Listing of supported SDMX requests based on
 
-    * [official sdmx-rest 2.1 specifications](https://github.com/sdmx-twg/sdmx-rest/tree/v1.5.0/v2_1/ws/rest/docs)
+    * official sdmx-rest 2.1 specifications
 
-    * [official sdmx-rest 3.0 specifications](https://github.com/sdmx-twg/sdmx-rest/tree/v2.0.0/doc)
+    * official sdmx-rest 3.0 specifications
 
 
-    For additional information, please consult the [online-help](https://ec.europa.eu/eurostat/web/user-guides/data-browser).
-
-    '
+    For additional information, please consult the online-help.'
   contact:
     name: Contact Eurostat user support
     url: https://ec.europa.eu/eurostat/help/support
@@ -63,6 +61,8 @@ paths:
                   value: "<?xml version=\"1.0\" encoding=\"UTF-8\"?> <S:Envelope xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:S=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <env:Header/>\n  <S:Body>\n    <S:Fault xmlns:S=\"http://schemas.xmlsoap.org/soap/envelope/\">\n      <faultcode>100</faultcode>\n      <faultstring>UNKNOWN_REQUEST: Unknown request.</faultstring>\n    </S:Fault>\n  </S:Body>\n</S:Envelope>"
                 DATA_NOT_YET_AVAILABLE:
                   value: "<?xml version=\"1.0\" encoding=\"UTF-8\"?> <S:Envelope xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:S=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <env:Header/>\n  <S:Body>\n    <S:Fault>\n      <faultcode>100</faultcode>\n      <faultstring>DATA_NOT_YET_AVAILABLE: Requested data is not yet available for download. Check the status of your request.</faultstring>\n    </S:Fault>\n  </S:Body>\n</S:Envelope>"
+      summary: Get async status
+      x-summary-source: derived
   /1.0/async/data/{uuid}:
     get:
       operationId: getAsyncData
@@ -89,6 +89,8 @@ paths:
                   value: "<?xml version=\"1.0\" encoding=\"UTF-8\"?> <S:Envelope xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:S=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <env:Header/>\n  <S:Body>\n    <S:Fault xmlns:S=\"http://schemas.xmlsoap.org/soap/envelope/\">\n      <faultcode>100</faultcode>\n      <faultstring>UNKNOWN_REQUEST: Unknown request.</faultstring>\n    </S:Fault>\n  </S:Body>\n</S:Envelope>"
                 DATA_NOT_YET_AVAILABLE:
                   value: "<?xml version=\"1.0\" encoding=\"UTF-8\"?> <S:Envelope xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:S=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <env:Header/>\n  <S:Body>\n    <S:Fault>\n      <faultcode>100</faultcode>\n      <faultstring>DATA_NOT_YET_AVAILABLE: Requested data is not yet available for download. Check the status of your request.</faultstring>\n    </S:Fault>\n  </S:Body>\n</S:Envelope>"
+      summary: Get async data
+      x-summary-source: derived
 components:
   parameters:
     uuid:

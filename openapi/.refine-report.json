@@ -1,14 +1,7 @@
 {
   "provider": "eurostat",
   "sources": [
-    "eurostat-async-api-openapi.yml",
-    "eurostat-catalogue-queries-api-openapi.yml",
-    "eurostat-sdmx-2-1-data-queries-api-openapi.yml",
-    "eurostat-sdmx-2-1-navigation-structure-queries-api-openapi.yml",
-    "eurostat-sdmx-2-1-structure-queries-api-openapi.yml",
-    "eurostat-sdmx-3-0-data-queries-api-openapi.yml",
-    "eurostat-sdmx-3-0-structure-queries-api-openapi.yml",
-    "eurostat-statistics-data-queries-api-openapi.yml"
+    "_original/eurostat-sdmx-rest-openapi.yaml"
   ],
   "outputs": [
     "eurostat-async-api-openapi.yml",
@@ -23,6 +16,21 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "eurostat-sdmx-rest-openapi.yaml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "eurostat-sdmx-rest-openapi.yaml: declared missing tag: Catalogue queries",
+    "eurostat-sdmx-rest-openapi.yaml: declared missing tag: Statistics data queries",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "eurostat-async-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "eurostat-catalogue-queries-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "eurostat-sdmx-2-1-data-queries-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "eurostat-sdmx-2-1-navigation-structure-queries-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "eurostat-sdmx-2-1-structure-queries-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "eurostat-sdmx-3-0-data-queries-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "eurostat-sdmx-3-0-structure-queries-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "eurostat-statistics-data-queries-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

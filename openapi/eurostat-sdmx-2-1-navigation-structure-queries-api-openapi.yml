@@ -1,17 +1,15 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   version: '1.0'
-  title: Eurostat SDMX RESTful Async SDMX 2.1 Navigation Structure queries API
+  title: Eurostat SDMX RESTful SDMX 2.1 Navigation Structure queries…
   description: 'Listing of supported SDMX requests based on
 
-    * [official sdmx-rest 2.1 specifications](https://github.com/sdmx-twg/sdmx-rest/tree/v1.5.0/v2_1/ws/rest/docs)
+    * official sdmx-rest 2.1 specifications
 
-    * [official sdmx-rest 3.0 specifications](https://github.com/sdmx-twg/sdmx-rest/tree/v2.0.0/doc)
+    * official sdmx-rest 3.0 specifications
 
 
-    For additional information, please consult the [online-help](https://ec.europa.eu/eurostat/web/user-guides/data-browser).
-
-    '
+    For additional information, please consult the online-help.'
   contact:
     name: Contact Eurostat user support
     url: https://ec.europa.eu/eurostat/help/support
@@ -61,6 +59,8 @@ paths:
           $ref: '#/components/responses/501'
         '503':
           $ref: '#/components/responses/503'
+      operationId: getSdmx21CategoryschemeByAgencyIDByResourceIDByVersion
+      x-operation-id-source: derived
   /sdmx/2.1/categorisation/{agencyID}/{resourceID}/{version}:
     get:
       summary: Get categorisations
@@ -99,30 +99,22 @@ paths:
           $ref: '#/components/responses/501'
         '503':
           $ref: '#/components/responses/503'
+      operationId: getSdmx21CategorisationByAgencyIDByResourceIDByVersion
+      x-operation-id-source: derived
 components:
   responses:
-    '503':
-      description: Service unavailable
     '501':
       description: Not implemented
-    '414':
-      description: URI too long
-    '403':
-      description: Forbidden
-    '500':
-      description: Internal server error
-    '400':
-      description: Bad syntax
     '404':
       description: Not found
     '401':
       description: Unauthorized
-    '304':
-      description: No changes
+    '403':
+      description: Forbidden
     '413':
       description: Request entity too large
-    '406':
-      description: Not acceptable
+    '304':
+      description: No changes
     200-struct:
       description: OK
       content:
@@ -132,20 +124,33 @@ components:
         application/vnd.sdmx.structure+json;version=1.0.0:
           schema:
             type: string
+    '500':
+      description: Internal server error
+    '406':
+      description: Not acceptable
+    '414':
+      description: URI too long
+    '503':
+      description: Service unavailable
+    '400':
+      description: Bad syntax
   parameters:
-    agencies:
+    versions:
       in: path
-      name: agencyID
-      description: 'The agency maintaining the artefact to be returned.
+      name: version
+      description: 'The version of the artefact to be returned.
 
 
-        The keyword `all` can be used to indicate that artefacts maintained by any maintenance agency should be returned.
+        The keyword `all` can be used to return all versions of the matching resource.
+
+
+        The keyword `latest` can be used to return the latest production version of the matching resource.
 
         '
       required: true
       schema:
         type: string
-        pattern: ^(([A-Za-z][A-Za-z\d_-]*)(\.[A-Za-z][A-Za-z\d_-]*)*,)?[A-Za-z\d_@$-]+(\+([A-Za-z][A-Za-z\d_-]*(\.[A-Za-z][A-Za-z\d_-]*)*,)?[A-Za-z\d_@$-]+)*$
+        pattern: ^(all|latest|[\d]+(\.[\d]+)*(\+[\d]+(\.[\d]+)*)*)$
     accept-language:
       in: header
       name: Accept-Language
@@ -187,35 +192,6 @@ components:
         - referencecompletestubs
         - full
         default: full
-    resourceIDs:
-      in: path
-      name: resourceID
-      description: 'The id of the artefact to be returned.
-
-
-        The keyword `all` can be used to indicate that any artefact of the specified resource type, {agencyID} and {version} should be returned.
-
-        '
-      required: true
-      schema:
-        type: string
-        pattern: ^([A-Za-z\d_@$-]+(\+[A-Za-z\d_@$-]+)*)*$
-    versions:
-      in: path
-      name: version
-      description: 'The version of the artefact to be returned.
-
-
-        The keyword `all` can be used to return all versions of the matching resource.
-
-
-        The keyword `latest` can be used to return the latest production version of the matching resource.
-
-        '
-      required: true
-      schema:
-        type: string
-        pattern: ^(all|latest|[\d]+(\.[\d]+)*(\+[\d]+(\.[\d]+)*)*)$
     accept-encoding:
       in: header
       name: Accept-Encoding
@@ -263,3 +239,29 @@ components:
         - descendants
         - all
         default: none
+    agencies:
+      in: path
+      name: agencyID
+      description: 'The agency maintaining the artefact to be returned.
+
+
+        The keyword `all` can be used to indicate that artefacts maintained by any maintenance agency should be returned.
+
+        '
+      required: true
+      schema:
+        type: string
+        pattern: ^(([A-Za-z][A-Za-z\d_-]*)(\.[A-Za-z][A-Za-z\d_-]*)*,)?[A-Za-z\d_@$-]+(\+([A-Za-z][A-Za-z\d_-]*(\.[A-Za-z][A-Za-z\d_-]*)*,)?[A-Za-z\d_@$-]+)*$
+    resourceIDs:
+      in: path
+      name: resourceID
+      description: 'The id of the artefact to be returned.
+
+
+        The keyword `all` can be used to indicate that any artefact of the specified resource type, {agencyID} and {version} should be returned.
+
+        '
+      required: true
+      schema:
+        type: string
+        pattern: ^([A-Za-z\d_@$-]+(\+[A-Za-z\d_@$-]+)*)*$

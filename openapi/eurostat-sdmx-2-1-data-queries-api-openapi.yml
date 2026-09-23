@@ -1,17 +1,15 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   version: '1.0'
-  title: Eurostat SDMX RESTful Async SDMX 2.1 Data queries API
+  title: Eurostat SDMX RESTful SDMX 2.1 Data queries API
   description: 'Listing of supported SDMX requests based on
 
-    * [official sdmx-rest 2.1 specifications](https://github.com/sdmx-twg/sdmx-rest/tree/v1.5.0/v2_1/ws/rest/docs)
+    * official sdmx-rest 2.1 specifications
 
-    * [official sdmx-rest 3.0 specifications](https://github.com/sdmx-twg/sdmx-rest/tree/v2.0.0/doc)
+    * official sdmx-rest 3.0 specifications
 
 
-    For additional information, please consult the [online-help](https://ec.europa.eu/eurostat/web/user-guides/data-browser).
-
-    '
+    For additional information, please consult the online-help.'
   contact:
     name: Contact Eurostat user support
     url: https://ec.europa.eu/eurostat/help/support
@@ -64,16 +62,24 @@ paths:
           $ref: '#/components/responses/501'
         '503':
           $ref: '#/components/responses/503'
+      operationId: getSdmx21DataByFlowByKey
+      x-operation-id-source: derived
 components:
   responses:
-    '503':
-      description: Service unavailable
     '501':
       description: Not implemented
-    '414':
-      description: URI too long
+    '404':
+      description: Not found
+    '401':
+      description: Unauthorized
     '403':
       description: Forbidden
+    '413':
+      description: Request entity too large
+    '304':
+      description: No changes
+    '500':
+      description: Internal server error
     '200':
       description: OK
       content:
@@ -92,29 +98,15 @@ components:
         application/vnd.sdmx.data+csv;version=1.0.0:
           schema:
             type: string
-    '500':
-      description: Internal server error
-    '400':
-      description: Bad syntax
-    '404':
-      description: Not found
-    '401':
-      description: Unauthorized
-    '304':
-      description: No changes
-    '413':
-      description: Request entity too large
     '406':
       description: Not acceptable
+    '414':
+      description: URI too long
+    '503':
+      description: Service unavailable
+    '400':
+      description: Bad syntax
   parameters:
-    accept-language:
-      in: header
-      name: Accept-Language
-      description: 'Specifies the client''s preferred language.
-
-        '
-      schema:
-        type: string
     dimensionAtObservation:
       in: query
       name: dimensionAtObservation
@@ -156,100 +148,14 @@ components:
       schema:
         type: string
         pattern: ^([a-zA-Z][a-zA-Z\d_-]*(\.[a-zA-Z][a-zA-Z\d_-]*)*,)?[a-zA-Z\d_@$-]+(,(latest|(\d+(\.\d+)*)))?$
-    firstNObservations:
-      in: query
-      name: firstNObservations
-      description: 'The maximum number of observations to be returned starting from the oldest one
-
-        '
-      required: false
-      schema:
-        type: integer
-        minimum: 1
-    key:
-      in: path
-      name: key
-      description: "The (possibly partial) **key identifying the data to be returned**.\n\nThe keyword `all` can be used to indicate that all data belonging to the specified dataflow and provided by the specified provider must be returned.\n\nThe examples below are based on the following key: Frequency, Country, Component of inflation, Unit of measure.\n * `M.DE.000000.ANR`: Full key, matching exactly one series, i.e. the monthly (`M`) rates of change (`ANR`) of overall inflation (`000000`) in Germany (`DE`).\n * `A+M.DE.000000.ANR`: Retrieves both annual and monthly data (`A+M`), matching exactly two series\n * `A+M..000000.ANR`: The second dimension is wildcarded, and it wil therefore match the annual and monthly rates of change of overall inflation in any country.\n"
-      required: true
-      schema:
-        type: string
-        pattern: ^([\.A-Za-z\d_@$-]+(\+[A-Za-z\d_@$-]+)*)*$
-    lastNObservations:
-      in: query
-      name: lastNObservations
-      description: 'The maximum number of observations to be returned starting from the most recent one
-
-        '
-      required: false
-      schema:
-        type: integer
-        minimum: 1
-    endPeriod:
-      in: query
-      name: endPeriod
-      description: 'The end of the period for which results should be supplied (inclusive).
-
-
-        Can be expressed using 8601 dates or SDMX reporting periods.
-
-
-        Examples:
-
-        * `2000`: Year (ISO 8601)
-
-        * `2000-01`: Month (ISO 8601)
-
-        * `2000-01-01`: Date (ISO 8601)
-
-        * `2000-S1`: Semester (SDMX)
-
-        * `2000-D001`: Day (SDMX)
-
-        '
-      required: false
-      schema:
-        type: string
-        pattern: ^\d{4}-?((\d{2}(-\d{2})?)|A1|S[1|2]|Q[1-4]|T[1-3]|M(0[1-9]|1[0-2])|W(0[1-9]|[1-4][0-9]|5[0-3])|D(0[0-9][1-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-6]))?$
-    accept-encoding:
+    accept-language:
       in: header
-      name: Accept-Encoding
-      description: 'Specifies whether the response should be compressed and how.
-
-
-        `identity` (the default) indicates that no compression will be performed.
+      name: Accept-Language
+      description: 'Specifies the client''s preferred language.
 
         '
       schema:
         type: string
-        enum:
-        - gzip
-        default: identity
-    startPeriod:
-      in: query
-      name: startPeriod
-      description: 'The start of the period for which results should be supplied (inclusive).
-
-
-        Can be expressed using 8601 dates or SDMX reporting periods.
-
-
-        Examples:
-
-        * `2000`: Year (ISO 8601)
-
-        * `2000-01`: Month (ISO 8601)
-
-        * `2000-01-01`: Date (ISO 8601)
-
-        * `2000-Q1`: Quarter (SDMX)
-
-        * `2000-W01`: Week (SDMX)
-
-        '
-      required: false
-      schema:
-        type: string
-        pattern: ^\d{4}-?((\d{2}(-\d{2})?)|A1|S[1|2]|Q[1-4]|T[1-3]|M(0[1-9]|1[0-2])|W(0[1-9]|[1-4][0-9]|5[0-3])|D(0[0-9][1-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-6]))?$
     detail:
       in: query
       name: detail
@@ -277,3 +183,97 @@ components:
         - serieskeysonly
         - nodata
         default: full
+    accept-encoding:
+      in: header
+      name: Accept-Encoding
+      description: 'Specifies whether the response should be compressed and how.
+
+
+        `identity` (the default) indicates that no compression will be performed.
+
+        '
+      schema:
+        type: string
+        enum:
+        - gzip
+        default: identity
+    endPeriod:
+      in: query
+      name: endPeriod
+      description: 'The end of the period for which results should be supplied (inclusive).
+
+
+        Can be expressed using 8601 dates or SDMX reporting periods.
+
+
+        Examples:
+
+        * `2000`: Year (ISO 8601)
+
+        * `2000-01`: Month (ISO 8601)
+
+        * `2000-01-01`: Date (ISO 8601)
+
+        * `2000-S1`: Semester (SDMX)
+
+        * `2000-D001`: Day (SDMX)
+
+        '
+      required: false
+      schema:
+        type: string
+        pattern: ^\d{4}-?((\d{2}(-\d{2})?)|A1|S[1|2]|Q[1-4]|T[1-3]|M(0[1-9]|1[0-2])|W(0[1-9]|[1-4][0-9]|5[0-3])|D(0[0-9][1-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-6]))?$
+    key:
+      in: path
+      name: key
+      description: "The (possibly partial) **key identifying the data to be returned**.\n\nThe keyword `all` can be used to indicate that all data belonging to the specified dataflow and provided by the specified provider must be returned.\n\nThe examples below are based on the following key: Frequency, Country, Component of inflation, Unit of measure.\n * `M.DE.000000.ANR`: Full key, matching exactly one series, i.e. the monthly (`M`) rates of change (`ANR`) of overall inflation (`000000`) in Germany (`DE`).\n * `A+M.DE.000000.ANR`: Retrieves both annual and monthly data (`A+M`), matching exactly two series\n * `A+M..000000.ANR`: The second dimension is wildcarded, and it wil therefore match the annual and monthly rates of change of overall inflation in any country.\n"
+      required: true
+      schema:
+        type: string
+        pattern: ^([\.A-Za-z\d_@$-]+(\+[A-Za-z\d_@$-]+)*)*$
+    lastNObservations:
+      in: query
+      name: lastNObservations
+      description: 'The maximum number of observations to be returned starting from the most recent one
+
+        '
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+    startPeriod:
+      in: query
+      name: startPeriod
+      description: 'The start of the period for which results should be supplied (inclusive).
+
+
+        Can be expressed using 8601 dates or SDMX reporting periods.
+
+
+        Examples:
+
+        * `2000`: Year (ISO 8601)
+
+        * `2000-01`: Month (ISO 8601)
+
+        * `2000-01-01`: Date (ISO 8601)
+
+        * `2000-Q1`: Quarter (SDMX)
+
+        * `2000-W01`: Week (SDMX)
+
+        '
+      required: false
+      schema:
+        type: string
+        pattern: ^\d{4}-?((\d{2}(-\d{2})?)|A1|S[1|2]|Q[1-4]|T[1-3]|M(0[1-9]|1[0-2])|W(0[1-9]|[1-4][0-9]|5[0-3])|D(0[0-9][1-9]|[1-2][0-9][0-9]|3[0-5][0-9]|36[0-6]))?$
+    firstNObservations:
+      in: query
+      name: firstNObservations
+      description: 'The maximum number of observations to be returned starting from the oldest one
+
+        '
+      required: false
+      schema:
+        type: integer
+        minimum: 1
