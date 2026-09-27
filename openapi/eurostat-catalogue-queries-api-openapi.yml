@@ -102,12 +102,6 @@ paths:
       x-operation-id-source: derived
 components:
   responses:
-    200-toctxt:
-      description: OK
-      content:
-        text/plain:
-          schema:
-            type: string
     200-dcat:
       description: OK
       content:
@@ -115,7 +109,7 @@ components:
           schema:
             type: string
             format: binary
-    200-tocxsd:
+    200-rss:
       description: OK
       content:
         application/xml:
@@ -128,10 +122,16 @@ components:
           schema:
             type: string
             format: binary
-    200-rss:
+    200-tocxsd:
       description: OK
       content:
         application/xml:
+          schema:
+            type: string
+    200-toctxt:
+      description: OK
+      content:
+        text/plain:
           schema:
             type: string
     200-tocxml:
@@ -157,27 +157,6 @@ components:
         enum:
         - FULL
         - UPDATES
-    language:
-      in: path
-      name: language
-      description: 'The language of the requested data.
-
-        '
-      required: true
-      schema:
-        type: string
-        enum:
-        - en
-        - fr
-        - de
-    agencyID:
-      in: path
-      name: agencyID
-      description: The agency maintaining the artefact used to generate the schema to be returned.
-      required: true
-      schema:
-        type: string
-        pattern: ^[A-Za-z][A-Za-z\d_-]*(\.[A-Za-z][A-Za-z\d_-]*)*$
     lang:
       in: query
       name: lang
@@ -192,3 +171,24 @@ components:
         - fr
         - de
         default: en
+    agencyID:
+      in: path
+      name: agencyID
+      description: The agency maintaining the artefact used to generate the schema to be returned.
+      required: true
+      schema:
+        type: string
+        pattern: ^[A-Za-z][A-Za-z\d_-]*(\.[A-Za-z][A-Za-z\d_-]*)*$
+    language:
+      in: path
+      name: language
+      description: 'The language of the requested data.
+
+        '
+      required: true
+      schema:
+        type: string
+        enum:
+        - en
+        - fr
+        - de

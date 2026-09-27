@@ -49,12 +49,10 @@ paths:
       x-operation-id-source: derived
 components:
   responses:
-    '413':
-      description: Request entity too large
     '500':
       description: Internal server error
-    '404':
-      description: Not found
+    '413':
+      description: Request entity too large
     200-statistics:
       description: OK
       content:
@@ -63,6 +61,8 @@ components:
             type: string
     '400':
       description: Bad syntax
+    '404':
+      description: Not found
   parameters:
     datasetCode:
       in: path
@@ -73,45 +73,6 @@ components:
       required: true
       schema:
         type: string
-    statisticsLastTimePeriod:
-      in: query
-      name: lastTimePeriod
-      description: 'A numeric value counting down until the TIME_PERIOD dimension values are included in the returned file.
-
-        '
-      required: false
-      schema:
-        type: integer
-    statisticsUntilTimePeriod:
-      in: query
-      name: untilTimePeriod
-      description: 'The specific TIME_PERIOD value to filter the returned file until this value.
-
-        '
-      required: false
-      schema:
-        type: string
-    statisticsSinceTimePeriod:
-      in: query
-      name: sinceTimePeriod
-      description: 'The specific TIME_PERIOD value to filter the returned file since this value.
-
-        '
-      required: false
-      schema:
-        type: string
-    statisticsFormat:
-      in: query
-      name: format
-      description: 'The format of the returned data.
-
-        '
-      required: false
-      schema:
-        type: string
-        enum:
-        - JSON
-        default: JSON
     statisticsFilters:
       in: query
       name: filters
@@ -145,3 +106,42 @@ components:
         - fr
         - de
         default: en
+    statisticsLastTimePeriod:
+      in: query
+      name: lastTimePeriod
+      description: 'A numeric value counting down until the TIME_PERIOD dimension values are included in the returned file.
+
+        '
+      required: false
+      schema:
+        type: integer
+    statisticsFormat:
+      in: query
+      name: format
+      description: 'The format of the returned data.
+
+        '
+      required: false
+      schema:
+        type: string
+        enum:
+        - JSON
+        default: JSON
+    statisticsUntilTimePeriod:
+      in: query
+      name: untilTimePeriod
+      description: 'The specific TIME_PERIOD value to filter the returned file until this value.
+
+        '
+      required: false
+      schema:
+        type: string
+    statisticsSinceTimePeriod:
+      in: query
+      name: sinceTimePeriod
+      description: 'The specific TIME_PERIOD value to filter the returned file since this value.
+
+        '
+      required: false
+      schema:
+        type: string

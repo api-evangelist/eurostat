@@ -41,6 +41,7 @@ tags:
   - Transport
   - Environment
   - SDMX
+  - Government Data
 apis:
 - name: Eurostat Statistics API
   description: >-
