@@ -116,10 +116,10 @@ paths:
       x-operation-id-source: derived
 components:
   parameters:
-    format_data3.0:
+    formatversion_data3.0:
       in: query
-      name: format
-      description: 'The format used to return data (extension parameter). When a "format" is specified, the specific "formatVersion" needs also to be specified.
+      name: formatVersion
+      description: 'The version of the format used to return data (extension parameter). When a "formatVersion" is specified, the specific "format" needs also to be specified.
 
 
         |Format name                          |"format" parameter     | "formatVersion" parameter   |
@@ -135,30 +135,18 @@ components:
       schema:
         type: string
         enum:
-        - structurespecificdata
-        - csvdata
+        - '2.0'
+        - '3.0'
       style: form
       explode: false
-    measures:
-      in: query
-      name: measures
-      description: "The measures to be returned.\n\nNote: some restrictions apply depending of the value of the \"attributes\" query parameter:\n\n|attributes \\ measures    |no value / \"all\" | \"none\"       |\n|-------------------------|-----------------|--------------|\n|\"none\"                   | supported       | supported    |\n|\"obs\"                    | not supported   | not supported|\n|\"series\"                 | not supported   | supported    |\n|no value / \"dsd\" / \"all\" |\tsupported       | not supported|\n"
-      required: false
-      schema:
-        type: string
-        enum:
-        - all
-        - none
-      style: form
-      explode: false
-    resourceID:
+    agencyID:
       in: path
-      name: resourceID
-      description: The id of the artefact used to generate the schema to be returned.
+      name: agencyID
+      description: The agency maintaining the artefact used to generate the schema to be returned.
       required: true
       schema:
         type: string
-        pattern: ^[A-Za-z\d_@$-]+$
+        pattern: ^[A-Za-z][A-Za-z\d_-]*(\.[A-Za-z][A-Za-z\d_-]*)*$
     version3.0:
       in: path
       name: version
@@ -172,56 +160,6 @@ components:
       schema:
         type: string
         pattern: ^(\+|[\d]+(\.[\d]+)*(\+[\d]+(\.[\d]+)*)*)$
-    attributes:
-      in: query
-      name: attributes
-      description: "The attributes to be returned.\n\nFor example, it is possible to instruct the web service to return data only (i.e. no attributes).\nNote: some restrictions apply depending of the value of the \"measures\" query parameter:\n\n|attributes \\ measures    |no value / \"all\" | \"none\"       |\n|-------------------------|-----------------|--------------|\n|\"none\"                   | supported       | supported    |\n|\"obs\"                    | not supported   | not supported|\n|\"series\"                 | not supported   | supported    |\n|no value / \"dsd\" / \"all\" |\tsupported       | not supported|\n"
-      required: false
-      schema:
-        type: string
-        enum:
-        - dsd
-        - series
-        - obs
-        - all
-        - none
-      style: form
-      explode: false
-    accept-language:
-      in: header
-      name: Accept-Language
-      description: 'Specifies the client''s preferred language.
-
-        '
-      schema:
-        type: string
-    key3.0:
-      in: path
-      name: key
-      description: 'The combination of dimension values identifying series or slices of the cube (for example `D.USD.EUR.SP00.A`).
-
-
-        Wildcards are supported using `*` (`D.*.EUR.SP00.A`).
-
-        '
-      required: true
-      schema:
-        type: string
-        pattern: ^(\*|\S+|\.)*$
-    accept-encoding:
-      in: header
-      name: Accept-Encoding
-      description: 'Specifies whether the response should be compressed and how.
-
-
-        `identity` (the default) indicates that no compression will be performed.
-
-        '
-      schema:
-        type: string
-        enum:
-        - gzip
-        default: identity
     c:
       in: query
       name: c
@@ -265,6 +203,36 @@ components:
         type: object
       style: deepObject
       explode: true
+    resourceID:
+      in: path
+      name: resourceID
+      description: The id of the artefact used to generate the schema to be returned.
+      required: true
+      schema:
+        type: string
+        pattern: ^[A-Za-z\d_@$-]+$
+    accept-encoding:
+      in: header
+      name: Accept-Encoding
+      description: 'Specifies whether the response should be compressed and how.
+
+
+        `identity` (the default) indicates that no compression will be performed.
+
+        '
+      schema:
+        type: string
+        enum:
+        - gzip
+        default: identity
+    accept-language:
+      in: header
+      name: Accept-Language
+      description: 'Specifies the client''s preferred language.
+
+        '
+      schema:
+        type: string
     compress:
       in: query
       name: compress
@@ -292,6 +260,21 @@ components:
         - en
         - fr
         - de
+    attributes:
+      in: query
+      name: attributes
+      description: "The attributes to be returned.\n\nFor example, it is possible to instruct the web service to return data only (i.e. no attributes).\nNote: some restrictions apply depending of the value of the \"measures\" query parameter:\n\n|attributes \\ measures    |no value / \"all\" | \"none\"       |\n|-------------------------|-----------------|--------------|\n|\"none\"                   | supported       | supported    |\n|\"obs\"                    | not supported   | not supported|\n|\"series\"                 | not supported   | supported    |\n|no value / \"dsd\" / \"all\" |\tsupported       | not supported|\n"
+      required: false
+      schema:
+        type: string
+        enum:
+        - dsd
+        - series
+        - obs
+        - all
+        - none
+      style: form
+      explode: false
     labels:
       in: query
       name: labels
@@ -303,10 +286,23 @@ components:
         - id
         - name
         - both
-    formatversion_data3.0:
+    key3.0:
+      in: path
+      name: key
+      description: 'The combination of dimension values identifying series or slices of the cube (for example `D.USD.EUR.SP00.A`).
+
+
+        Wildcards are supported using `*` (`D.*.EUR.SP00.A`).
+
+        '
+      required: true
+      schema:
+        type: string
+        pattern: ^(\*|\S+|\.)*$
+    format_data3.0:
       in: query
-      name: formatVersion
-      description: 'The version of the format used to return data (extension parameter). When a "formatVersion" is specified, the specific "format" needs also to be specified.
+      name: format
+      description: 'The format used to return data (extension parameter). When a "format" is specified, the specific "formatVersion" needs also to be specified.
 
 
         |Format name                          |"format" parameter     | "formatVersion" parameter   |
@@ -322,25 +318,23 @@ components:
       schema:
         type: string
         enum:
-        - '2.0'
-        - '3.0'
+        - structurespecificdata
+        - csvdata
       style: form
       explode: false
-    agencyID:
-      in: path
-      name: agencyID
-      description: The agency maintaining the artefact used to generate the schema to be returned.
-      required: true
+    measures:
+      in: query
+      name: measures
+      description: "The measures to be returned.\n\nNote: some restrictions apply depending of the value of the \"attributes\" query parameter:\n\n|attributes \\ measures    |no value / \"all\" | \"none\"       |\n|-------------------------|-----------------|--------------|\n|\"none\"                   | supported       | supported    |\n|\"obs\"                    | not supported   | not supported|\n|\"series\"                 | not supported   | supported    |\n|no value / \"dsd\" / \"all\" |\tsupported       | not supported|\n"
+      required: false
       schema:
         type: string
-        pattern: ^[A-Za-z][A-Za-z\d_-]*(\.[A-Za-z][A-Za-z\d_-]*)*$
+        enum:
+        - all
+        - none
+      style: form
+      explode: false
   responses:
-    '404':
-      description: Not found
-    '503':
-      description: Service unavailable
-    '414':
-      description: URI too long
     200-sdmx3.0:
       description: OK
       content:
@@ -362,19 +356,25 @@ components:
         application/vnd.sdmx.data+csv;version=1.0.0:
           schema:
             type: string
+    '400':
+      description: Bad syntax
+    '413':
+      description: Request entity too large
+    '401':
+      description: Unauthorized
+    '503':
+      description: Service unavailable
+    '500':
+      description: Internal server error
+    '501':
+      description: Not implemented
+    '404':
+      description: Not found
+    '414':
+      description: URI too long
+    '406':
+      description: Not acceptable
     '304':
       description: No changes
     '403':
       description: Forbidden
-    '500':
-      description: Internal server error
-    '406':
-      description: Not acceptable
-    '400':
-      description: Bad syntax
-    '401':
-      description: Unauthorized
-    '501':
-      description: Not implemented
-    '413':
-      description: Request entity too large

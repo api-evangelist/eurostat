@@ -222,120 +222,7 @@ paths:
       operationId: getSdmx21CodelistByAgencyIDByResourceIDByVersion
       x-operation-id-source: derived
 components:
-  responses:
-    200-struct:
-      description: OK
-      content:
-        application/vnd.sdmx.structure+xml;version=2.1:
-          schema:
-            type: string
-        application/vnd.sdmx.structure+json;version=1.0.0:
-          schema:
-            type: string
-    '404':
-      description: Not found
-    '503':
-      description: Service unavailable
-    '414':
-      description: URI too long
-    '304':
-      description: No changes
-    '403':
-      description: Forbidden
-    '500':
-      description: Internal server error
-    '406':
-      description: Not acceptable
-    '400':
-      description: Bad syntax
-    '401':
-      description: Unauthorized
-    '501':
-      description: Not implemented
-    '413':
-      description: Request entity too large
   parameters:
-    references:
-      in: query
-      name: references
-      description: 'Instructs the web service to return (or not) the artefacts referenced by the artefact to be returned.
-
-
-        Possible values are:
-
-
-        * `none`: No reference will be returned
-
-        * `parents`: Returns the artefacts that use the artefact matching the query
-
-        * `parentsandsiblings`: Returns the artefacts that use the artefact matching the query, as well as the artefacts referenced by these artefacts
-
-        * `children`: Returns the artefacts referenced by the artefact to be returned
-
-        * `descendants`: References of references, up to any level, will be returned
-
-        * `all`: The combination of parentsandsiblings and descendants
-
-        '
-      required: false
-      schema:
-        type: string
-        enum:
-        - none
-        - parents
-        - parentsandsiblings
-        - children
-        - descendants
-        - all
-        default: none
-    resourceIDs:
-      in: path
-      name: resourceID
-      description: 'The id of the artefact to be returned.
-
-
-        The keyword `all` can be used to indicate that any artefact of the specified resource type, {agencyID} and {version} should be returned.
-
-        '
-      required: true
-      schema:
-        type: string
-        pattern: ^([A-Za-z\d_@$-]+(\+[A-Za-z\d_@$-]+)*)*$
-    accept-language:
-      in: header
-      name: Accept-Language
-      description: 'Specifies the client''s preferred language.
-
-        '
-      schema:
-        type: string
-    accept-encoding:
-      in: header
-      name: Accept-Encoding
-      description: 'Specifies whether the response should be compressed and how.
-
-
-        `identity` (the default) indicates that no compression will be performed.
-
-        '
-      schema:
-        type: string
-        enum:
-        - gzip
-        default: identity
-    agencies:
-      in: path
-      name: agencyID
-      description: 'The agency maintaining the artefact to be returned.
-
-
-        The keyword `all` can be used to indicate that artefacts maintained by any maintenance agency should be returned.
-
-        '
-      required: true
-      schema:
-        type: string
-        pattern: ^(([A-Za-z][A-Za-z\d_-]*)(\.[A-Za-z][A-Za-z\d_-]*)*,)?[A-Za-z\d_@$-]+(\+([A-Za-z][A-Za-z\d_-]*(\.[A-Za-z][A-Za-z\d_-]*)*,)?[A-Za-z\d_@$-]+)*$
     structDetail:
       in: query
       name: detail
@@ -369,6 +256,87 @@ components:
         - referencecompletestubs
         - full
         default: full
+    resourceIDs:
+      in: path
+      name: resourceID
+      description: 'The id of the artefact to be returned.
+
+
+        The keyword `all` can be used to indicate that any artefact of the specified resource type, {agencyID} and {version} should be returned.
+
+        '
+      required: true
+      schema:
+        type: string
+        pattern: ^([A-Za-z\d_@$-]+(\+[A-Za-z\d_@$-]+)*)*$
+    accept-encoding:
+      in: header
+      name: Accept-Encoding
+      description: 'Specifies whether the response should be compressed and how.
+
+
+        `identity` (the default) indicates that no compression will be performed.
+
+        '
+      schema:
+        type: string
+        enum:
+        - gzip
+        default: identity
+    accept-language:
+      in: header
+      name: Accept-Language
+      description: 'Specifies the client''s preferred language.
+
+        '
+      schema:
+        type: string
+    references:
+      in: query
+      name: references
+      description: 'Instructs the web service to return (or not) the artefacts referenced by the artefact to be returned.
+
+
+        Possible values are:
+
+
+        * `none`: No reference will be returned
+
+        * `parents`: Returns the artefacts that use the artefact matching the query
+
+        * `parentsandsiblings`: Returns the artefacts that use the artefact matching the query, as well as the artefacts referenced by these artefacts
+
+        * `children`: Returns the artefacts referenced by the artefact to be returned
+
+        * `descendants`: References of references, up to any level, will be returned
+
+        * `all`: The combination of parentsandsiblings and descendants
+
+        '
+      required: false
+      schema:
+        type: string
+        enum:
+        - none
+        - parents
+        - parentsandsiblings
+        - children
+        - descendants
+        - all
+        default: none
+    agencies:
+      in: path
+      name: agencyID
+      description: 'The agency maintaining the artefact to be returned.
+
+
+        The keyword `all` can be used to indicate that artefacts maintained by any maintenance agency should be returned.
+
+        '
+      required: true
+      schema:
+        type: string
+        pattern: ^(([A-Za-z][A-Za-z\d_-]*)(\.[A-Za-z][A-Za-z\d_-]*)*,)?[A-Za-z\d_@$-]+(\+([A-Za-z][A-Za-z\d_-]*(\.[A-Za-z][A-Za-z\d_-]*)*,)?[A-Za-z\d_@$-]+)*$
     versions:
       in: path
       name: version
@@ -385,3 +353,35 @@ components:
       schema:
         type: string
         pattern: ^(all|latest|[\d]+(\.[\d]+)*(\+[\d]+(\.[\d]+)*)*)$
+  responses:
+    '400':
+      description: Bad syntax
+    '413':
+      description: Request entity too large
+    200-struct:
+      description: OK
+      content:
+        application/vnd.sdmx.structure+xml;version=2.1:
+          schema:
+            type: string
+        application/vnd.sdmx.structure+json;version=1.0.0:
+          schema:
+            type: string
+    '401':
+      description: Unauthorized
+    '503':
+      description: Service unavailable
+    '500':
+      description: Internal server error
+    '501':
+      description: Not implemented
+    '404':
+      description: Not found
+    '414':
+      description: URI too long
+    '406':
+      description: Not acceptable
+    '304':
+      description: No changes
+    '403':
+      description: Forbidden
