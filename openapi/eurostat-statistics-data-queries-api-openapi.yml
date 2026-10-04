@@ -51,18 +51,18 @@ components:
   responses:
     '404':
       description: Not found
-    '400':
-      description: Bad syntax
-    '413':
-      description: Request entity too large
-    '500':
-      description: Internal server error
     200-statistics:
       description: OK
       content:
         application/json:
           schema:
             type: string
+    '500':
+      description: Internal server error
+    '400':
+      description: Bad syntax
+    '413':
+      description: Request entity too large
   parameters:
     statisticsSinceTimePeriod:
       in: query
@@ -71,15 +71,6 @@ components:
 
         '
       required: false
-      schema:
-        type: string
-    datasetCode:
-      in: path
-      name: datasetCode
-      description: 'The code of the dataset to be queried.
-
-        '
-      required: true
       schema:
         type: string
     statisticsUntilTimePeriod:
@@ -114,6 +105,27 @@ components:
       required: false
       schema:
         type: integer
+    datasetCode:
+      in: path
+      name: datasetCode
+      description: 'The code of the dataset to be queried.
+
+        '
+      required: true
+      schema:
+        type: string
+    statisticsFormat:
+      in: query
+      name: format
+      description: 'The format of the returned data.
+
+        '
+      required: false
+      schema:
+        type: string
+        enum:
+        - JSON
+        default: JSON
     statisticsFilters:
       in: query
       name: filters
@@ -133,15 +145,3 @@ components:
           type: string
       style: form
       explode: true
-    statisticsFormat:
-      in: query
-      name: format
-      description: 'The format of the returned data.
-
-        '
-      required: false
-      schema:
-        type: string
-        enum:
-        - JSON
-        default: JSON

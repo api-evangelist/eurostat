@@ -222,7 +222,81 @@ paths:
       operationId: getSdmx21CodelistByAgencyIDByResourceIDByVersion
       x-operation-id-source: derived
 components:
+  responses:
+    '500':
+      description: Internal server error
+    '414':
+      description: URI too long
+    200-struct:
+      description: OK
+      content:
+        application/vnd.sdmx.structure+xml;version=2.1:
+          schema:
+            type: string
+        application/vnd.sdmx.structure+json;version=1.0.0:
+          schema:
+            type: string
+    '304':
+      description: No changes
+    '406':
+      description: Not acceptable
+    '403':
+      description: Forbidden
+    '401':
+      description: Unauthorized
+    '413':
+      description: Request entity too large
+    '404':
+      description: Not found
+    '503':
+      description: Service unavailable
+    '501':
+      description: Not implemented
+    '400':
+      description: Bad syntax
   parameters:
+    agencies:
+      in: path
+      name: agencyID
+      description: 'The agency maintaining the artefact to be returned.
+
+
+        The keyword `all` can be used to indicate that artefacts maintained by any maintenance agency should be returned.
+
+        '
+      required: true
+      schema:
+        type: string
+        pattern: ^(([A-Za-z][A-Za-z\d_-]*)(\.[A-Za-z][A-Za-z\d_-]*)*,)?[A-Za-z\d_@$-]+(\+([A-Za-z][A-Za-z\d_-]*(\.[A-Za-z][A-Za-z\d_-]*)*,)?[A-Za-z\d_@$-]+)*$
+    versions:
+      in: path
+      name: version
+      description: 'The version of the artefact to be returned.
+
+
+        The keyword `all` can be used to return all versions of the matching resource.
+
+
+        The keyword `latest` can be used to return the latest production version of the matching resource.
+
+        '
+      required: true
+      schema:
+        type: string
+        pattern: ^(all|latest|[\d]+(\.[\d]+)*(\+[\d]+(\.[\d]+)*)*)$
+    resourceIDs:
+      in: path
+      name: resourceID
+      description: 'The id of the artefact to be returned.
+
+
+        The keyword `all` can be used to indicate that any artefact of the specified resource type, {agencyID} and {version} should be returned.
+
+        '
+      required: true
+      schema:
+        type: string
+        pattern: ^([A-Za-z\d_@$-]+(\+[A-Za-z\d_@$-]+)*)*$
     structDetail:
       in: query
       name: detail
@@ -256,41 +330,6 @@ components:
         - referencecompletestubs
         - full
         default: full
-    resourceIDs:
-      in: path
-      name: resourceID
-      description: 'The id of the artefact to be returned.
-
-
-        The keyword `all` can be used to indicate that any artefact of the specified resource type, {agencyID} and {version} should be returned.
-
-        '
-      required: true
-      schema:
-        type: string
-        pattern: ^([A-Za-z\d_@$-]+(\+[A-Za-z\d_@$-]+)*)*$
-    accept-encoding:
-      in: header
-      name: Accept-Encoding
-      description: 'Specifies whether the response should be compressed and how.
-
-
-        `identity` (the default) indicates that no compression will be performed.
-
-        '
-      schema:
-        type: string
-        enum:
-        - gzip
-        default: identity
-    accept-language:
-      in: header
-      name: Accept-Language
-      description: 'Specifies the client''s preferred language.
-
-        '
-      schema:
-        type: string
     references:
       in: query
       name: references
@@ -324,64 +363,25 @@ components:
         - descendants
         - all
         default: none
-    agencies:
-      in: path
-      name: agencyID
-      description: 'The agency maintaining the artefact to be returned.
-
-
-        The keyword `all` can be used to indicate that artefacts maintained by any maintenance agency should be returned.
+    accept-language:
+      in: header
+      name: Accept-Language
+      description: 'Specifies the client''s preferred language.
 
         '
-      required: true
       schema:
         type: string
-        pattern: ^(([A-Za-z][A-Za-z\d_-]*)(\.[A-Za-z][A-Za-z\d_-]*)*,)?[A-Za-z\d_@$-]+(\+([A-Za-z][A-Za-z\d_-]*(\.[A-Za-z][A-Za-z\d_-]*)*,)?[A-Za-z\d_@$-]+)*$
-    versions:
-      in: path
-      name: version
-      description: 'The version of the artefact to be returned.
+    accept-encoding:
+      in: header
+      name: Accept-Encoding
+      description: 'Specifies whether the response should be compressed and how.
 
 
-        The keyword `all` can be used to return all versions of the matching resource.
-
-
-        The keyword `latest` can be used to return the latest production version of the matching resource.
+        `identity` (the default) indicates that no compression will be performed.
 
         '
-      required: true
       schema:
         type: string
-        pattern: ^(all|latest|[\d]+(\.[\d]+)*(\+[\d]+(\.[\d]+)*)*)$
-  responses:
-    '400':
-      description: Bad syntax
-    '413':
-      description: Request entity too large
-    200-struct:
-      description: OK
-      content:
-        application/vnd.sdmx.structure+xml;version=2.1:
-          schema:
-            type: string
-        application/vnd.sdmx.structure+json;version=1.0.0:
-          schema:
-            type: string
-    '401':
-      description: Unauthorized
-    '503':
-      description: Service unavailable
-    '500':
-      description: Internal server error
-    '501':
-      description: Not implemented
-    '404':
-      description: Not found
-    '414':
-      description: URI too long
-    '406':
-      description: Not acceptable
-    '304':
-      description: No changes
-    '403':
-      description: Forbidden
+        enum:
+        - gzip
+        default: identity

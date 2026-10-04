@@ -101,46 +101,21 @@ paths:
       operationId: getCatalogueTocXml
       x-operation-id-source: derived
 components:
-  responses:
-    200-dcat:
-      description: OK
-      content:
-        application/octet-stream:
-          schema:
-            type: string
-            format: binary
-    200-toctxt:
-      description: OK
-      content:
-        text/plain:
-          schema:
-            type: string
-    200-metabase:
-      description: OK
-      content:
-        application/octet-stream:
-          schema:
-            type: string
-            format: binary
-    200-tocxml:
-      description: OK
-      content:
-        application/xml:
-          schema:
-            type: string
-    200-rss:
-      description: OK
-      content:
-        application/xml:
-          schema:
-            type: string
-    200-tocxsd:
-      description: OK
-      content:
-        application/xml:
-          schema:
-            type: string
   parameters:
+    lang:
+      in: query
+      name: lang
+      description: 'The language of the requested data.
+
+        '
+      required: false
+      schema:
+        type: string
+        enum:
+        - en
+        - fr
+        - de
+        default: en
     agencyID:
       in: path
       name: agencyID
@@ -165,20 +140,6 @@ components:
         enum:
         - FULL
         - UPDATES
-    lang:
-      in: query
-      name: lang
-      description: 'The language of the requested data.
-
-        '
-      required: false
-      schema:
-        type: string
-        enum:
-        - en
-        - fr
-        - de
-        default: en
     language:
       in: path
       name: language
@@ -192,3 +153,42 @@ components:
         - en
         - fr
         - de
+  responses:
+    200-rss:
+      description: OK
+      content:
+        application/xml:
+          schema:
+            type: string
+    200-dcat:
+      description: OK
+      content:
+        application/octet-stream:
+          schema:
+            type: string
+            format: binary
+    200-tocxml:
+      description: OK
+      content:
+        application/xml:
+          schema:
+            type: string
+    200-tocxsd:
+      description: OK
+      content:
+        application/xml:
+          schema:
+            type: string
+    200-toctxt:
+      description: OK
+      content:
+        text/plain:
+          schema:
+            type: string
+    200-metabase:
+      description: OK
+      content:
+        application/octet-stream:
+          schema:
+            type: string
+            format: binary

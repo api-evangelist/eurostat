@@ -116,10 +116,23 @@ paths:
       x-operation-id-source: derived
 components:
   parameters:
-    formatversion_data3.0:
+    key3.0:
+      in: path
+      name: key
+      description: 'The combination of dimension values identifying series or slices of the cube (for example `D.USD.EUR.SP00.A`).
+
+
+        Wildcards are supported using `*` (`D.*.EUR.SP00.A`).
+
+        '
+      required: true
+      schema:
+        type: string
+        pattern: ^(\*|\S+|\.)*$
+    format_data3.0:
       in: query
-      name: formatVersion
-      description: 'The version of the format used to return data (extension parameter). When a "formatVersion" is specified, the specific "format" needs also to be specified.
+      name: format
+      description: 'The format used to return data (extension parameter). When a "format" is specified, the specific "formatVersion" needs also to be specified.
 
 
         |Format name                          |"format" parameter     | "formatVersion" parameter   |
@@ -135,18 +148,23 @@ components:
       schema:
         type: string
         enum:
-        - '2.0'
-        - '3.0'
+        - structurespecificdata
+        - csvdata
       style: form
       explode: false
-    agencyID:
-      in: path
-      name: agencyID
-      description: The agency maintaining the artefact used to generate the schema to be returned.
-      required: true
+    lang_data3.0:
+      in: query
+      name: lang
+      description: 'The language of the requested data (extension parameter). Only available for the SDMX CSV format.
+
+        '
+      required: false
       schema:
         type: string
-        pattern: ^[A-Za-z][A-Za-z\d_-]*(\.[A-Za-z][A-Za-z\d_-]*)*$
+        enum:
+        - en
+        - fr
+        - de
     version3.0:
       in: path
       name: version
@@ -160,6 +178,21 @@ components:
       schema:
         type: string
         pattern: ^(\+|[\d]+(\.[\d]+)*(\+[\d]+(\.[\d]+)*)*)$
+    attributes:
+      in: query
+      name: attributes
+      description: "The attributes to be returned.\n\nFor example, it is possible to instruct the web service to return data only (i.e. no attributes).\nNote: some restrictions apply depending of the value of the \"measures\" query parameter:\n\n|attributes \\ measures    |no value / \"all\" | \"none\"       |\n|-------------------------|-----------------|--------------|\n|\"none\"                   | supported       | supported    |\n|\"obs\"                    | not supported   | not supported|\n|\"series\"                 | not supported   | supported    |\n|no value / \"dsd\" / \"all\" |\tsupported       | not supported|\n"
+      required: false
+      schema:
+        type: string
+        enum:
+        - dsd
+        - series
+        - obs
+        - all
+        - none
+      style: form
+      explode: false
     c:
       in: query
       name: c
@@ -203,106 +236,22 @@ components:
         type: object
       style: deepObject
       explode: true
-    resourceID:
-      in: path
-      name: resourceID
-      description: The id of the artefact used to generate the schema to be returned.
-      required: true
-      schema:
-        type: string
-        pattern: ^[A-Za-z\d_@$-]+$
-    accept-encoding:
-      in: header
-      name: Accept-Encoding
-      description: 'Specifies whether the response should be compressed and how.
-
-
-        `identity` (the default) indicates that no compression will be performed.
-
-        '
-      schema:
-        type: string
-        enum:
-        - gzip
-        default: identity
-    accept-language:
-      in: header
-      name: Accept-Language
-      description: 'Specifies the client''s preferred language.
-
-        '
-      schema:
-        type: string
-    compress:
+    measures:
       in: query
-      name: compress
-      description: 'Whether the response is compressed (default, gzip format) or not.
-
-        '
+      name: measures
+      description: "The measures to be returned.\n\nNote: some restrictions apply depending of the value of the \"attributes\" query parameter:\n\n|attributes \\ measures    |no value / \"all\" | \"none\"       |\n|-------------------------|-----------------|--------------|\n|\"none\"                   | supported       | supported    |\n|\"obs\"                    | not supported   | not supported|\n|\"series\"                 | not supported   | supported    |\n|no value / \"dsd\" / \"all\" |\tsupported       | not supported|\n"
       required: false
       schema:
         type: string
         enum:
-        - true
-        - false
-      style: form
-      explode: false
-    lang_data3.0:
-      in: query
-      name: lang
-      description: 'The language of the requested data (extension parameter). Only available for the SDMX CSV format.
-
-        '
-      required: false
-      schema:
-        type: string
-        enum:
-        - en
-        - fr
-        - de
-    attributes:
-      in: query
-      name: attributes
-      description: "The attributes to be returned.\n\nFor example, it is possible to instruct the web service to return data only (i.e. no attributes).\nNote: some restrictions apply depending of the value of the \"measures\" query parameter:\n\n|attributes \\ measures    |no value / \"all\" | \"none\"       |\n|-------------------------|-----------------|--------------|\n|\"none\"                   | supported       | supported    |\n|\"obs\"                    | not supported   | not supported|\n|\"series\"                 | not supported   | supported    |\n|no value / \"dsd\" / \"all\" |\tsupported       | not supported|\n"
-      required: false
-      schema:
-        type: string
-        enum:
-        - dsd
-        - series
-        - obs
         - all
         - none
       style: form
       explode: false
-    labels:
+    formatversion_data3.0:
       in: query
-      name: labels
-      description: "The information to be returned for dimension and attribute values (extension parameter). Only available for the SDMX CSV format.\nPossible values are:\n * id (default): one column is used for each dimension / attribute and contains the code of the position / attribute.\n * name: one column is used for each dimension / attribute and contains the localized name of the position / attribute.\n * both: two columns are used for each dimension / attribute and contains the code and localized name of the position / attribute.\n"
-      required: false
-      schema:
-        type: string
-        enum:
-        - id
-        - name
-        - both
-    key3.0:
-      in: path
-      name: key
-      description: 'The combination of dimension values identifying series or slices of the cube (for example `D.USD.EUR.SP00.A`).
-
-
-        Wildcards are supported using `*` (`D.*.EUR.SP00.A`).
-
-        '
-      required: true
-      schema:
-        type: string
-        pattern: ^(\*|\S+|\.)*$
-    format_data3.0:
-      in: query
-      name: format
-      description: 'The format used to return data (extension parameter). When a "format" is specified, the specific "formatVersion" needs also to be specified.
+      name: formatVersion
+      description: 'The version of the format used to return data (extension parameter). When a "formatVersion" is specified, the specific "format" needs also to be specified.
 
 
         |Format name                          |"format" parameter     | "formatVersion" parameter   |
@@ -318,23 +267,84 @@ components:
       schema:
         type: string
         enum:
-        - structurespecificdata
-        - csvdata
+        - '2.0'
+        - '3.0'
       style: form
       explode: false
-    measures:
+    labels:
       in: query
-      name: measures
-      description: "The measures to be returned.\n\nNote: some restrictions apply depending of the value of the \"attributes\" query parameter:\n\n|attributes \\ measures    |no value / \"all\" | \"none\"       |\n|-------------------------|-----------------|--------------|\n|\"none\"                   | supported       | supported    |\n|\"obs\"                    | not supported   | not supported|\n|\"series\"                 | not supported   | supported    |\n|no value / \"dsd\" / \"all\" |\tsupported       | not supported|\n"
+      name: labels
+      description: "The information to be returned for dimension and attribute values (extension parameter). Only available for the SDMX CSV format.\nPossible values are:\n * id (default): one column is used for each dimension / attribute and contains the code of the position / attribute.\n * name: one column is used for each dimension / attribute and contains the localized name of the position / attribute.\n * both: two columns are used for each dimension / attribute and contains the code and localized name of the position / attribute.\n"
       required: false
       schema:
         type: string
         enum:
-        - all
-        - none
+        - id
+        - name
+        - both
+    compress:
+      in: query
+      name: compress
+      description: 'Whether the response is compressed (default, gzip format) or not.
+
+        '
+      required: false
+      schema:
+        type: string
+        enum:
+        - true
+        - false
       style: form
       explode: false
+    agencyID:
+      in: path
+      name: agencyID
+      description: The agency maintaining the artefact used to generate the schema to be returned.
+      required: true
+      schema:
+        type: string
+        pattern: ^[A-Za-z][A-Za-z\d_-]*(\.[A-Za-z][A-Za-z\d_-]*)*$
+    resourceID:
+      in: path
+      name: resourceID
+      description: The id of the artefact used to generate the schema to be returned.
+      required: true
+      schema:
+        type: string
+        pattern: ^[A-Za-z\d_@$-]+$
+    accept-language:
+      in: header
+      name: Accept-Language
+      description: 'Specifies the client''s preferred language.
+
+        '
+      schema:
+        type: string
+    accept-encoding:
+      in: header
+      name: Accept-Encoding
+      description: 'Specifies whether the response should be compressed and how.
+
+
+        `identity` (the default) indicates that no compression will be performed.
+
+        '
+      schema:
+        type: string
+        enum:
+        - gzip
+        default: identity
   responses:
+    '500':
+      description: Internal server error
+    '414':
+      description: URI too long
+    '304':
+      description: No changes
+    '406':
+      description: Not acceptable
+    '403':
+      description: Forbidden
     200-sdmx3.0:
       description: OK
       content:
@@ -356,25 +366,15 @@ components:
         application/vnd.sdmx.data+csv;version=1.0.0:
           schema:
             type: string
-    '400':
-      description: Bad syntax
-    '413':
-      description: Request entity too large
     '401':
       description: Unauthorized
-    '503':
-      description: Service unavailable
-    '500':
-      description: Internal server error
-    '501':
-      description: Not implemented
+    '413':
+      description: Request entity too large
     '404':
       description: Not found
-    '414':
-      description: URI too long
-    '406':
-      description: Not acceptable
-    '304':
-      description: No changes
-    '403':
-      description: Forbidden
+    '503':
+      description: Service unavailable
+    '501':
+      description: Not implemented
+    '400':
+      description: Bad syntax
