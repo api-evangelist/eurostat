@@ -1,0 +1,12 @@
+{
+ "url": "https://ec.europa.eu/eurostat/api/dissemination/swagger-ui/sdmx-rest.yaml",
+ "requested_url": "https://ec.europa.eu/eurostat/api/dissemination/swagger-ui/sdmx-rest.yaml",
+ "status": 200,
+ "content_type": "",
+ "bytes": 68837,
+ "sha256": "8cc466bd116c92fa730e0069c836e8088502bc8be825d33a7b66993c4b4c16d5",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "byte-identical",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the archived file is byte-identical to what the provider serves."
+}
