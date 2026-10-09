@@ -1,3 +1,7 @@
+# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (undated — the file carries no date and git cannot supply one), not
+# harvested from the provider. `method: generated` so the economics campaign may replace it with a
+# dated, verbatim transcription; every figure below is unverified until it does.
+method: generated
 name: Eurostat API Plans and Pricing
 description: Eurostat provides free, open access to European statistical data through its dissemination APIs. There are no subscription tiers or paid plans — all APIs are publicly accessible without authentication or cost.
 plans:
@@ -23,3 +27,16 @@ plans:
       - Asynchronous queries capped at 5,000,000 cells
       - Requests exceeding 5,000,000 cells are rejected (HTTP 413)
       - URL length constraints may apply to complex filter queries
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  units: []
+  plans:
+  - name: Public Open Access
+    access: other
+    model: free
+    model_how: derived
+    units: []
+    periods: []
