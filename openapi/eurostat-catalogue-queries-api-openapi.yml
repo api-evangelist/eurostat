@@ -101,29 +101,46 @@ paths:
       operationId: getCatalogueTocXml
       x-operation-id-source: derived
 components:
+  responses:
+    200-tocxsd:
+      description: OK
+      content:
+        application/xml:
+          schema:
+            type: string
+    200-toctxt:
+      description: OK
+      content:
+        text/plain:
+          schema:
+            type: string
+    200-dcat:
+      description: OK
+      content:
+        application/octet-stream:
+          schema:
+            type: string
+            format: binary
+    200-metabase:
+      description: OK
+      content:
+        application/octet-stream:
+          schema:
+            type: string
+            format: binary
+    200-rss:
+      description: OK
+      content:
+        application/xml:
+          schema:
+            type: string
+    200-tocxml:
+      description: OK
+      content:
+        application/xml:
+          schema:
+            type: string
   parameters:
-    lang:
-      in: query
-      name: lang
-      description: 'The language of the requested data.
-
-        '
-      required: false
-      schema:
-        type: string
-        enum:
-        - en
-        - fr
-        - de
-        default: en
-    agencyID:
-      in: path
-      name: agencyID
-      description: The agency maintaining the artefact used to generate the schema to be returned.
-      required: true
-      schema:
-        type: string
-        pattern: ^[A-Za-z][A-Za-z\d_-]*(\.[A-Za-z][A-Za-z\d_-]*)*$
     extractionType:
       in: path
       name: extractionType
@@ -140,6 +157,14 @@ components:
         enum:
         - FULL
         - UPDATES
+    agencyID:
+      in: path
+      name: agencyID
+      description: The agency maintaining the artefact used to generate the schema to be returned.
+      required: true
+      schema:
+        type: string
+        pattern: ^[A-Za-z][A-Za-z\d_-]*(\.[A-Za-z][A-Za-z\d_-]*)*$
     language:
       in: path
       name: language
@@ -153,42 +178,17 @@ components:
         - en
         - fr
         - de
-  responses:
-    200-rss:
-      description: OK
-      content:
-        application/xml:
-          schema:
-            type: string
-    200-dcat:
-      description: OK
-      content:
-        application/octet-stream:
-          schema:
-            type: string
-            format: binary
-    200-tocxml:
-      description: OK
-      content:
-        application/xml:
-          schema:
-            type: string
-    200-tocxsd:
-      description: OK
-      content:
-        application/xml:
-          schema:
-            type: string
-    200-toctxt:
-      description: OK
-      content:
-        text/plain:
-          schema:
-            type: string
-    200-metabase:
-      description: OK
-      content:
-        application/octet-stream:
-          schema:
-            type: string
-            format: binary
+    lang:
+      in: query
+      name: lang
+      description: 'The language of the requested data.
+
+        '
+      required: false
+      schema:
+        type: string
+        enum:
+        - en
+        - fr
+        - de
+        default: en

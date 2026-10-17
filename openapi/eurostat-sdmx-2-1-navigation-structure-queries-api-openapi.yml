@@ -103,10 +103,18 @@ paths:
       x-operation-id-source: derived
 components:
   responses:
-    '500':
-      description: Internal server error
     '414':
       description: URI too long
+    '503':
+      description: Service unavailable
+    '304':
+      description: No changes
+    '404':
+      description: Not found
+    '401':
+      description: Unauthorized
+    '400':
+      description: Bad syntax
     200-struct:
       description: OK
       content:
@@ -116,54 +124,17 @@ components:
         application/vnd.sdmx.structure+json;version=1.0.0:
           schema:
             type: string
-    '304':
-      description: No changes
     '406':
       description: Not acceptable
-    '403':
-      description: Forbidden
-    '401':
-      description: Unauthorized
-    '413':
-      description: Request entity too large
-    '404':
-      description: Not found
-    '503':
-      description: Service unavailable
+    '500':
+      description: Internal server error
     '501':
       description: Not implemented
-    '400':
-      description: Bad syntax
+    '413':
+      description: Request entity too large
+    '403':
+      description: Forbidden
   parameters:
-    agencies:
-      in: path
-      name: agencyID
-      description: 'The agency maintaining the artefact to be returned.
-
-
-        The keyword `all` can be used to indicate that artefacts maintained by any maintenance agency should be returned.
-
-        '
-      required: true
-      schema:
-        type: string
-        pattern: ^(([A-Za-z][A-Za-z\d_-]*)(\.[A-Za-z][A-Za-z\d_-]*)*,)?[A-Za-z\d_@$-]+(\+([A-Za-z][A-Za-z\d_-]*(\.[A-Za-z][A-Za-z\d_-]*)*,)?[A-Za-z\d_@$-]+)*$
-    versions:
-      in: path
-      name: version
-      description: 'The version of the artefact to be returned.
-
-
-        The keyword `all` can be used to return all versions of the matching resource.
-
-
-        The keyword `latest` can be used to return the latest production version of the matching resource.
-
-        '
-      required: true
-      schema:
-        type: string
-        pattern: ^(all|latest|[\d]+(\.[\d]+)*(\+[\d]+(\.[\d]+)*)*)$
     resourceIDs:
       in: path
       name: resourceID
@@ -210,6 +181,19 @@ components:
         - referencecompletestubs
         - full
         default: full
+    agencies:
+      in: path
+      name: agencyID
+      description: 'The agency maintaining the artefact to be returned.
+
+
+        The keyword `all` can be used to indicate that artefacts maintained by any maintenance agency should be returned.
+
+        '
+      required: true
+      schema:
+        type: string
+        pattern: ^(([A-Za-z][A-Za-z\d_-]*)(\.[A-Za-z][A-Za-z\d_-]*)*,)?[A-Za-z\d_@$-]+(\+([A-Za-z][A-Za-z\d_-]*(\.[A-Za-z][A-Za-z\d_-]*)*,)?[A-Za-z\d_@$-]+)*$
     references:
       in: query
       name: references
@@ -243,6 +227,22 @@ components:
         - descendants
         - all
         default: none
+    versions:
+      in: path
+      name: version
+      description: 'The version of the artefact to be returned.
+
+
+        The keyword `all` can be used to return all versions of the matching resource.
+
+
+        The keyword `latest` can be used to return the latest production version of the matching resource.
+
+        '
+      required: true
+      schema:
+        type: string
+        pattern: ^(all|latest|[\d]+(\.[\d]+)*(\+[\d]+(\.[\d]+)*)*)$
     accept-language:
       in: header
       name: Accept-Language
