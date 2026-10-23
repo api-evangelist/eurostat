@@ -103,3 +103,9 @@ components:
       schema:
         type: string
         pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+x-provenance:
+  method: harvested
+  publisher: Eurostat
+  source: https://ec.europa.eu/eurostat/api/dissemination/swagger-ui/sdmx-rest.yaml
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)
