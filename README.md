@@ -1,4 +1,4 @@
-# Eurostat (eurostat)
+# Eurostat
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,138 +66,151 @@
 
 Eurostat is the statistical office of the European Union, providing free and open REST APIs for programmatic access to European statistical data covering demographics, economy, trade, agriculture, transport, environment, and dozens of other indicators across EU member states and regions.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/eurostat/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/eurostat/refs/heads/main/apis.yml)
+**Areas:** Statistics · European Union · Open Data · Demographics · Economy · Trade · Agriculture · Transport · Environment · SDMX · Government Data
 
-## Tags
+## Eurostat on APIs.io
 
-- Statistics
-- European Union
-- Open Data
-- Demographics
-- Economy
-- Trade
-- Agriculture
-- Transport
-- Environment
-- SDMX
+Everything profiled for Eurostat is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/eurostat/](https://apis.io/providers/eurostat/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (12)
 
-- **Created:** 2026-06-13
-- **Modified:** 2026-06-13
+- [Eurostat Statistics API](https://apis.io/apis/eurostat/eurostat-statistics-api/) — The primary REST API for accessing Eurostat datasets in JSON-stat 2.0 format. Supports filtering by geography, time period, and any dataset dimension.…
+- [Eurostat SDMX 3.0 API](https://apis.io/apis/eurostat/eurostat-sdmx-30-api/) — SDMX 3.0-compliant web service providing access to Eurostat datasets, dataflows, data structure definitions, and codelists. Supports SDMX-ML 3.0 and 2.1,…
+- [Eurostat Asynchronous API](https://apis.io/apis/eurostat/eurostat-asynchronous-api/) — Asynchronous dissemination API for large dataset extractions between 500,000 and 5,000,000 cells. Clients submit a request, receive a unique key, poll for…
+- [Eurostat Catalogue API](https://apis.io/apis/eurostat/eurostat-catalogue-api/) — API for discovering all publicly available Eurostat datasets, browsing the navigation tree, and retrieving dataset metadata before querying.
+- [Eurostat Async API](https://apis.io/apis/eurostat/eurostat-async-api/) — asynchronous processing
+- [Eurostat Catalogue queries API](https://apis.io/apis/eurostat/eurostat-catalogue-queries-api/) — The Catalogue queries API from Eurostat — 7 operation(s) for catalogue queries.
+- [Eurostat SDMX 2.1 Data queries API](https://apis.io/apis/eurostat/eurostat-sdmx-2-1-data-queries-api/) — The SDMX 2.1 Data queries API from Eurostat — 1 operation(s) for sdmx 2.1 data queries.
+- [Eurostat SDMX 2.1 Navigation Structure queries API](https://apis.io/apis/eurostat/eurostat-sdmx-2-1-navigation-structure-queries-api/) — The SDMX 2.1 Navigation Structure queries API from Eurostat — 2 operation(s) for sdmx 2.1 navigation structure queries.
+- [Eurostat SDMX 2.1 Structure queries API](https://apis.io/apis/eurostat/eurostat-sdmx-2-1-structure-queries-api/) — The SDMX 2.1 Structure queries API from Eurostat — 5 operation(s) for sdmx 2.1 structure queries.
+- [Eurostat SDMX 3.0 Data queries API](https://apis.io/apis/eurostat/eurostat-sdmx-3-0-data-queries-api/) — The SDMX 3.0 Data queries API from Eurostat — 2 operation(s) for sdmx 3.0 data queries.
+- [Eurostat SDMX 3.0 Structure queries API](https://apis.io/apis/eurostat/eurostat-sdmx-3-0-structure-queries-api/) — The SDMX 3.0 Structure queries API from Eurostat — 10 operation(s) for sdmx 3.0 structure queries.
+- [Eurostat Statistics data queries API](https://apis.io/apis/eurostat/eurostat-statistics-data-queries-api/) — The Statistics data queries API from Eurostat — 1 operation(s) for statistics data queries.
 
-## APIs
+### Published properties
 
-### Eurostat Statistics API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-The primary REST API for accessing Eurostat datasets in JSON-stat 2.0 format. Supports filtering by geography, time period, and any dataset dimension. Returns synchronous or asynchronous responses depending on query size.
+#### Agentic access (1)
 
-- **Human URL:** [https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction](https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction)
-- **Base URL:** `https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Eurostat Agentic Access](https://apis.io/agentic-access/eurostat/eurostat-agentic-access/)
 
-- Statistics
-- JSON-stat
-- European Union
+#### JSON Schema (1)
 
-#### Properties
+The data models the API reads and writes.
 
-- [Documentation](https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction)
-- [Getting Started](https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-getting-started/api)
-- [Detailed Guidelines](https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-detailed-guidelines/api-statistics)
+- [Eurostat Data Query Parameters](https://apis.io/schemas/eurostat/eurostat-data-query/)
 
-### Eurostat SDMX 2.1 API
+#### Examples (1)
 
-SDMX 2.1-compliant web service providing access to Eurostat datasets and structural metadata in SDMX-ML (XML), SDMX-CSV, and TSV formats.
+Example requests and responses.
 
-- **Human URL:** [https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction](https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction)
-- **Base URL:** `https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/`
+- [Eurostat Statistics Api Example](https://apis.io/examples/eurostat/eurostat-statistics-api-example/)
 
-#### Tags
+#### Collections (8)
 
-- SDMX
-- XML
-- Statistics
-- European Union
+Postman and Open Collection request collections.
 
-#### Properties
+- [Eurostat SDMX RESTful Async API](https://apis.io/collections/eurostat/open-eurostat-async-api/)
+- [Eurostat SDMX RESTful Async Catalogue queries API](https://apis.io/collections/eurostat/open-eurostat-catalogue-queries-api/)
+- [Eurostat SDMX RESTful Async SDMX 2.1 Data queries API](https://apis.io/collections/eurostat/open-eurostat-sdmx-2-1-data-queries-api/)
+- [Eurostat SDMX RESTful Async SDMX 2.1 Navigation Structure queries API](https://apis.io/collections/eurostat/open-eurostat-sdmx-2-1-navigation-structure-queries-api/)
+- [Eurostat SDMX RESTful Async SDMX 2.1 Structure queries API](https://apis.io/collections/eurostat/open-eurostat-sdmx-2-1-structure-queries-api/)
+- [Eurostat SDMX RESTful Async SDMX 3.0 Data queries API](https://apis.io/collections/eurostat/open-eurostat-sdmx-3-0-data-queries-api/)
+- [Eurostat SDMX RESTful Async SDMX 3.0 Structure queries API](https://apis.io/collections/eurostat/open-eurostat-sdmx-3-0-structure-queries-api/)
+- [Eurostat SDMX RESTful Async Statistics data queries API](https://apis.io/collections/eurostat/open-eurostat-statistics-data-queries-api/)
 
-- [Documentation](https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction)
-- [OpenAPI](openapi/eurostat-sdmx-rest-openapi.yaml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+#### Governance rules (1)
 
-### Eurostat SDMX 3.0 API
+Spectral rulesets for the provider's contracts.
 
-SDMX 3.0-compliant web service providing access to Eurostat datasets, dataflows, data structure definitions, and codelists. Supports SDMX-ML 3.0 and 2.1, SDMX-CSV 2.0 and 1.0, TSV, and JSON-stat formats.
+- [Eurostat — jsonschema rules](https://apis.io/rules/eurostat/eurostat-jsonschema-spectral-rules/)
 
-- **Human URL:** [https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-getting-started/sdmx3.0](https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-getting-started/sdmx3.0)
-- **Base URL:** `https://ec.europa.eu/eurostat/api/dissemination/sdmx/3.0/`
+#### Security (1)
 
-#### Tags
+Authentication, trust centre, and vulnerability disclosure.
 
-- SDMX
-- XML
-- CSV
-- Statistics
-- European Union
+- [Eurostat Domain Security](https://apis.io/security/eurostat/eurostat-domain-security/)
 
-#### Properties
+#### Plans and pricing (1)
 
-- [Documentation](https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-getting-started/sdmx3.0)
-- [Detailed Guidelines](https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-detailed-guidelines/sdmx3-0/data-query)
+Published plans, tiers and prices.
 
-### Eurostat Asynchronous API
+- [Eurostat Plans Pricing](https://apis.io/plans/eurostat/eurostat-plans-pricing/)
 
-Asynchronous dissemination API for large dataset extractions between 500,000 and 5,000,000 cells. Clients submit a request, receive a unique key, poll for status, and download results when available.
+#### Rate limits (1)
 
-- **Human URL:** [https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-detailed-guidelines/asynchronous-api](https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-detailed-guidelines/asynchronous-api)
-- **Base URL:** `https://ec.europa.eu/eurostat/api/dissemination/1.0/async/`
+Published request limits.
 
-#### Tags
+- [Eurostat Rate Limits](https://apis.io/rate-limits/eurostat/eurostat-rate-limits/)
 
-- Asynchronous
-- Large Datasets
-- Statistics
-- European Union
+#### FinOps (1)
 
-#### Properties
+What the API costs to run, by operation.
 
-- [Documentation](https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-detailed-guidelines/asynchronous-api)
+- [Eurostat Finops](https://apis.io/finops/eurostat/eurostat-finops/)
 
-### Eurostat Catalogue API
+## Where to find this API
 
-API for discovering all publicly available Eurostat datasets, browsing the navigation tree, and retrieving dataset metadata before querying.
-
-- **Human URL:** [https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction](https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction)
-- **Base URL:** `https://ec.europa.eu/eurostat/api/dissemination/catalogue/`
-
-#### Tags
-
-- Catalogue
-- Metadata
-- Discovery
-- European Union
-
-#### Properties
-
-- [Documentation](https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction)
-
-## Common Properties
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://ec.europa.eu/eurostat)
 - [Documentation](https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction)
-- [Git Hub Org](https://github.com/eurostat)
-- [LinkedIn](https://www.linkedin.com/company/eurostat/)
-- [Blog](https://ec.europa.eu/eurostat/news/news-articles)
 - [Pricing](https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction)
-- [Status Page](https://ec.europa.eu/eurostat/help/maintenance-information)
-- [X (Twitter)](https://x.com/EU_Eurostat)
-- [Plans](plans/eurostat-plans-pricing.yml)
-- [Rate Limits](rate-limits/eurostat-rate-limits.yml)
-- [Fin Ops](finops/eurostat-finops.yml)
-- [F A Q](https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-faq)
+- [Blog](https://ec.europa.eu/eurostat/news/news-articles)
+- [Status](https://ec.europa.eu/eurostat/help/maintenance-information)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 29.2** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 43.2 |
+| Contract governance | 9.8 |
+| Operational transparency | 28.9 |
+| Developer ergonomics | 23.8 |
+| Access clarity | 15.8 |
+
+**Agent readiness 20.7** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | na |
+| Error Semantics | — |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 5.9** — Government & Public Sector
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/eurostat/](https://apis.io/providers/eurostat/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Eurostat: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/eurostat/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
